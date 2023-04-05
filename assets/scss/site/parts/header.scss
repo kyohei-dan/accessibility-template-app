@@ -1,0 +1,7 @@
+@use "../../base/shortcut-functions" as f;
+@use "../modules" as modules;
+
+.site-header {
+  @include f.mq(sp) {
+  }
+}

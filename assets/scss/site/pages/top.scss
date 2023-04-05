@@ -1,0 +1,8 @@
+@use "../../base/shortcut-functions" as f;
+@use "../modules" as modules;
+
+#top {
+}
+
+@include f.mq(sp) {
+}
