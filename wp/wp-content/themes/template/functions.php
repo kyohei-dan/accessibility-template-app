@@ -3,6 +3,7 @@
 namespace {
   require_once __DIR__ . "/inc/admin.php";
   require_once __DIR__ . "/inc/post-types.php";
+  require_once __DIR__ . "/inc/wp-head-clean.php";
 
   // テストで出力する内容を整形する関数
   function pre($str)
