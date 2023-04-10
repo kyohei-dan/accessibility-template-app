@@ -1,0 +1,170 @@
+@use "../../base/shortcut-functions" as f;
+@use "../modules" as modules;
+
+.single-news {
+  .lower-header {
+    position: relative;
+    padding: 6.4rem 12rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 9.6rem;
+      height: 3px;
+      background: linear-gradient(to left, #002864, #005169 25%, #006882 50%, #00a3a3 70%, #dae000 95%, #dae000);
+    }
+
+    h1 {
+      color: #002864;
+      font-size: 4.4rem;
+      font-family: "Shippori Mincho B1", serif;
+      line-height: 1.6;
+    }
+  }
+
+  .breadcrumb {
+    padding: 2.4rem 0;
+    background-color: #e6f0f5;
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 2rem;
+      margin: 0 auto;
+      max-width: 100rem;
+      li {
+        position: relative;
+        color: #828282;
+        font-size: 2rem;
+        + li {
+          position: relative;
+          padding-left: 2.6rem;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            border-right: 1.2px solid #002864;
+            border-top: 1.2px solid #002864;
+            transform: translateY(-50%) rotate(45deg);
+          }
+        }
+
+        span {
+          color: #002864;
+        }
+      }
+    }
+  }
+
+  .post {
+    margin: 8rem 0 0 0;
+    .inner {
+      margin: 0 auto;
+      max-width: 100rem;
+    }
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 0 1.6rem 0;
+      border-bottom: solid 1px #c8c8c8;
+
+      h2 {
+        margin: 0 0 1.6rem 0;
+        font-size: 3.2rem;
+        font-weight: 700;
+        width: 100%;
+        letter-spacing: 0.05em;
+      }
+
+      time {
+        font-size: 2.2rem;
+      }
+
+      .label {
+        position: relative;
+        margin: 0 0 0 2rem;
+        padding-left: 2rem;
+        font-size: 2.2rem;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 2px;
+          height: calc(100% - 1.3rem);
+          background-image: linear-gradient(to bottom, #e2e2e2 5px, transparent 5px);
+          background-position: right top;
+          background-repeat: repeat-y;
+          background-size: 2px 7px;
+          min-height: 1rem;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    .editor-contents {
+      margin: 4rem 0 0 0;
+      font-size: 2rem;
+      line-height: 1.7;
+    }
+  }
+
+  .pagination {
+    margin: 6.4rem 0;
+
+    .inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5rem;
+      margin: 12rem auto 0;
+      max-width: 100rem;
+    }
+
+    a {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+      width: 12rem;
+      border-bottom: 1px solid #002864;
+      font-size: 1.6rem;
+    }
+
+    a[rel="prev"],
+    a[rel="next"] {
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid #002864;
+        border-top: 2px solid #002864;
+        transform: translateY(-50%) rotate(-135deg);
+      }
+    }
+
+    a[rel="prev"] {
+      &::before {
+        left: 3px;
+        transform: translateY(-50%) rotate(-135deg);
+      }
+    }
+
+    a[rel="next"] {
+      &::before {
+        right: 3px;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+}

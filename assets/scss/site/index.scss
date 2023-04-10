@@ -1,5 +1,6 @@
 @use "common";
-// @use "libs";
-@use "pages/top";
 @use "parts/header";
 @use "parts/footer";
+@use "pages/top";
+@use "pages/archive-news";
+@use "pages/single-news";

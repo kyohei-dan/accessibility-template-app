@@ -46,5 +46,45 @@ namespace {
 };
 
 namespace Site {
-  // サイト固有の関数をここに記述
+  function get_pagination($post_num = "", $range = 1)
+  {
+    // 全ページ数
+    global $wp_query;
+    $max_pages = $wp_query->max_num_pages;
+    (!$max_pages) ? $max_pages = 1 : $max_pages;
+
+    // $post_numに値があれば、$per_pageに値を格納する
+    if (!empty($post_num)) $per_page = ceil($wp_query->found_posts / $post_num);
+
+    // 現在のページ
+    global $paged;
+    if (empty($paged)) $paged = 1;
+
+    return [
+      "max_pages" => $max_pages,
+      "current_pages" => $paged,
+      "per_page" => (!empty($per_page)) ? $per_page : $max_pages,
+      "range" => $range,
+    ];
+  }
+
+  function get_news_posts($n = -1, $slug = "")
+  {
+    $query = [
+      "post_type" => "news",
+      "posts_per_page" => $n,
+      "paged" => get_query_var('paged') ? absint(get_query_var('paged')) : 1,
+    ];
+
+    if (!empty($slug)) {
+      $query["tax_query"] = [
+        [
+          "taxonomy" => "news-category",
+          "field" => "slug",
+          "terms" => $slug
+        ]
+      ];
+    }
+    return get_posts($query);
+  }
 }

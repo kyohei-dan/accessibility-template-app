@@ -11,10 +11,16 @@ add_action("init", function () {
     "supports" => ['title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions'],
   ]);
 
+  register_taxonomy("news-category", "news", [
+    "label" => "カテゴリー",
+    "public" => true,
+    "hierarchical" => true
+  ]);
+
   // パーマリンクの変更
   add_filter("post_type_link", function ($link, $post) {
     if (in_array($post->post_type, ["news"])) {
-      return home_url("/{$post->post_type}/{$post->ID}");
+      return home_url("/{$post->post_type}/{$post->ID}/");
     } else {
       return $link;
     }

@@ -1,8 +1,675 @@
 @use "../../base/shortcut-functions" as f;
 @use "../modules" as modules;
 
-#top {
-}
+.front-page {
+  .splide {
+    height: calc(100vh - 8rem);
 
-@include f.mq(sp) {
+    .splide-slider {
+      top: 50%;
+      height: 100%;
+      transform: translateY(-50%);
+
+      &[aria-live="polite"] .splide__slide img {
+        animation-play-state: paused;
+      }
+
+      .splide__slide {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #ffffff;
+
+        &[class] {
+          position: relative;
+          display: block;
+          width: 100%;
+        }
+
+        &[class*="-active"] img {
+          animation: 4.5s img-scale ease-in;
+        }
+
+        &[class*="is-prev"] img {
+          animation: 1s img-scale-prev ease-out;
+        }
+
+        img,
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      .splide-text-area {
+        position: absolute;
+        left: 5rem;
+        bottom: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 100%;
+        height: auto;
+        color: #fff;
+        font-family: "Shippori Mincho B1", serif;
+        letter-spacing: -0.06em;
+        text-shadow: #222222 0 0 1rem;
+
+        p {
+          font-size: 4rem;
+          line-height: 1.8;
+        }
+      }
+    }
+
+    .splide__arrows {
+      position: absolute;
+      left: 6rem;
+      bottom: 6rem;
+      display: flex;
+      justify-content: center;
+
+      .splide__arrow--prev,
+      .splide__toggle,
+      .splide__arrow--next {
+        position: relative;
+        display: block;
+        margin: 0 0.5rem;
+        width: 5rem;
+        height: 3rem;
+        border-bottom: 1px solid #fff;
+        line-height: 1;
+        text-indent: 1000%;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .splide__arrow--prev::before,
+      .splide__toggle::before,
+      .splide__arrow--next::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1.8rem;
+        height: 0.8rem;
+        background-repeat: no-repeat;
+        transform: translateX(-50%);
+      }
+
+      .splide__arrow--prev::before,
+      .splide__arrow--next::before {
+        background-image: url("/assets/images/top/arrow_one-side_white.svg");
+        background-size: 100%;
+      }
+
+      .splide__arrow--next::before {
+        transform: scale(-1, 1) translateX(50%);
+      }
+
+      .splide__toggle:not(.is-active)::before {
+        width: 1.2rem;
+        height: 1.2rem;
+        background-color: #fff;
+        clip-path: polygon(0 0, 0% 100%, 100% 50%);
+      }
+
+      .splide__toggle.is-active {
+        border-color: #ffffff;
+      }
+
+      .splide__toggle.is-active::before,
+      .splide__toggle.is-active::after {
+        width: 0.2rem;
+        height: 1.2rem;
+        background-color: #ffffff;
+      }
+
+      .splide__toggle.is-active::before {
+        left: calc(50% - 3px);
+      }
+
+      .splide__toggle.is-active::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: calc(50% + 3px);
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  @keyframes img-scale {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.04);
+    }
+  }
+
+  @keyframes img-scale-prev {
+    from {
+      transform: scale(1.04);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+
+  .news {
+    max-width: 100rem;
+    margin: 0 auto;
+    padding: 16rem 1rem 12rem;
+
+    .inner {
+      margin: 0 auto;
+      max-width: 100rem;
+      @include f.mq(sp) {
+        padding-bottom: 18rem;
+      }
+    }
+
+    .c_sec-title {
+      line-height: 1;
+      color: #002864;
+      text-align: center;
+      letter-spacing: 0.2em;
+      .title-en {
+        font-size: 6rem;
+      }
+      .title-ja {
+        margin-top: 2rem;
+        font-size: 2rem;
+      }
+    }
+
+    div[role="tablist"] {
+      display: flex;
+      margin: 5.6rem 0 0 0;
+      border-bottom: 2px solid #002864;
+      button {
+        position: relative;
+        width: 33.333%;
+        height: 80px;
+        color: #002864;
+        font-size: 22px;
+        text-align: center;
+        cursor: pointer;
+        &[aria-selected="true"] {
+          background-color: #e6f0f5;
+          &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -1.5rem;
+            width: 1px;
+            height: 3rem;
+            background-color: #002864;
+            transform: translateX(-50%);
+          }
+        }
+      }
+    }
+
+    div[role="tabpanel"] {
+      a {
+        display: flex;
+        padding: 3.5rem 3rem;
+        font-size: 18px;
+        color: #323232;
+        border-bottom: 1px solid #aaa;
+        time {
+          font-size: 1.6rem;
+        }
+
+        p {
+          margin: 0 0 0 4rem;
+          font-size: 1.6rem;
+        }
+      }
+
+      .empty-text {
+        padding: 8rem 0;
+        font-size: 1.6rem;
+        text-align: center;
+      }
+    }
+
+    .c_btn-more {
+      display: flex;
+      justify-content: center;
+      margin: 4.8rem 0 0 0;
+      a {
+        position: relative;
+        display: block;
+        padding-left: 2.5rem;
+        width: 17.2rem;
+        background-color: #002864;
+        color: white;
+        font-size: 1.4rem;
+        line-height: 3.2rem;
+        letter-spacing: 0.2em;
+        @include f.mq(sp) {
+          margin: 0 auto;
+          padding-left: 0;
+          width: 50rem;
+          font-size: 3.4rem;
+          line-height: 9rem;
+          text-align: center;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 1.5rem;
+          width: 2.8rem;
+          height: 1rem;
+          background: url("/assets/images/top/icon-arrow-white.svg") no-repeat center / contain;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  .sec_support {
+    position: relative;
+    margin-top: 14rem;
+    @include f.mq(sp) {
+      margin-top: 24rem;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 3.5rem;
+      right: 0;
+      z-index: -1;
+      width: 92%;
+      height: 42.3rem;
+      background-color: #e6f0f5;
+      @include f.mq(sp) {
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .support-img {
+      position: absolute;
+      top: 16rem;
+      left: 0;
+      z-index: -1;
+      width: 80%;
+      height: 40rem;
+      @include f.mq(sp) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 69.5rem;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .inner {
+      margin: 0 auto;
+      max-width: 100rem;
+      @include f.mq(sp) {
+        padding-bottom: 18rem;
+      }
+    }
+
+    .c_sec-title {
+      color: #002864;
+      line-height: 1;
+      letter-spacing: 0.2em;
+      text-align: left;
+      @include f.mq(sp) {
+        padding-top: 7rem;
+        color: #fff;
+        text-align: center;
+      }
+
+      .title-en {
+        font-size: 6rem;
+        @include f.mq(sp) {
+          font-size: 7rem;
+        }
+      }
+
+      .title-ja {
+        margin-top: 2rem;
+        font-size: 2rem;
+        @include f.mq(sp) {
+          margin-top: 2.5rem;
+          font-size: 3rem;
+        }
+      }
+
+      .title-en-second {
+        margin-top: 2rem;
+        font-size: 6rem;
+        @include f.mq(sp) {
+          margin-top: 2.5rem;
+          font-size: 7rem;
+        }
+      }
+
+      .title-ja-second {
+        font-size: 2rem;
+        @include f.mq(sp) {
+          font-size: 3rem;
+        }
+      }
+    }
+
+    .support-list {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25rem;
+      @include f.mq(sp) {
+        display: block;
+        margin-top: 12.5rem;
+      }
+
+      li {
+        position: relative;
+        width: 31rem;
+        height: 32rem;
+        padding: 4rem;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        @include f.mq(sp) {
+          width: 63rem;
+          height: auto;
+          margin: 0 auto;
+          padding: 5rem;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+          &:not(:first-child) {
+            margin-top: 7rem;
+          }
+        }
+      }
+
+      .head {
+        position: relative;
+        padding-bottom: 1rem;
+        color: #002864;
+        font-size: 2.6rem;
+        text-align: center;
+        @include f.mq(sp) {
+          padding-bottom: 2rem;
+          font-size: 4.2rem;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 4.2rem;
+          height: 1px;
+          background: #002864;
+          transform: translateX(-50%);
+          @include f.mq(sp) {
+            width: 4.2rem;
+          }
+        }
+      }
+
+      .text {
+        margin-top: 3rem;
+        font-size: 1.6rem;
+        line-height: 1.7;
+        @include f.mq(sp) {
+          margin-top: 3rem;
+          font-size: 3.2rem;
+        }
+      }
+
+      .c_btn-more {
+        position: absolute;
+        right: -1rem;
+        bottom: 2.5rem;
+        @include f.mq(sp) {
+          position: static;
+          margin-top: 6rem;
+        }
+
+        a {
+          position: relative;
+          display: block;
+          padding-left: 2.5rem;
+          width: 17.2rem;
+          background-color: #002864;
+          color: white;
+          font-size: 1.4rem;
+          line-height: 3.2rem;
+          letter-spacing: 0.2em;
+          @include f.mq(sp) {
+            margin: 0 auto;
+            padding-left: 0;
+            width: 50rem;
+            font-size: 3.4rem;
+            line-height: 9rem;
+            text-align: center;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 1.5rem;
+            width: 2.8rem;
+            height: 1rem;
+            background: url("/assets/images/top/icon-arrow-white.svg") no-repeat center / contain;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+
+  .sec_business {
+    margin-top: 15rem;
+
+    .inner {
+      max-width: 100rem;
+      margin: 0 auto;
+    }
+
+    .c_sec-title {
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 0.2em;
+      text-align: left;
+      @include f.mq(sp) {
+        padding-top: 7rem;
+        color: #fff;
+        text-align: center;
+      }
+
+      .title-en {
+        font-size: 6rem;
+        @include f.mq(sp) {
+          font-size: 7rem;
+        }
+      }
+
+      .title-ja {
+        margin-top: 2rem;
+        font-size: 2rem;
+        @include f.mq(sp) {
+          margin-top: 2.5rem;
+          font-size: 3rem;
+        }
+      }
+
+      .title-en-second {
+        margin-top: 2rem;
+        font-size: 6rem;
+        @include f.mq(sp) {
+          margin-top: 2.5rem;
+          font-size: 7rem;
+        }
+      }
+
+      .title-ja-second {
+        font-size: 2rem;
+        @include f.mq(sp) {
+          font-size: 3rem;
+        }
+      }
+    }
+
+    .sec-lead {
+      display: flex;
+      margin-top: 0.5rem;
+      font-size: 2.4rem;
+      color: #fff;
+    }
+
+    .link-block {
+      position: relative;
+      padding: 7rem 0 5rem;
+
+      .business-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        background-color: #000b26;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.6rem 2.7rem;
+        margin-top: 5rem;
+        .c_btn01 {
+          a {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 31.5rem;
+            height: 7rem;
+            font-size: 1.7rem;
+            background: #fff;
+            color: #000;
+            @include f.mq(sp) {
+              width: 50rem;
+              height: 10rem;
+              margin: 0 auto;
+              font-size: 3.2rem;
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: 1.5rem;
+              transform: translateY(-50%);
+              width: 2.8rem;
+              height: 1rem;
+              background: url("/assets/images/top/icon-arrow.svg") no-repeat center / contain;
+              @include f.mq(sp) {
+                right: 2rem;
+                width: 4rem;
+                height: 1.1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include f.mq(sp) {
+      margin-top: 0;
+
+      .c_sec-title {
+        text-align: center;
+      }
+
+      .sec-lead {
+        display: block;
+        margin-top: 7rem;
+        font-size: 3.4rem;
+        text-align: center;
+      }
+
+      .link-block {
+        padding: 12rem 0 18rem;
+
+        .business-img {
+          img {
+            object-fit: contain;
+            object-position: top;
+          }
+        }
+
+        .link-list {
+          display: block;
+          margin-top: 14rem;
+
+          li:not(:first-child) {
+            margin-top: 5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .contact {
+    .inner {
+      padding: 80px 0 50px;
+      background-color: #f0f0f0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      width: 56rem;
+      height: 10rem;
+      background-color: #002864;
+      color: #fff;
+      font-size: 3.2rem;
+      letter-spacing: 0.2em;
+      @include f.mq(sp) {
+        width: 60rem;
+        font-size: 4rem;
+      }
+    }
+
+    p {
+      margin: 2.4rem 0 0 0;
+      font-size: 2rem;
+      text-align: center;
+      @include f.mq(sp) {
+        margin: 3.2rem 0 0 0;
+        font-size: 2.8rem;
+      }
+    }
+  }
 }
