@@ -60,16 +60,16 @@
 
       <section id="index2" class="news js-section" aria-labelledby="heading-id2">
         <div class="inner">
-          <div class="c_sec-title">
+          <div class="c_sec-title" data-anime="false">
             <span class="title-en">INFORMATION</span>
             <h2 class="title-ja" id="heading-id2">お知らせ</h2>
           </div>
-          <div role="tablist">
+          <div role="tablist" data-anime="false">
             <button id="tab-1" role="tab" aria-controls="panel-1" aria-selected="true">すべて</button>
             <button id="tab-2" role="tab" aria-controls="panel-2" aria-selected="false">ニュース</button>
             <button id="tab-3" role="tab" aria-controls="panel-3" aria-selected="false">講演</button>
           </div>
-          <div id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+          <div id="panel-1" role="tabpanel" aria-labelledby="tab-1" data-anime="false">
             <div class="inner">
               <?php $posts = Site\get_news_posts(4); ?>
               <?php if ($posts) { ?>
@@ -90,7 +90,7 @@
               <?php }; ?>
             </div>
           </div>
-          <div id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+          <div id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden data-anime="false">
             <div class="inner">
               <?php $posts = Site\get_news_posts(4, "news"); ?>
               <?php if ($posts) { ?>
@@ -111,7 +111,7 @@
               <?php }; ?>
             </div>
           </div>
-          <div id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+          <div id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden data-anime="false">
             <div class="inner">
               <?php $posts = Site\get_news_posts(4, "kouen"); ?>
               <?php if ($posts) { ?>
@@ -132,13 +132,13 @@
               <?php }; ?>
             </div>
           </div>
-          <div class="c_btn-more">
+          <div class="c_btn-more" data-anime="false">
             <a href="/news/" aria-label="お知ら一覧ページを見る">MORE</a>
           </div>
         </div>
       </section>
 
-      <section id="index3" class="sec_support js-section" aria-labelledby="heading-id3">
+      <section id="index3" class="sec_support js-section" aria-labelledby="heading-id3" data-anime="false">
         <div class="support-img">
           <picture>
             <source srcset="/assets/images/top/sp/support01.jpg" media="(max-width: 750px)" />
@@ -176,7 +176,7 @@
         </div>
       </section>
 
-      <section id="index4" class="sec_business js-section" aria-labelledby="heading-id4">
+      <section id="index4" class="sec_business js-section" aria-labelledby="heading-id4" data-anime="false">
 
         <div class="link-block">
           <div class="business-img">
@@ -209,8 +209,8 @@
 
       <section class="contact">
         <div class="inner">
-          <a href="/contact/">CONTACT</a>
-          <p>まずは、お気軽にお問い合わせください。<br>お急ぎの方は 03-6452-9681 <br class="sp">までお問い合わせください。</p>
+          <a href="/contact/" data-anime="false">CONTACT</a>
+          <p data-anime="false">まずは、お気軽にお問い合わせください。<br>お急ぎの方は 03-6452-9681 <br class="sp">までお問い合わせください。</p>
         </div>
       </section>
     </main>

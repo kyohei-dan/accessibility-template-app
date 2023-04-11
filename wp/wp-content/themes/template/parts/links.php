@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
 
     <!--=============== ▼FAVICON NORMAL ===============-->
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/assets/favicon.svg">
 
     <!--=============== ▼GOOGLE FONTS ===============-->
     <link rel="preconnect" href="https://fonts.googleapis.com">

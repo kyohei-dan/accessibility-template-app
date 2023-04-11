@@ -3,6 +3,8 @@
 namespace {
   require_once __DIR__ . "/inc/admin.php";
   require_once __DIR__ . "/inc/post-types.php";
+  require_once __DIR__ . "/inc/add-routes.php";
+  require_once __DIR__ . "/inc/edit-system-mail.php";
   require_once __DIR__ . "/inc/wp-head-clean.php";
 
   // テストで出力する内容を整形する関数
@@ -42,6 +44,26 @@ namespace {
   function part($part, $vars = [])
   {
     view("/parts/{$part}", $vars);
+  }
+
+  function get_setting($name)
+  {
+    return include __DIR__ . "/inc/settings/{$name}.php";
+  }
+
+  function capture($fn)
+  {
+    ob_start();
+    $fn();
+    $output = ob_get_contents();
+    ob_end_clean();
+    return $output;
+  }
+
+  // 現在表示されているURLを返す関数
+  function get_current_page_url()
+  {
+    return (el($_SERVER, "HTTPS") ? "https://" : "http://") . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
   }
 };
 

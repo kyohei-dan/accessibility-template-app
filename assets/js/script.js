@@ -63,37 +63,26 @@ window.addEventListener("DOMContentLoaded", () => {
   (() => {
     const body = document.querySelector("body");
     const drawerBtn = document.querySelector(".js-drawer-btn");
-    const lowerGlobalNav = document.querySelector(".js-lower-global-nav");
-    const globalMenuLink = document.querySelectorAll(".js-global-menu-Link");
     const focusTrap = document.getElementById("js-focus-trap");
     let flg = false;
 
     if (!drawerBtn) return;
 
-    function handleClick() {
+    drawerBtn.addEventListener("click", () => {
       body.classList.toggle("is-drawer-expanded");
       if (flg) {
         drawerBtn.setAttribute("aria-expanded", false);
-        lowerGlobalNav.setAttribute("aria-hidden", true);
         flg = false;
       } else {
         drawerBtn.setAttribute("aria-expanded", true);
-        lowerGlobalNav.setAttribute("aria-hidden", false);
         flg = true;
       }
-    }
-
-    drawerBtn.addEventListener("click", handleClick);
-
-    globalMenuLink.forEach((e) => {
-      e.addEventListener("click", handleClick);
     });
 
-    window.addEventListener("keydown", (event) => {
+    document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         body.classList.remove("is-drawer-expanded");
         drawerBtn.setAttribute("aria-expanded", false);
-        lowerGlobalNav.setAttribute("aria-hidden", true);
         drawerBtn.focus();
         flg = false;
       }
@@ -126,6 +115,49 @@ window.addEventListener("DOMContentLoaded", () => {
 
         document.querySelector(`#${btnTarget.getAttribute("aria-controls")}`).removeAttribute("hidden");
       });
+    });
+  })();
+
+  // ▼/contact/ チェックボックスの状態に合わせてボタンの状態を変更する処理
+  (() => {
+    const checkBox = document.querySelector(".js-checkbox");
+    const submitBtn = document.querySelector(".js-submit-button");
+    if (!checkBox || !submitBtn) return false;
+
+    checkBox.addEventListener("click", function () {
+      if (this.checked) {
+        submitBtn.removeAttribute("disabled");
+      } else {
+        submitBtn.setAttribute("disabled", true);
+      }
+    });
+  })();
+
+  // ▼スクロールアニメーション処理
+  (() => {
+    const targetElements = document.querySelectorAll("*[data-anime='false']");
+    if (!targetElements) return;
+
+    const handleObserve = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.setAttribute("data-anime", "true");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const options = {
+      root: null,
+      rootMargin: "-30% 0px",
+      threshold: 0,
+    };
+    const list = [1, 2, 3];
+    console.log(list);
+
+    const observer = new IntersectionObserver(handleObserve, options);
+    targetElements.forEach((target) => {
+      observer.observe(target);
     });
   })();
 });

@@ -7,12 +7,3 @@ $break-points: (
   pc2: 1920,
   pc3: null,
 ) !default;
-
-// rem変換時の基準のwidthを定義(デザインデータの横幅)
-$base-widths: (
-  sp: 750,
-  tb1: 1024,
-  pc1: 1400,
-  pc2: 1920,
-  pc3: null,
-) !default;

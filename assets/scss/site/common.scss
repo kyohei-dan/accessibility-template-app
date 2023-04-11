@@ -2,9 +2,17 @@
 @use "./modules" as modules;
 
 html {
-  @include f.rem-base-font-size;
   font-family: "Times New Roman", "Shippori Mincho", "YuMincho", serif;
+  font-size: 62.5%;
   scroll-behavior: smooth;
+
+  @media (max-width: 1400px) and (min-width: 751px) {
+    font-size: 0.7142857142857143vw;
+  }
+
+  @media (max-width: 750px) {
+    font-size: 1.333vw;
+  }
 }
 
 body {
@@ -41,4 +49,8 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+:target {
+  scroll-margin-top: 10rem;
 }

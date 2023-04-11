@@ -1,0 +1,21 @@
+[data-anime="false"] {
+  opacity: 0;
+}
+
+[data-anime="true"] {
+  animation: fadeIn-up 1s cubic-bezier(0.31, 0.2, 0.13, 1) forwards;
+}
+
+@keyframes fadeIn-up {
+  0% {
+    opacity: 0;
+    transform: translate(0, 80px);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
