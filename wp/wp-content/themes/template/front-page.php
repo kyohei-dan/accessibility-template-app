@@ -24,7 +24,7 @@
                 <img src="/assets/images/top/business01.jpg" alt="" width="" height="">
               </picture>
               <div class="splide-text-area">
-                <p>これまでの日本の<br class="sp">スポーツ施設の概念に<br>とらわれない新しい空間を<br class="sp">目指す</p>
+                <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
               </div>
             </li>
             <li class="splide__slide">
@@ -33,7 +33,7 @@
                 <img src="/assets/images/top/support01.jpg" alt="" width="" height="">
               </picture>
               <div class="splide-text-area">
-                <p>スポーツの興奮、<br class="sp">コンサートの熱狂、<br class="sp">新しいビジネスとの出会い<br>「さが躍動」の実現に向けた<br class="sp">整備面積約27.4haの<br class="sp">全体マネジメント</p>
+                <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
               </div>
             </li>
             <li class="splide__slide">
@@ -42,7 +42,7 @@
                 <img src="/assets/images/dummy/images/noimage-600x400.jpg" alt="" width="" height="">
               </picture>
               <div class="splide-text-area">
-                <p>妹島和世氏設計による<br class="sp">大学の新しいシンボル<br>新図書館の建築プロジェクト<br class="sp">を支援</p>
+                <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
               </div>
             </li>
           </ul>
@@ -133,13 +133,13 @@
             </div>
           </div>
           <div class="c_btn-more" data-anime="false">
-            <a href="/news/" aria-label="お知ら一覧ページを見る">MORE</a>
+            <a href="/news/" aria-label="お知らせ一覧ページを見る">MORE</a>
           </div>
         </div>
       </section>
 
-      <section id="index3" class="sec_support js-section" aria-labelledby="heading-id3" data-anime="false">
-        <div class="support-img">
+      <section id="index3" class="support js-section" aria-labelledby="heading-id3" data-anime="false">
+        <div class="support-img" aria-hidden="true">
           <picture>
             <source srcset="/assets/images/top/sp/support01.jpg" media="(max-width: 750px)" />
             <img src="/assets/images/top/support01.jpg" alt="">
@@ -152,31 +152,31 @@
           </div>
           <ul class="support-list">
             <li>
-              <p class="head">RMサポート契約</p>
-              <p class="text">企業の成長を支えるパートナーとして、リスクの洗い出しから回避もしくは最小化する対策までトータルにサポートします。</p>
+              <p class="head">顧問契約サポート</p>
+              <p class="text">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
               <div class="c_btn-more">
-                <a href="/support/rm/">MORE</a>
+                <a href="">MORE</a>
               </div>
             </li>
             <li>
-              <p class="head">IPOサポート契約</p>
-              <p class="text">ベンチャーから中小企業や大企業まで、企業の成長段階に合わせて上場に向けたあらゆる課題の解決策をご提案します。</p>
+              <p class="head">労務管理サポート</p>
+              <p class="text">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
               <div class="c_btn-more">
-                <a href="/support/ipo/">MORE</a>
+                <a href="">MORE</a>
               </div>
             </li>
             <li>
-              <p class="head">労務サポート契約</p>
-              <p class="text">複雑化している人事・労務分野の問題に対し、同分野に精通した弁護士が最良のリーガルサービスを継続的にご提供します。</p>
+              <p class="head">契約サポート</p>
+              <p class="text">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
               <div class="c_btn-more">
-                <a href="/support/ls/">MORE</a>
+                <a href="">MORE</a>
               </div>
             </li>
           </ul>
         </div>
       </section>
 
-      <section id="index4" class="sec_business js-section" aria-labelledby="heading-id4" data-anime="false">
+      <section id="index4" class="business js-section" aria-labelledby="heading-id4" data-anime="false">
 
         <div class="link-block">
           <div class="business-img">
@@ -188,20 +188,20 @@
 
           <div class="inner">
             <div class="c_sec-title js_fadeIn">
-              <h2 class="title-ja-second" id="heading-id4">主な取扱業務</h2>
+              <h2 class="title-ja-second" id="heading-id4">取扱業務</h2>
               <span class="title-en-second">BUSINESS</span>
             </div>
             <p class="sec-lead js_fadeIn">プロフェッショナルが、<br>あなたの企業経営をサポートいたします。</p>
             <ul class="link-list js_fadeToTop">
-              <li class="c_btn01"><a href="/practices/#sec_practices01">リスクマネジメント</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices02">人事・労務</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices03">不正調査</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices04">コーポレートガバナンス</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices05">M & A</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices06">情報管理</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices07">ビジネスの適法性検討</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices08">訴訟・交渉対応</a></li>
-              <li class="c_btn01"><a href="/practices/#sec_practices09">研修セミナー</a></li>
+              <li class="c_btn01">経営法務支援</li>
+              <li class="c_btn01">スタートアップ支援</li>
+              <li class="c_btn01">経営コンサルティング</li>
+              <li class="c_btn01">事業承認支援</li>
+              <li class="c_btn01">一般民事・家事事件</a></li>
+              <li class="c_btn01">知的財産トラブル</li>
+              <li class="c_btn01">倒産関連・M&A</li>
+              <li class="c_btn01">労務管理</li>
+              <li class="c_btn01">講演・セミナー</li>
             </ul>
           </div>
         </div>
@@ -210,7 +210,7 @@
       <section class="contact">
         <div class="inner">
           <a href="/contact/" data-anime="false">CONTACT</a>
-          <p data-anime="false">まずは、お気軽にお問い合わせください。<br>お急ぎの方は 03-6452-9681 <br class="sp">までお問い合わせください。</p>
+          <p data-anime="false">まずは、お気軽にお問い合わせください。<br>お急ぎの方は 00-0000-0000 <br class="sp">までお問い合わせください。</p>
         </div>
       </section>
     </main>

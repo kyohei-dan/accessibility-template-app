@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // 360px 未満は JS で viewport を固定する
+  // ▼360px 未満は JS で viewport を固定する
   (() => {
     const viewport = document.querySelector('meta[name="viewport"]');
     window.addEventListener("resize", () => {
@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  // ビューポートの中心に要素がきたときにclassを追加する処理
+  // ▼ビューポートの中心に要素がきたときにclassを追加する処理
   (() => {
     const targetElements = document.querySelectorAll(".js-section");
     if (!targetElements) return;
@@ -41,7 +41,33 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  // headerリンクを押したときのスムーススクロール処理
+  // ▼スクロールアニメーション処理
+  (() => {
+    const targetElements = document.querySelectorAll("*[data-anime='false']");
+    if (!targetElements) return;
+
+    const handleObserve = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.setAttribute("data-anime", "true");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const options = {
+      root: null,
+      rootMargin: "-30% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(handleObserve, options);
+    targetElements.forEach((target) => {
+      observer.observe(target);
+    });
+  })();
+
+  // ▼headerリンクを押したときのスムーススクロール処理
   (() => {
     const anchorLinks = document.querySelectorAll("a[data-link-id]");
     if (!anchorLinks) return;
@@ -61,34 +87,32 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // ▼ドロワーメニューの開閉処理
   (() => {
-    const body = document.querySelector("body");
     const drawerBtn = document.querySelector(".js-drawer-btn");
-    const focusTrap = document.getElementById("js-focus-trap");
-    let flg = false;
+    let checkFlag = false;
 
     if (!drawerBtn) return;
 
     drawerBtn.addEventListener("click", () => {
-      body.classList.toggle("is-drawer-expanded");
-      if (flg) {
+      document.querySelector("body").classList.toggle("is-drawer-expanded");
+      if (checkFlag) {
         drawerBtn.setAttribute("aria-expanded", false);
-        flg = false;
+        checkFlag = false;
       } else {
         drawerBtn.setAttribute("aria-expanded", true);
-        flg = true;
+        checkFlag = true;
       }
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        body.classList.remove("is-drawer-expanded");
+        document.querySelector("body").classList.remove("is-drawer-expanded");
         drawerBtn.setAttribute("aria-expanded", false);
         drawerBtn.focus();
-        flg = false;
+        checkFlag = false;
       }
     });
 
-    focusTrap.addEventListener("focus", () => {
+    document.querySelector(".js-focus-trap").addEventListener("focus", () => {
       drawerBtn.focus();
     });
   })();
@@ -118,46 +142,53 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
+  // ▼ /contact/ JSでのフォームバリデーション処理
+  (() => {
+    const targetElements = document.querySelectorAll("input,textarea");
+    if (!targetElements) return;
+
+    targetElements.forEach((target) => {
+      target.addEventListener("input", (e) => {
+        const inputElement = e.currentTarget;
+        const parentElement = inputElement.parentNode.querySelector("span[role='status']");
+        if (!parentElement) return;
+
+        parentElement.querySelectorAll("span").forEach((element) => {
+          element.setAttribute("aria-hidden", "true");
+        });
+      });
+
+      target.addEventListener("change", (e) => {
+        const inputElement = e.currentTarget;
+        const parentElement = inputElement.parentNode.querySelector("span[role='status']");
+        if (!parentElement) return;
+
+        if (inputElement.value === "") {
+          inputElement.classList.add("is-invalid");
+          parentElement.querySelector(".js-error-message").setAttribute("aria-hidden", "false");
+        } else if (inputElement.validity.patternMismatch) {
+          inputElement.classList.add("is-invalid");
+          parentElement.querySelector(".js-format-error-message").setAttribute("aria-hidden", "false");
+        } else {
+          inputElement.classList.remove("is-invalid");
+          parentElement.querySelector(".js-ok-message").setAttribute("aria-hidden", "false");
+        }
+      });
+    });
+  })();
+
   // ▼/contact/ チェックボックスの状態に合わせてボタンの状態を変更する処理
   (() => {
     const checkBox = document.querySelector(".js-checkbox");
     const submitBtn = document.querySelector(".js-submit-button");
-    if (!checkBox || !submitBtn) return false;
+    if (!checkBox || !submitBtn) return;
 
-    checkBox.addEventListener("click", function () {
-      if (this.checked) {
+    checkBox.addEventListener("click", (e) => {
+      if (e.currentTarget.checked) {
         submitBtn.removeAttribute("disabled");
       } else {
         submitBtn.setAttribute("disabled", true);
       }
-    });
-  })();
-
-  // ▼スクロールアニメーション処理
-  (() => {
-    const targetElements = document.querySelectorAll("*[data-anime='false']");
-    if (!targetElements) return;
-
-    const handleObserve = (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.setAttribute("data-anime", "true");
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-
-    const options = {
-      root: null,
-      rootMargin: "-30% 0px",
-      threshold: 0,
-    };
-    const list = [1, 2, 3];
-    console.log(list);
-
-    const observer = new IntersectionObserver(handleObserve, options);
-    targetElements.forEach((target) => {
-      observer.observe(target);
     });
   })();
 });

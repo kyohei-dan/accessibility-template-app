@@ -33,7 +33,7 @@
           <a href="/contact/">お問い合わせ</a>
         </li>
       </ul>
-      <div id="js-focus-trap" tabindex="0"></div>
+      <div class="js-focus-trap" tabindex="0"></div>
     </nav>
   </div>
 </header>

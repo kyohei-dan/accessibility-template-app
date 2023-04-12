@@ -179,6 +179,7 @@
       color: #002864;
       text-align: center;
       letter-spacing: 0.2em;
+
       .title-en {
         font-size: 6rem;
       }
@@ -192,6 +193,7 @@
       display: flex;
       margin: 5.6rem 0 0 0;
       border-bottom: 2px solid #002864;
+
       button {
         position: relative;
         width: 33.333%;
@@ -200,8 +202,10 @@
         font-size: 22px;
         text-align: center;
         cursor: pointer;
+
         &[aria-selected="true"] {
           background-color: #e6f0f5;
+
           &::after {
             content: "";
             position: absolute;
@@ -223,6 +227,7 @@
         font-size: 18px;
         color: #323232;
         border-bottom: 1px solid #aaa;
+
         time {
           font-size: 1.6rem;
         }
@@ -244,6 +249,7 @@
       display: flex;
       justify-content: center;
       margin: 4.8rem 0 0 0;
+
       a {
         position: relative;
         display: block;
@@ -277,7 +283,7 @@
     }
   }
 
-  .sec_support {
+  .support {
     position: relative;
     margin-top: 14rem;
     @include f.mq(sp) {
@@ -480,7 +486,7 @@
     }
   }
 
-  .sec_business {
+  .business {
     margin-top: 15rem;
 
     .inner {
@@ -565,38 +571,20 @@
         gap: 1.6rem 2.7rem;
         margin-top: 5rem;
         .c_btn01 {
-          a {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 31.5rem;
-            height: 7rem;
-            font-size: 1.7rem;
-            background: #fff;
-            color: #000;
-            @include f.mq(sp) {
-              width: 50rem;
-              height: 10rem;
-              margin: 0 auto;
-              font-size: 3.2rem;
-            }
-
-            &::after {
-              content: "";
-              position: absolute;
-              top: 50%;
-              right: 1.5rem;
-              transform: translateY(-50%);
-              width: 2.8rem;
-              height: 1rem;
-              background: url("/assets/images/top/icon-arrow.svg") no-repeat center / contain;
-              @include f.mq(sp) {
-                right: 2rem;
-                width: 4rem;
-                height: 1.1rem;
-              }
-            }
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 31.5rem;
+          height: 7rem;
+          font-size: 1.7rem;
+          background: #fff;
+          color: #000;
+          @include f.mq(sp) {
+            width: 50rem;
+            height: 10rem;
+            margin: 0 auto;
+            font-size: 3.2rem;
           }
         }
       }

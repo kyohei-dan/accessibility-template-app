@@ -88,6 +88,40 @@
       }
     }
 
+    span[role="status"] {
+      display: block;
+      span {
+        margin: 1rem 0 0 0;
+        &[aria-hidden="true"] {
+          display: none;
+        }
+        &[aria-hidden="false"] {
+          display: flex;
+        }
+      }
+
+      .error-message,
+      .format-error-message {
+        position: relative;
+        color: #de6443;
+        &::before {
+          content: "";
+          display: inline-block;
+          margin: 0 0.6rem 0 0;
+          width: 1.8rem;
+          height: 1.8rem;
+          background-image: url("/assets/images/common/icon-error-msg.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      .ok-message {
+        color: #03b87c;
+      }
+    }
+
     form {
       margin-top: 6rem;
       font-size: 1.6rem;
@@ -95,23 +129,13 @@
         margin-top: 10rem;
       }
 
-      dl > div {
+      dl > div,
+      dl > fieldset {
         display: flex;
         gap: 1rem;
+        margin-top: 4rem;
         @include f.mq(sp) {
           flex-direction: column;
-        }
-
-        &:not(:first-of-type) {
-          margin-top: 4rem;
-          @include f.mq(sp) {
-          }
-        }
-
-        &:nth-child(7) {
-          dd.whitespace-pre-wrap {
-            white-space: pre-wrap;
-          }
         }
 
         dt {
@@ -131,10 +155,15 @@
             border-radius: 5px;
             background-color: #f7f7f7;
             padding: 0.5em;
+            caret-color: #002864;
             @include f.mq(sp) {
               width: 100%;
               height: auto;
               font-size: 2.8rem;
+            }
+
+            &.is-invalid {
+              border: 1px solid #de6443;
             }
           }
 
@@ -146,39 +175,11 @@
             padding: 0.5em;
             font-size: 1.6rem;
             resize: vertical;
+            caret-color: #002864;
             @include f.mq(sp) {
               width: 100%;
               min-height: 25rem;
               font-size: 2.8rem;
-            }
-          }
-
-          p {
-            margin-top: 0.8rem;
-            color: #999;
-            font-size: 1.2rem;
-            font-weight: 400;
-            line-height: 1.3;
-          }
-        }
-
-        dt.check {
-          position: relative;
-
-          &::after {
-            content: "※確認";
-            position: absolute;
-            top: 3rem;
-            left: 0;
-            color: #f00;
-            font-size: 1.2rem;
-            font-weight: 400;
-            line-height: 1.3;
-            @include f.mq(sp) {
-              position: initial;
-              display: inline-block;
-              padding-left: 1rem;
-              font-size: 2.4rem;
             }
           }
         }
@@ -225,6 +226,13 @@
           outline: none;
           appearance: none;
 
+          &:focus {
+            ~ .text::after {
+              transform: scale3d(1, 1, 1);
+              transform-origin: left;
+            }
+          }
+
           &:checked {
             + .icon::before {
               border-color: #002864;
@@ -237,6 +245,10 @@
               border-left: 2px solid #002864;
               opacity: 1;
               transform: rotate(-45deg);
+            }
+
+            ~ .text {
+              color: #002864;
             }
           }
         }
@@ -286,9 +298,28 @@
         }
 
         .text {
+          position: relative;
           display: inline-block;
           letter-spacing: 0.05em;
           margin: 0 0 0 1rem;
+
+          &:hover {
+            color: #002864;
+          }
+
+          &::after {
+            background-color: #002864;
+            bottom: -2px;
+            content: "";
+            display: inline-block;
+            height: 1px;
+            left: 0;
+            position: absolute;
+            transform: scale3d(0, 1, 1);
+            transform-origin: right;
+            transition: transform 0.3s;
+            width: 100%;
+          }
         }
       }
 
@@ -406,6 +437,7 @@
     }
 
     .lead {
+      font-size: 1.6rem;
       line-height: 2;
       letter-spacing: 0.02em;
       @include f.mq(sp) {
@@ -436,12 +468,6 @@
         }
       }
 
-      &:nth-child(7) {
-        dd.whitespace-pre-wrap {
-          white-space: pre-wrap;
-        }
-      }
-
       dt {
         width: 25rem;
         font-weight: 700;
@@ -453,6 +479,7 @@
       }
 
       dd {
+        white-space: pre-wrap;
         input:not([name="type"]) {
           width: 60rem;
           height: 4rem;

@@ -27,7 +27,7 @@
     <main>
       <header class="lower-header">
         <div class="inner">
-          <h1>お問い合わせ</h1>
+          <h1 id="formTitle">お問い合わせ</h1>
         </div>
       </header>
 
@@ -50,13 +50,15 @@
             <span>※全て必須項目となります。</span>
           </p>
 
-          <form method="post" action="">
+          <form method="post" action="" aria-labelledby="formTitle">
             <dl>
-              <div class="type">
-                <dt>お問い合わせ項目</dt>
+              <fieldset class="type">
+                <dt>
+                  <legend>お問い合わせ項目</legend>
+                </dt>
                 <dd>
                   <label>
-                    <input type="radio" name="type" value="商品について" <?php if (el($data, 'type') === '商品について') echo 'checked'; ?>>
+                    <input type="radio" name="type" value="商品について" <?php if (el($data, 'type') === '商品について') echo 'checked'; ?> required aria-required="true">
                     <span class="icon"></span>
                     <span class="text">商品について</span>
                   </label>
@@ -75,72 +77,95 @@
                     <span class="icon"></span>
                     <span class="text">その他</span>
                   </label>
-                  <?php if (isset($errors["type"])) { ?>
-                    <p class="error"><?php echo $errors["type"]; ?></p>
-                  <?php }; ?>
+                  <span aria-live="polite" role="status">
+                    <?php if (isset($errors["type"])) { ?>
+                      <span class="error-message js-error-message" aria-hidden="false">お問い合わせ項目を選択してください</span>
+                    <?php }; ?>
+                    <span class="error-message js-error-message" aria-hidden="true">お問い合わせ項目を選択してください</span>
+                    <span class="ok-message js-ok-message" aria-hidden="true">OK</span>
+                  </span>
                 </dd>
-              </div>
+              </fieldset>
               <div>
-                <dt>会社名</dt>
+                <dt><label for="corp">会社名</label></dt>
                 <dd>
-                  <input type="text" name="corp" value="<?php echo h(el($data, 'corp')); ?>">
-                  <?php if (isset($errors["corp"])) { ?>
-                    <p class="error"><?php echo $errors["corp"]; ?></p>
-                  <?php }; ?>
+                  <input id="corp" type="text" name="corp" value="<?php echo h(el($data, 'corp')); ?>" required aria-required="true">
+                  <span aria-live="polite" role="status">
+                    <?php if (isset($errors["corp"])) { ?>
+                      <span class="error-message js-error-message" aria-hidden="false">会社名を入力してください</span>
+                    <?php }; ?>
+                    <span class="error-message js-error-message" aria-hidden="true">会社名を入力してください</span>
+                    <span class="ok-message js-ok-message" aria-hidden="true">OK</span>
+                  </span>
                 </dd>
               </div>
               <div>
-                <dt>お名前</dt>
+                <dt><label for="name">お名前</label></dt>
                 <dd>
-                  <input type="text" name="name" value="<?php echo h(el($data, 'name')); ?>">
-                  <?php if (isset($errors["name"])) { ?>
-                    <p class="error"><?php echo $errors["name"]; ?></p>
-                  <?php }; ?>
+                  <input id="name" type="text" name="name" value="<?php echo h(el($data, 'name')); ?>" required aria-required="true">
+                  <span aria-live="polite" role="status">
+                    <?php if (isset($errors["name"])) { ?>
+                      <span class="error-message js-error-message" aria-hidden="false">お名前を入力してください</span>
+                    <?php }; ?>
+                    <span class="error-message js-error-message" aria-hidden="true">お名前を入力してください</span>
+                    <span class="ok-message js-ok-message" aria-hidden="true">OK</span>
+                  </span>
                 </dd>
               </div>
               <div>
-                <dt>ふりがな</dt>
+                <dt><label for="furigana">ふりがな</label></dt>
                 <dd>
-                  <input type="text" name="furigana" value="<?php echo h(el($data, 'furigana')); ?>">
-                  <?php if (isset($errors["furigana"])) { ?>
-                    <p class="error"><?php echo $errors["furigana"]; ?></p>
-                  <?php }; ?>
+                  <input id="furigana" type="text" name="furigana" value="<?php echo h(el($data, 'furigana')); ?>" required aria-required="true">
+                  <span aria-live="polite" role="status">
+                    <?php if (isset($errors["furigana"])) { ?>
+                      <span class="error-message js-error-message" aria-hidden="false">ふりがなを入力してください</span>
+                    <?php }; ?>
+                    <span class="error-message js-error-message" aria-hidden="true">ふりがなを入力してください</span>
+                    <span class="ok-message js-ok-message" aria-hidden="true">OK</span>
+                  </span>
                 </dd>
               </div>
               <div>
-                <dt>電話番号</dt>
+                <dt><label for="tel">電話番号</label></dt>
                 <dd>
-                  <input type="tel" name="tel" value="<?php echo h(el($data, 'tel')); ?>">
-                  <p>ハイフン（－）なし</p>
-                  <?php if (isset($errors["tel"])) { ?>
-                    <p class="error"><?php echo $errors["tel"]; ?></p>
-                  <?php }; ?>
+                  <input id="tel" type="tel" name="tel" value="<?php echo h(el($data, 'tel')); ?>" required aria-required="true" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}">
+                  <span aria-live="polite" role="status">
+                    <?php if (isset($errors["tel"])) { ?>
+                      <span class="error-message js-error-message" aria-hidden="false"><?php echo $errors["tel"]; ?></span>
+                    <?php }; ?>
+                    <span class="format-error-message js-format-error-message" aria-hidden="true">電話番号が正しく入力されていません</span>
+                    <span class="error-message js-error-message" aria-hidden="true">電話番号を入力してください</span>
+                    <span class="ok-message js-ok-message" aria-hidden="true">OK</span>
+                  </span>
                 </dd>
               </div>
               <div>
-                <dt>メールアドレス</dt>
+                <dt><label for="email1">メールアドレス</label></dt>
                 <dd>
-                  <input type="email" name="email1" value="<?php echo h(el($data, 'email1')); ?>">
-                  <?php if (isset($errors["email1"])) { ?>
-                    <p class="error"><?php echo $errors["email1"]; ?></p>
-                  <?php }; ?>
+                  <input id="email1" type="email" name="email1" value="<?php echo h(el($data, 'email1')); ?>" required aria-required="true" pattern="([a-zA-Z0-9\+_\-]+)(\.[a-zA-Z0-9\+_\-]+)*@([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,6}" title="メールアドレスは、aaa@example.com のような形式で記入してください。">
+                  <span aria-live="polite" role="status">
+                    <?php if (isset($errors["email1"])) { ?>
+                      <span class="error-message js-error-message" aria-hidden="false"><?php echo $errors["email1"]; ?></span>
+                    <?php }; ?>
+                    <span class="format-error-message js-format-error-message" aria-hidden="true">メールアドレスが正しく入力されていません</span>
+                    <span class="error-message js-error-message" aria-hidden="true">メールアドレスを入力してください</span>
+                    <span class="ok-message js-ok-message" aria-hidden="true">OK</span>
+                  </span>
                 </dd>
               </div>
               <div>
-                <dt class="check">メールアドレス</dt>
-                <dd>
-                  <input type="email" name="email2" value="<?php echo h(el($data, 'email2')); ?>">
-                  <?php if (isset($errors["email2"])) { ?>
-                    <p class="error"><?php echo $errors["email2"]; ?></p>
-                  <?php }; ?>
-                </dd>
-              </div>
-              <div>
-                <dt>お問い合わせ内容</dt>
-                <dd><textarea name="message"><?php echo h(el($data, 'message')); ?></textarea>
+                <dt><label for="message">お問い合わせ内容</label></dt>
+                <dd><textarea id="message" name="message" required aria-required="true"><?php echo h(el($data, 'message')); ?></textarea>
                   <?php if (isset($errors["message"])) { ?>
                     <p class="error"><?php echo $errors["message"]; ?></p>
                   <?php }; ?>
+                  <span aria-live="polite" role="status">
+                    <?php if (isset($errors["message"])) { ?>
+                      <span class="error-message js-error-message" aria-hidden="false">お問い合わせ内容を入力してください</span>
+                    <?php }; ?>
+                    <span class="error-message js-error-message" aria-hidden="true">お問い合わせ内容を入力してください</span>
+                    <span class="ok-message js-ok-message" aria-hidden="true">OK</span>
+                  </span>
                 </dd>
               </div>
             </dl>

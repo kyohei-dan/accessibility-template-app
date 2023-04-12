@@ -49,36 +49,28 @@ function confirm($data)
 {
   $errors = [];
 
-  if (el($data, "type", "") === "") {
-    $errors["type"] = "お問い合わせ項目が選択されていません。";
-  }
+  if (el($data, "type", "") === "") $errors["type"] = "お問い合わせ項目を選択してください";
 
-  if (el($data, "corp") === "") $errors["corp"] = "会社名が未入力です。";
+  if (el($data, "corp") === "") $errors["corp"] = "会社名を入力してください";
 
-  if (el($data, "name") === "") $errors["name"] = "お名前が未入力です。";
+  if (el($data, "name") === "") $errors["name"] = "お名前を入力してください";
 
-  if (el($data, "furigana") === "") $errors["furigana"] = "ふりがなが未入力です。";
+  if (el($data, "furigana") === "") $errors["furigana"] = "ふりがなを入力してください";
 
   if (el($data, "tel") === "") {
-    $errors["tel"] = "電話番号が未入力です。";
-  } else if (!preg_match('/^0[0-9]{9,10}\z/', el($data, "tel"))) {
-    $errors["tel"] = "電話番号が正しく入力されていません。";
+    $errors["tel"] = "電話番号を入力してください";
+  } else if (!preg_match('/\d{2,4}-?\d{2,4}-?\d{3,4}/', el($data, "tel"))) {
+    $errors["tel"] = "電話番号が正しく入力されていません";
   }
 
   if (el($data, "email1") === "") {
-    $errors["email1"] = "メールアドレスが未入力です。";
-  } else if (!preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/', el($data, "email1"))) {
-    $errors["email1"] = "メールアドレスが正しく入力されていません。";
-  }
-
-  if (el($data, "email2") === "") {
-    $errors["email2"] = "メールアドレスが未入力です。";
-  } else if (el($data, "email1") !== el($data, "email2")) {
-    $errors["email2"] = "メールアドレスが正しく入力されていません。";
+    $errors["email1"] = "メールアドレスを入力してください";
+  } else if (!preg_match('/([a-zA-Z0-9\+_\-]+)(\.[a-zA-Z0-9\+_\-]+)*@([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,6}/', el($data, "email1"))) {
+    $errors["email1"] = "メールアドレスが正しく入力されていません";
   }
 
   if (el($data, "message", "") === "") {
-    $errors["message"] = "お問い合わせ内容が未入力です。";
+    $errors["message"] = "お問い合わせ内容を入力してください";
   }
 
   return $errors;

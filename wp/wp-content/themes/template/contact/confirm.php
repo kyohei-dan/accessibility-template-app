@@ -18,7 +18,6 @@
   <meta property="og:site_name" content="template">
   <meta property="og:image" content="<?php echo (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST']; ?>/assets/images/ogp.jpg">
   <meta name="twitter:card" content="summary_large_image">
-
 </head>
 
 <body class="contact">
@@ -70,7 +69,7 @@
               </div>
               <div>
                 <dt class="check">メールアドレス</dt>
-                <dd><?php echo h(el($data, 'email2')); ?></dd>
+                <dd><?php echo h(el($data, 'email1')); ?></dd>
               </div>
               <div>
                 <dt>お問い合わせ内容</dt>

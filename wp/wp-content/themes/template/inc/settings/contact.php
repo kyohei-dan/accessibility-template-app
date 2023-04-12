@@ -23,7 +23,6 @@ return [
     "furigana",
     "tel",
     "email1",
-    "email2",
     "type",
     "message"
   ]
