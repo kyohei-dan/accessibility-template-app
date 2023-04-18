@@ -30,6 +30,9 @@
           <a href="/#index4" data-link-id="index4">取扱業務</a>
         </li>
         <li>
+          <a href="/#index5" data-link-id="index5">よくある質問</a>
+        </li>
+        <li>
           <a href="/contact/">お問い合わせ</a>
         </li>
       </ul>

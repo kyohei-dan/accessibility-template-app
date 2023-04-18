@@ -62,7 +62,7 @@
             &::after {
               width: 100%;
               @include f.mq(sp) {
-                width: 1rem;
+                width: 2rem;
               }
             }
           }
@@ -87,6 +87,9 @@
           display: block;
           color: #333;
           font-size: 1.6rem;
+          @include f.mq(sp) {
+            font-size: 3.2rem;
+          }
         }
       }
     }
@@ -94,9 +97,9 @@
 
   @include f.mq(sp) {
     .inner {
-      padding: 0 1.5rem;
+      padding: 0;
       max-width: 69rem;
-      height: 6.4rem;
+      height: 12rem;
     }
 
     h1 img,
@@ -133,13 +136,13 @@
       border-top: 1px solid #e0d9d9;
     }
 
-    nav > ul > li:first-child {
-      border-top: 1px solid #e0d9d9;
+    nav > ul > li:nth-child(5) {
+      border-bottom: 1px solid #e0d9d9;
     }
 
     nav > ul > li:last-child {
       align-items: center;
-      margin: 3.2rem 0;
+      margin: 6.4rem 0;
     }
 
     nav > ul > li > a {
@@ -148,13 +151,9 @@
       justify-content: space-between;
     }
 
-    nav > ul > li:nth-child(4) > a {
-      border-bottom: 1px solid #e0d9d9;
-    }
-
     nav > ul > li:not(:last-child) > a {
-      padding: 2.2rem 2rem;
-      border-left: 3px solid #002864;
+      padding: 4rem 4rem;
+      border-left: 4px solid #002864;
     }
 
     nav > ul > li:not(:last-child) > a::after {
@@ -162,8 +161,8 @@
       bottom: auto;
       left: auto;
       display: inline-flex;
-      width: 1rem;
-      height: 1rem;
+      width: 2rem;
+      height: 2rem;
       border-right: 2px solid #002864;
       border-bottom: 2px solid #002864;
       background-color: transparent;
@@ -175,10 +174,11 @@
       align-items: center;
       justify-content: center;
       padding: 0;
-      width: 31.5rem;
-      height: 7rem;
+      width: 62rem;
+      height: 10rem;
       border-radius: 5rem;
-      font-size: 1.8rem;
+      border: 2px solid #002864;
+      font-size: 3rem;
     }
 
     nav > ul > li:last-child a::before {
@@ -187,11 +187,11 @@
       top: 50%;
       left: 1.6rem;
       z-index: 10;
-      width: 4rem;
-      height: 4rem;
+      width: 8rem;
+      height: 8rem;
       background-image: url("/assets/images/common/icon-contact.png");
       background-repeat: no-repeat;
-      background-size: 2.4rem 1.6rem;
+      background-size: 3.4rem 2.6rem;
       background-position: center;
       border: 2px solid #002864;
       border-radius: 50%;
@@ -217,7 +217,7 @@
       top: 50%;
       right: 0;
       display: block;
-      width: 2.4rem;
+      width: 4rem;
       height: 2px;
       background-color: #002864;
       transform: translateY(-50%);

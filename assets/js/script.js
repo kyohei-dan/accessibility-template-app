@@ -88,27 +88,32 @@ window.addEventListener("DOMContentLoaded", () => {
   // ▼ドロワーメニューの開閉処理
   (() => {
     const drawerBtn = document.querySelector(".js-drawer-btn");
-    let checkFlag = false;
-
+    const drawerAnchorLinks = document.querySelectorAll("[data-link-id]");
     if (!drawerBtn) return;
 
-    drawerBtn.addEventListener("click", () => {
-      document.querySelector("body").classList.toggle("is-drawer-expanded");
-      if (checkFlag) {
-        drawerBtn.setAttribute("aria-expanded", false);
-        checkFlag = false;
-      } else {
+    function handledrawerOpen() {
+      if (drawerBtn.getAttribute("aria-expanded") === "false") {
+        document.querySelector("body").setAttribute("data-expanded", "true");
         drawerBtn.setAttribute("aria-expanded", true);
-        checkFlag = true;
+      } else {
+        document.querySelector("body").setAttribute("data-expanded", "false");
+        drawerBtn.setAttribute("aria-expanded", false);
       }
-    });
+    }
+
+    drawerBtn.addEventListener("click", handledrawerOpen);
+
+    if (window.matchMedia("(max-width: 750px)").matches) {
+      drawerAnchorLinks.forEach((drawerAnchorLink) => {
+        drawerAnchorLink.addEventListener("click", handledrawerOpen);
+      });
+    }
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        document.querySelector("body").classList.remove("is-drawer-expanded");
+        document.querySelector("body").setAttribute("data-expanded", "false");
         drawerBtn.setAttribute("aria-expanded", false);
         drawerBtn.focus();
-        checkFlag = false;
       }
     });
 
@@ -120,20 +125,20 @@ window.addEventListener("DOMContentLoaded", () => {
   // ▼タブ切り替えの処理
   (() => {
     const tabs = document.querySelectorAll('[role="tab"]');
-    const tabList = document.querySelectorAll('[role="tabpanel"]');
+    const tabContents = document.querySelectorAll('[role="tabpanel"]');
     if (!tabs) return;
 
-    tabs.forEach((tabLink) => {
-      tabLink.addEventListener("click", (e) => {
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (e) => {
         const btnTarget = e.currentTarget;
 
-        tabs.forEach((tabLink) => {
-          tabLink.setAttribute("aria-selected", false);
+        btnTarget.parentNode.querySelectorAll('[aria-selected="true"]').forEach((e) => {
+          e.setAttribute("aria-selected", false);
         });
 
         btnTarget.setAttribute("aria-selected", true);
 
-        tabList.forEach((tabContent) => {
+        tabContents.forEach((tabContent) => {
           tabContent.setAttribute("hidden", "hidden");
         });
 
@@ -177,7 +182,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   })();
 
-  // ▼/contact/ チェックボックスの状態に合わせてボタンの状態を変更する処理
+  // ▼ /contact/ チェックボックスの状態に合わせてボタンの状態を変更する処理
   (() => {
     const checkBox = document.querySelector(".js-checkbox");
     const submitBtn = document.querySelector(".js-submit-button");
@@ -189,6 +194,148 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         submitBtn.setAttribute("disabled", true);
       }
+    });
+  })();
+
+  // ▼モーダル処理
+  (() => {
+    class Modal {
+      constructor() {
+        this.modalBtns = document.querySelectorAll(".js-modal-btn");
+        this.beforeFocusedElement = null;
+        this.modalContent = null;
+        this.numberingModal();
+        this.handleModalOpen();
+        this.handleModalClose();
+        this.handleAttributeChange();
+        this.handleFocusedElement();
+      }
+
+      numberingModal() {
+        this.modalBtns.forEach((modalBtn, i) => {
+          modalBtn.setAttribute("data-modal-btn", i + 1);
+        });
+
+        document.querySelectorAll("[aria-modal]").forEach((modal, i) => {
+          modal.setAttribute("data-modal-content", i + 1);
+        });
+      }
+
+      handleModalOpen() {
+        this.modalBtns.forEach((modalBtn) => {
+          modalBtn.addEventListener("click", () => {
+            const scrollbarWidth = window.innerWidth - document.body.clientWidth;
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+            document.querySelector("body").setAttribute("data-modal-expanded", "true");
+            document.querySelector("body").setAttribute("data-user-select", "false");
+            document.querySelector("main").setAttribute("aria-hidden", "true");
+            document.querySelector(".js-modal-bg").setAttribute("data-modal-expanded", "true");
+
+            const modalNumber = modalBtn.getAttribute("data-modal-btn");
+            this.modalContent = document.querySelector(`[data-modal-content="${modalNumber}"]`);
+            this.modalContent.setAttribute("aria-modal", "true");
+            this.modalContent.setAttribute("aria-hidden", "false");
+            this.modalContent.setAttribute("role", "dialog");
+
+            const focusableElements = this.modalContent.querySelectorAll("a[href], button");
+            this.beforeFocusedElement = document.activeElement;
+            focusableElements[0].focus();
+
+            this.modalContent.querySelector(".js-modal-focus-trap").addEventListener("focus", () => {
+              this.modalContent.querySelector(".js-modal-close-btn").focus();
+            });
+          });
+        });
+      }
+
+      handleAttributeChange() {
+        if (this.modalContent) {
+          document.querySelector("body").removeAttribute("data-modal-expanded");
+          document.querySelector("body").removeAttribute("data-user-select");
+          document.querySelector("main").removeAttribute("aria-hidden");
+          document.querySelector(".js-modal-bg").removeAttribute("data-modal-expanded");
+          this.modalContent.setAttribute("aria-modal", "false");
+          this.modalContent.setAttribute("aria-hidden", "true");
+          this.modalContent.removeAttribute("role");
+        }
+      }
+
+      handleFocusedElement() {
+        if (this.beforeFocusedElement) {
+          this.beforeFocusedElement.focus();
+          this.beforeFocusedElement = null;
+        }
+      }
+
+      handleModalClose() {
+        document.querySelectorAll(".js-modal-close-btn, .js-modal-bg").forEach((closeBtn) => {
+          closeBtn.addEventListener("click", () => {
+            const scrollbarWidth = window.innerWidth - document.body.clientWidth;
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+            this.handleAttributeChange();
+            this.handleFocusedElement();
+          });
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            const scrollbarWidth = window.innerWidth - document.body.clientWidth;
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+            this.handleAttributeChange();
+            this.handleFocusedElement();
+          }
+        });
+      }
+    }
+
+    new Modal();
+  })();
+
+  // アコーディオン機能
+  (() => {
+    const accordions = document.querySelectorAll(".js-accordion");
+    if (!accordions) return;
+
+    accordions.forEach((accordion) => {
+      let animation = null;
+      const title = accordion.querySelector(".js-accordion-title");
+      const content = accordion.querySelector(".js-accordion-content");
+
+      title.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (!accordion.open) {
+          accordion.open = true;
+          accordion.setAttribute("data-expanded", "true");
+          animation = content.animate(
+            [
+              { height: 0, opacity: 0 },
+              { height: `${content.offsetHeight}px`, opacity: 1 },
+            ],
+            { duration: 400, easing: "ease-out" }
+          );
+
+          animation.onfinish = () => {
+            accordion.open = true;
+            animation = null;
+          };
+        } else {
+          accordion.removeAttribute("data-expanded");
+          animation = content.animate(
+            [
+              { height: `${content.offsetHeight}px`, opacity: 1 },
+              { height: 0, opacity: 0 },
+            ],
+            { duration: 400, easing: "ease-out" }
+          );
+
+          animation.onfinish = () => {
+            accordion.open = false;
+            animation = null;
+          };
+        }
+      });
     });
   })();
 });

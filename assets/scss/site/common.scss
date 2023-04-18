@@ -20,14 +20,28 @@ body {
   -webkit-text-size-adjust: 100%;
   font-feature-settings: "palt";
 
-  &.is-drawer-expanded {
+  &[data-expanded="true"] {
     overflow: hidden;
-
-    .site-header {
-      nav {
-        height: calc(100vh - 64px);
-        visibility: visible;
+    @include f.mq(sp) {
+      .site-header {
+        nav {
+          height: calc(100vh - 12rem);
+          visibility: visible;
+        }
       }
+    }
+  }
+
+  &[data-modal-expanded="true"] {
+    overflow: hidden;
+  }
+
+  &[data-user-select="false"] {
+    header,
+    main,
+    footer {
+      pointer-events: none;
+      user-select: none;
     }
   }
 }
@@ -53,4 +67,7 @@ body {
 
 :target {
   scroll-margin-top: 10rem;
+  @include f.mq(sp) {
+    scroll-margin-top: 12rem;
+  }
 }

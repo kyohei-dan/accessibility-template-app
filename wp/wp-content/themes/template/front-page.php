@@ -21,7 +21,7 @@
             <li class="splide__slide">
               <picture>
                 <source srcset="/assets/images/top/business01.jpg" media="(max-width: 750px)" width="" height="">
-                <img src="/assets/images/top/business01.jpg" alt="" width="" height="">
+                <img src="/assets/images/top/business01.jpg" alt="" width="" height="" decoding="async" fetchpriority="high">
               </picture>
               <div class="splide-text-area">
                 <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
@@ -30,7 +30,7 @@
             <li class="splide__slide">
               <picture>
                 <source srcset="/assets/images/top/support01.jpg" media="(max-width: 750px)" width="" height="">
-                <img src="/assets/images/top/support01.jpg" alt="" width="" height="">
+                <img src="/assets/images/top/support01.jpg" alt="" width="" height="" decoding="async" fetchpriority="high">
               </picture>
               <div class="splide-text-area">
                 <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
@@ -39,7 +39,7 @@
             <li class="splide__slide">
               <picture>
                 <source srcset="/assets/images/dummy/images/noimage-600x400.jpg" media="(max-width: 750px)" width="" height="">
-                <img src="/assets/images/dummy/images/noimage-600x400.jpg" alt="" width="" height="">
+                <img src="/assets/images/dummy/images/noimage-600x400.jpg" alt="" width="" height="" decoding="async" fetchpriority="high">
               </picture>
               <div class="splide-text-area">
                 <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
@@ -60,15 +60,15 @@
 
       <section id="index2" class="news js-section" aria-labelledby="heading-id2">
         <div class="inner">
-          <div class="c_sec-title" data-anime="false">
-            <span class="title-en">INFORMATION</span>
-            <h2 class="title-ja" id="heading-id2">お知らせ</h2>
-          </div>
+          <h2 id="heading-id2">お知らせ</h2>
+          <span class="title-en">INFORMATION</span>
+
           <div role="tablist" data-anime="false">
             <button id="tab-1" role="tab" aria-controls="panel-1" aria-selected="true">すべて</button>
             <button id="tab-2" role="tab" aria-controls="panel-2" aria-selected="false">ニュース</button>
             <button id="tab-3" role="tab" aria-controls="panel-3" aria-selected="false">講演</button>
           </div>
+
           <div id="panel-1" role="tabpanel" aria-labelledby="tab-1" data-anime="false">
             <div class="inner">
               <?php $posts = Site\get_news_posts(4); ?>
@@ -132,88 +132,301 @@
               <?php }; ?>
             </div>
           </div>
-          <div class="c_btn-more" data-anime="false">
-            <a href="/news/" aria-label="お知らせ一覧ページを見る">MORE</a>
-          </div>
+          <a href="/news/" class="more-btn" aria-label="お知らせ一覧ページを見る">
+            MORE
+            <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+              <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
+              <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+            </svg>
+          </a>
         </div>
       </section>
 
       <section id="index3" class="support js-section" aria-labelledby="heading-id3" data-anime="false">
         <div class="support-img" aria-hidden="true">
           <picture>
-            <source srcset="/assets/images/top/sp/support01.jpg" media="(max-width: 750px)" />
-            <img src="/assets/images/top/support01.jpg" alt="">
+            <source srcset="/assets/images/top/sp/support01.jpg" media="(max-width: 750px)" width="" height="" />
+            <img src="/assets/images/top/support01.jpg" alt="" width="" height="" loading="lazy" decoding="async">
           </picture>
         </div>
+
         <div class="inner">
-          <div class="c_sec-title">
-            <h2 class="title-ja-second" id="heading-id3">3つのサポート</h2>
-            <span class="title-en-second">SUPPORT</span>
-          </div>
-          <ul class="support-list">
+          <h2 id="heading-id3">3つのサポート</h2>
+          <span class="title-en">SUPPORT</span>
+          <ul>
             <li>
-              <p class="head">顧問契約サポート</p>
-              <p class="text">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-              <div class="c_btn-more">
-                <a href="">MORE</a>
-              </div>
+              <h3>顧問契約サポート</h3>
+              <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
+              <a href="" aria-label="詳しく見る">
+                MORE
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+                </svg>
+              </a>
             </li>
             <li>
-              <p class="head">労務管理サポート</p>
-              <p class="text">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-              <div class="c_btn-more">
-                <a href="">MORE</a>
-              </div>
+              <h3>労務管理サポート</h3>
+              <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
+              <a href="" aria-label="詳しく見る">
+                MORE
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+                </svg>
+              </a>
             </li>
             <li>
-              <p class="head">契約サポート</p>
-              <p class="text">この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
-              <div class="c_btn-more">
-                <a href="">MORE</a>
-              </div>
+              <h3>契約サポート</h3>
+              <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
+              <a href="" aria-label="詳しく見る">
+                MORE
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+                </svg>
+              </a>
             </li>
           </ul>
         </div>
       </section>
 
       <section id="index4" class="business js-section" aria-labelledby="heading-id4" data-anime="false">
-
-        <div class="link-block">
-          <div class="business-img">
-            <picture>
-              <source srcset="/assets/images/top/business01.jpg" media="(max-width: 750px)" />
-              <img src="/assets/images/top/business01.jpg" alt="">
-            </picture>
-          </div>
-
-          <div class="inner">
-            <div class="c_sec-title js_fadeIn">
-              <h2 class="title-ja-second" id="heading-id4">取扱業務</h2>
-              <span class="title-en-second">BUSINESS</span>
-            </div>
-            <p class="sec-lead js_fadeIn">プロフェッショナルが、<br>あなたの企業経営をサポートいたします。</p>
-            <ul class="link-list js_fadeToTop">
-              <li class="c_btn01">経営法務支援</li>
-              <li class="c_btn01">スタートアップ支援</li>
-              <li class="c_btn01">経営コンサルティング</li>
-              <li class="c_btn01">事業承認支援</li>
-              <li class="c_btn01">一般民事・家事事件</a></li>
-              <li class="c_btn01">知的財産トラブル</li>
-              <li class="c_btn01">倒産関連・M&A</li>
-              <li class="c_btn01">労務管理</li>
-              <li class="c_btn01">講演・セミナー</li>
-            </ul>
-          </div>
+        <div class="business-img" aria-hidden="true">
+          <picture>
+            <source srcset="/assets/images/top/business01.jpg" media="(max-width: 750px)" width="" height="" />
+            <img src="/assets/images/top/business01.jpg" alt="" width="" height="" loading="lazy" decoding="async">
+          </picture>
         </div>
-      </section>
 
-      <section class="contact">
         <div class="inner">
-          <a href="/contact/" data-anime="false">CONTACT</a>
-          <p data-anime="false">まずは、お気軽にお問い合わせください。<br>お急ぎの方は 00-0000-0000 <br class="sp">までお問い合わせください。</p>
+          <h2 id="heading-id4">取扱業務</h2>
+          <span class="title-en">BUSINESS</span>
+          <ul>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>経営法務支援</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>スタートアップ支援</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>経営コンサルティング</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>事業承認支援</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>一般民事・家事事件</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span><abbr title="知的財産">知財</abbr>トラブル</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>倒産関連・M</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>労務管理&A</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="js-modal-btn" aria-haspopup="dialog">
+                <span>講演・セミナー</span>
+                <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
+                  <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#000" stroke-width="1" />
+                  <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#000" stroke-width="1" />
+                </svg>
+              </button>
+            </li>
+          </ul>
         </div>
       </section>
+
+      <section id="index5" class="faq js-section" aria-labelledby="heading-id5" data-anime="false">
+        <div class="inner">
+          <h2 id="heading-id5">よくある質問</h2>
+          <span class="title-en">FAQ</span>
+          <details class="js-accordion">
+            <summary class="js-accordion-title">質問タイトル①</summary>
+            <div class="accordion-content js-accordion-content">
+              <div class="content-inner">
+                <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
+              </div>
+            </div>
+          </details>
+          <details class="js-accordion">
+            <summary class="js-accordion-title">質問タイトル②</summary>
+            <div class="accordion-content js-accordion-content">
+              <div class="content-inner">
+                <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
+              </div>
+            </div>
+          </details>
+          <details class="js-accordion">
+            <summary class="js-accordion-title">質問タイトル③</summary>
+            <div class="accordion-content js-accordion-content">
+              <div class="content-inner">
+                <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <div class="contact">
+        <div class="inner">
+          <a href="/contact/">CONTACT</a>
+          <p>まずは、お気軽にお問い合わせください。<br aria-hidden="true">お急ぎの方は 00-0000-0000<br class="sp" aria-hidden="true"> までお問い合わせください。</p>
+        </div>
+      </div>
     </main>
+
+    <div class="modal-bg js-modal-bg" tabindex="-1"></div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id1">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id1">経営法務支援</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id2">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id2">スタートアップ支援</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id3">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id3">経営コンサルティング</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id4">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id4">事業承認支援</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id5">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id5">一般民事・家事事件</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id6">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id6"><abbr title="知的財産">知財</abbr>トラブル</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id7">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id7">倒産関連・M&A</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id8">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id8">労務管理</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
+    <div class="modal" aria-modal="false" aria-hidden="true" aria-labelledby="modal-id9">
+      <div class="inner">
+        <button class="modal-close-btn js-modal-close-btn" aria-label="モーダルを閉じる"></button>
+        <h2 id="modal-id9">講演・セミナー</h2>
+        <dl>
+          <dt>具体的なサポート内容</dt>
+          <dd>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</dd>
+        </dl>
+        <div class="js-modal-focus-trap" tabindex="0"></div>
+      </div>
+    </div>
 
     <?php part("footer"); ?>
   </div>
