@@ -1,0 +1,430 @@
+@use "../../base/shortcut-functions" as f;
+@use "../modules" as modules;
+
+.chat {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  .site-wrapper {
+    display: flex;
+  }
+
+  aside {
+    width: 32rem;
+    background-color: #202123;
+    .inner {
+      padding: 1rem;
+    }
+
+    .new-chat-btn {
+      position: relative;
+      padding: 2rem 1rem 2rem 4rem;
+      width: 100%;
+      border-radius: 1rem;
+      border: 0.6px solid #fff;
+      color: #fff;
+      font-size: 1.4rem;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 1.6rem;
+        width: 1.4rem;
+        height: 2px;
+        background-color: #fff;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        transform: translateY(-50%) rotate(90deg);
+      }
+    }
+
+    ul {
+      margin: 2.4rem 0 0 0;
+      li {
+        a {
+          display: flex;
+          padding: 2rem 1rem 2rem 4rem;
+          border-radius: 1rem;
+          color: #fff;
+          font-size: 1.4rem;
+          &:hover {
+            background-color: #444754;
+          }
+        }
+        + li {
+          margin: 2rem 0 0 0;
+        }
+      }
+    }
+  }
+
+  main {
+    width: 100%;
+    background-color: #343542;
+    .inner {
+      position: relative;
+    }
+
+    .chat-contents {
+      position: relative;
+      ul {
+        .request-text {
+          padding: 2.4rem 8rem;
+          color: #fff;
+          font-size: 1.8rem;
+          line-height: 1.7;
+          letter-spacing: 0.1em;
+          background-color: #444754;
+        }
+
+        .response-text {
+          padding: 2.4rem 8rem;
+          color: #fff;
+          font-size: 1.8rem;
+          line-height: 1.7;
+          letter-spacing: 0.1em;
+          background-color: #343542;
+          > p {
+            position: relative;
+            padding: 0 0 0 4.8rem;
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 3rem;
+              height: 3rem;
+              background-image: url("/assets/images/chat/chatgpt_logo.png");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+
+            p:nth-of-type(1) {
+              margin: 0 0 3rem 0;
+            }
+
+            ul,
+            ol {
+              padding: 0 0 0 4rem;
+              li {
+                list-style: auto;
+                p {
+                }
+              }
+            }
+          }
+        }
+
+        fieldset {
+          display: flex;
+          align-items: center;
+          gap: 3.2rem;
+          margin: 2.4rem 0 0 5rem;
+
+          label {
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+
+            input {
+              margin: 0;
+              padding: 0;
+              background: none;
+              border: none;
+              border-radius: 0;
+              outline: none;
+              appearance: none;
+
+              &:focus {
+                ~ .text::after {
+                  transform: scale3d(1, 1, 1);
+                  transform-origin: left;
+                }
+              }
+
+              &:checked {
+                + .icon::before {
+                  border-color: #fff;
+                  opacity: 0;
+                  transform: rotate(45deg) scale3d(2, 2, 1);
+                }
+
+                + .icon::after {
+                  border-bottom: 2px solid #fff;
+                  border-left: 2px solid #fff;
+                  opacity: 1;
+                  transform: rotate(-45deg);
+                }
+
+                ~ .text {
+                  color: #fff;
+                }
+              }
+            }
+
+            .icon {
+              position: relative;
+              display: inline-block;
+              width: 2.4rem;
+              height: 2.4rem;
+              @include f.mq(sp) {
+                width: 3rem;
+                height: 3rem;
+              }
+
+              &::before,
+              &::after {
+                content: "";
+                position: absolute;
+              }
+
+              &::before {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 1.5px solid #ccc;
+                border-radius: 4px;
+                transition: border-color 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+              }
+
+              &::after {
+                top: 0.5rem;
+                left: 0.3rem;
+                width: 1.6rem;
+                height: 0.8rem;
+                border-bottom: 2px solid #fff;
+                border-left: 2px solid #fff;
+                opacity: 0;
+                transform: rotate(-225deg);
+                transition: opacity 0.5s, transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+                @include f.mq(sp) {
+                  top: 0.7rem;
+                  width: 2rem;
+                  height: 1.2rem;
+                }
+              }
+            }
+
+            .text {
+              position: relative;
+              display: inline-block;
+              letter-spacing: 0.05em;
+              margin: 0 0 0 1rem;
+
+              &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                display: inline-block;
+                width: 100%;
+                height: 1px;
+                background-color: #fff;
+                transform: scale3d(0, 1, 1);
+                transform-origin: right;
+                transition: transform 0.3s;
+              }
+            }
+          }
+        }
+      }
+
+      .loader {
+        display: none;
+        position: relative;
+        margin: 2.4rem auto 0 auto;
+        width: 4.8rem;
+        height: 4.8rem;
+
+        &.is-loading {
+          display: block;
+        }
+
+        div {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          opacity: 0.8;
+          &.one {
+            border-top: 1px solid #8fb259;
+            animation: rotate-left 1s linear infinite;
+          }
+
+          &.two {
+            border-right: 1px solid #cccc52;
+            animation: rotate-right 1s linear infinite;
+          }
+
+          &.three {
+            border-bottom: 1px solid #ffd933;
+            animation: rotate-right 1s linear infinite;
+          }
+
+          &.four {
+            border-left: 1px solid #ff7f00;
+            animation: rotate-right 1s linear infinite;
+          }
+        }
+
+        @keyframes rotate-left {
+          0% {
+            transform: rotate(360deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+
+        @keyframes rotate-right {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+
+    .form {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      padding: 4rem 0;
+      backdrop-filter: blur(8px);
+    }
+
+    .chat-form {
+      position: relative;
+      margin: 0 auto;
+      padding: 2rem 0 2rem 4rem;
+      width: 80rem;
+      background-color: #40414f;
+      border-radius: 1rem;
+
+      .chat-input {
+        width: 100%;
+        max-height: 28rem;
+        height: 24px;
+        outline: none;
+        color: #fff;
+        font-size: 2rem;
+        resize: none;
+        overflow-y: auto;
+      }
+    }
+
+    .post {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin: 4rem 0 0 0;
+
+      .send-button {
+        &:disabled {
+          color: #7b7a8f;
+          cursor: not-allowed;
+        }
+      }
+
+      .post-button,
+      .reset-button,
+      .send-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        width: 24rem;
+        height: 6rem;
+        border-radius: 1rem;
+        background-color: #202123;
+        color: #fff;
+        font-size: 1.6rem;
+
+        &.is-loading::after {
+          content: "";
+          display: inline-block;
+          width: 3rem;
+          height: 3rem;
+          border: 3px solid #ccc;
+          border-radius: 50%;
+          border-top-color: #343542;
+          animation: loader 1.2s linear infinite;
+        }
+
+        @keyframes loader {
+          0% {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(1turn);
+          }
+        }
+      }
+
+      .checkmark {
+        display: none;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        box-shadow: inset 0px 0px 0px #343542;
+        stroke-width: 2;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+
+        &.is-complete {
+          display: block;
+        }
+
+        .checkmark-circle {
+          stroke-dasharray: 166;
+          stroke-dashoffset: 166;
+          stroke-width: 2;
+          stroke-miterlimit: 10;
+          stroke: #343542;
+          fill: none;
+          animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark-check {
+          stroke-dasharray: 48;
+          stroke-dashoffset: 48;
+          transform-origin: 50% 50%;
+          animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        @keyframes fill {
+          100% {
+            box-shadow: inset 0px 0px 0px 30px #343542;
+          }
+        }
+
+        @keyframes stroke {
+          100% {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes scale {
+          0%,
+          100% {
+            transform: none;
+          }
+          50% {
+            transform: scale3d(1.1, 1.1, 1);
+          }
+        }
+      }
+    }
+  }
+}

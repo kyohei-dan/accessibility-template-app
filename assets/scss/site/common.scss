@@ -6,6 +6,10 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+
   @media (max-width: 1400px) and (min-width: 751px) {
     font-size: 0.7142857142857143vw;
   }
@@ -16,9 +20,9 @@ html {
 }
 
 body {
-  background-color: #fff;
   -webkit-text-size-adjust: 100%;
   font-feature-settings: "palt";
+  background-color: #fff;
 
   &[data-expanded="true"] {
     overflow: hidden;
@@ -70,4 +74,10 @@ body {
   @include f.mq(sp) {
     scroll-margin-top: 12rem;
   }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
 }

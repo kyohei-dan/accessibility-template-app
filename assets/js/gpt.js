@@ -1,168 +1,257 @@
-// function generateText() {
-//   const apiKey = "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";
-//   const prompt = document.getElementById("input-text").value;
+// textareaに文字が入力の有無で、送信ボタンの状態を変更する処理
+(() => {
+  const textarea = document.querySelector(".js-chat-input");
+  textarea.addEventListener("input", () => {
+    if (textarea.value.length === 0) {
+      document.querySelector(".js-send-button").setAttribute("disabled", true);
+    } else {
+      document.querySelector(".js-send-button").removeAttribute("disabled");
+    }
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  });
+})();
 
-//   const url = `https://api.openai.com/v1/engines/davinci-codex/completions?prompt=${prompt}&max_tokens=150`;
+(() => {
+  const API_KEY = "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";
+  const API_URL = "https://api.openai.com/v1/chat/completions";
 
-//   const headers = {
-//     "Content-Type": "application/json",
-//     Authorization: `Bearer ${apiKey}`,
-//   };
+  let messageList = [
+    {
+      role: "system",
+      content: "あなたはプロのライターです。テキストがWordPressの記事として投稿されることを想定して、可能な限り最高にわかりやすく丁寧な説明や回答を出力してください。",
+    },
+  ];
 
-//   fetch(url, {
-//     method: "POST",
-//     headers: headers,
-//   })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       const output = document.getElementById("output");
-//       output.innerHTML = data.choices[0].text;
-//     })
-//     .catch((error) => console.error(error));
-// }
+  let chatLog = JSON.parse(window.localStorage.getItem("chat-log"));
 
-// const apiKey = "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";
-// const promptInput = document.querySelector("#prompt-input");
-
-// promptInput.addEventListener("keyup", function (event) {
-//   if (event.keyCode === 13) {
-//     const prompt = promptInput.value;
-
-//     fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${apiKey}`,
-//       },
-//       body: JSON.stringify({
-//         prompt: prompt,
-//         max_tokens: 60,
-//         temperature: 0.5,
-//         n: 1,
-//         stop: "\n",
-//       }),
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error("エラーが発生しました。");
-//         }
-
-//         return response.json();
-//       })
-//       .then((data) => {
-//         if (!data.choices || data.choices.length === 0) {
-//           throw new Error("応答が見つかりませんでした。");
-//         }
-
-//         const message = data.choices[0].text.trim();
-//         console.log(message);
-//       })
-//       .catch((error) => {
-//         console.log(error.message);
-//       });
-//   }
-// });
-
-// document.getElementById("chat-form").addEventListener("submit", async (event) => {
-//   event.preventDefault();
-//   const userInput = document.getElementById("user-input");
-//   const message = userInput.value.trim();
-//   if (!message) return;
-
-//   userInput.value = "";
-//   userInput.disabled = true;
-
-//   // APIに問い合わせ
-//   const response = await fetchChatGpt(message);
-
-//   // 応答を表示
-//   appendMessage("ChatGPT", response);
-
-//   userInput.disabled = false;
-//   userInput.focus();
-// });
-
-// async function fetchChatGpt(message) {
-//   const API_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
-//   const API_KEY = "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";
-
-//   const headers = {
-//     "Content-Type": "application/json",
-//     Authorization: `Bearer ${API_KEY}`,
-//   };
-
-//   const body = JSON.stringify({
-//     prompt: message,
-//     max_tokens: 50, // 応答の最大トークン数を指定
-//     n: 1,
-//     stop: null,
-//     temperature: 0.7,
-//   });
-
-//   const response = await fetch(API_URL, {
-//     method: "POST",
-//     headers: headers,
-//     body: body,
-//   });
-
-//   const data = await response.json();
-//   return data.choices[0].text.trim();
-// }
-
-const chatLog = document.querySelector(".chat-log");
-const chatInput = document.querySelector("#chat-input");
-const sendButton = document.querySelector("#send-button");
-
-const API_ENDPOINT = "https://api.openai.com/v1/engine/davinci-codex/completions";
-const YOUR_API_KEY = "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";
-
-function sendMessage() {
-  const message = chatInput.value.trim();
-  if (message === "") {
-    return;
-  }
-  chatInput.value = "";
-
-  const data = {
-    prompt: message,
-    max_tokens: 50,
-    temperature: 0.5,
-    n: 1,
+  // 改行コードをbrへ変換する関数
+  const nl2br = (str = "") => {
+    return str.replace(/(\r\n|\r|\n)/g, "<br>");
   };
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${YOUR_API_KEY}`,
-  };
-  fetch(API_ENDPOINT, {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const text = data.choices[0].text.trim();
-      appendMessage(message, text);
-    })
-    .catch((error) => {
-      console.error(error);
+
+  // HTMLを生成する関数
+  const createElem = (tag, classes = [], attributes = {}, textContent = "") => {
+    const elem = document.createElement(tag);
+
+    classes.forEach((className) => {
+      elem.classList.add(className);
     });
-}
 
-function appendMessage(input, output) {
-  const messageContainer = document.createElement("div");
-  messageContainer.classList.add("message-container");
+    Object.keys(attributes).forEach((key) => {
+      elem.setAttribute(key, attributes[key]);
+    });
 
-  const inputElement = document.createElement("div");
-  inputElement.classList.add("message", "input");
-  inputElement.textContent = input;
-  messageContainer.appendChild(inputElement);
+    elem.innerHTML = marked.parse(nl2br(textContent));
+    return elem;
+  };
 
-  const outputElement = document.createElement("div");
-  outputElement.classList.add("message", "output");
-  outputElement.textContent = output;
-  messageContainer.appendChild(outputElement);
+  // ユーザが入力したメッセージを追加する関数
+  const setMessage = (role = "", prompt = "") => {
+    messageList.push({ role: role, content: prompt });
+  };
 
-  chatLog.appendChild(messageContainer);
-}
+  // メッセージをlocalStorageへ保存する関数
+  const setLocalStorage = () => {
+    localStorage.setItem("chat-log", JSON.stringify(messageList));
+  };
 
-sendButton.addEventListener("click", sendMessage);
+  // htmlを描画する関数
+  const renderMessages = () => {
+    messageList.forEach((message, i) => {
+      let liElement;
+      // 偶数の要素
+      if (i % 2 === 0) {
+        liElement = createElem("li", ["request-text"]);
+        liElement.textContent = message.content;
+      }
+
+      // 奇数の要素
+      if (i % 2 === 1) {
+        liElement = createElem("li", ["response-text"]);
+        let p = createElem("p", [], {}, message.content);
+        liElement.appendChild(p);
+
+        let fieldset = createElem("fieldset");
+        liElement.appendChild(fieldset);
+
+        let labelTitle = createElem("label");
+        fieldset.appendChild(labelTitle);
+
+        let inputTitle = createElem("input", [], { type: "radio", name: "title-type", value: message.content });
+        labelTitle.appendChild(inputTitle);
+
+        let spanIconTitle = createElem("span", ["icon"]);
+        labelTitle.appendChild(spanIconTitle);
+
+        let spanTextTitle = createElem("span", ["text"], {}, "タイトルに選択");
+        labelTitle.appendChild(spanTextTitle);
+
+        let labelContent = createElem("label");
+        fieldset.appendChild(labelContent);
+
+        let inputContent = createElem("input", [], { type: "radio", name: "content-type", value: message.content });
+        labelContent.appendChild(inputContent);
+
+        let spanIconContent = createElem("span", ["icon"]);
+        labelContent.appendChild(spanIconContent);
+
+        let spanTextContent = createElem("span", ["text"], {}, "コンテンツに選択");
+        labelContent.appendChild(spanTextContent);
+      }
+
+      document.querySelector(".js-chat-list").appendChild(liElement);
+    });
+  };
+
+  if (chatLog) {
+    messageList = chatLog.filter((obj) => obj.role !== "system");
+    renderMessages();
+  }
+
+  document.querySelector(".js-send-button").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const prompt = document.querySelector(".js-chat-input").value;
+    setMessage("user", prompt);
+    setLocalStorage();
+
+    let sendLiElement = createElem("li", ["request-text"]);
+    chatLog = JSON.parse(window.localStorage.getItem("chat-log"));
+    sendLiElement.textContent = chatLog[messageList.length - 1].content;
+
+    document.querySelector(".js-chat-list").appendChild(sendLiElement);
+    document.querySelector(".js-chat-input").value = "";
+    document.querySelector(".js-chat-input").style.height = "auto";
+    document.querySelector(".js-loader").classList.add("is-loading");
+
+    fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: messageList,
+        temperature: 0.9,
+        top_p: 1,
+        n: 1,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(`エラー： ${response.status}`);
+      })
+      .then((data) => {
+        document.querySelector(".js-loader").classList.remove("is-loading");
+        setMessage("assistant", data.choices[0].message.content);
+        setLocalStorage();
+
+        let li = createElem("li", ["response-text"]);
+        let p = createElem("p", [], {}, data.choices[0].message.content);
+        li.appendChild(p);
+
+        let fieldset = createElem("fieldset");
+        li.appendChild(fieldset);
+
+        let labelTitle = createElem("label");
+        fieldset.appendChild(labelTitle);
+
+        let inputTitle = createElem("input", [], { type: "radio", name: "title-type", value: data.choices[0].message.content });
+        labelTitle.appendChild(inputTitle);
+
+        let spanIconTitle = createElem("span", ["icon"]);
+        labelTitle.appendChild(spanIconTitle);
+
+        let spanTextTitle = createElem("span", ["text"], {}, "タイトルに選択");
+        labelTitle.appendChild(spanTextTitle);
+
+        let labelContent = createElem("label");
+        fieldset.appendChild(labelContent);
+
+        let inputContent = createElem("input", [], { type: "radio", name: "content-type", value: data.choices[0].message.content });
+        labelContent.appendChild(inputContent);
+
+        let spanIconContent = createElem("span", ["icon"]);
+        labelContent.appendChild(spanIconContent);
+
+        let spanTextContent = createElem("span", ["text"], {}, "コンテンツに選択");
+        labelContent.appendChild(spanTextContent);
+
+        document.querySelector(".js-chat-list").appendChild(li);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  });
+})();
+
+(() => {
+  document.querySelector(".js-reset-button").addEventListener("click", () => {
+    let chatLog = JSON.parse(window.localStorage.getItem("chat-log"));
+    if (chatLog) {
+      localStorage.removeItem("chat-log");
+      location.reload();
+    }
+  });
+})();
+
+(() => {
+  class Post {
+    constructor() {
+      this.postBtn = document.querySelector(".js-post-button");
+      this.chatList = document.querySelector(".js-chat-list");
+      this.baseUrl = "/wp-json/wp/v2/";
+      this.postType = "news";
+      this.requestUrl = `${this.baseUrl}${this.postType}`;
+      let checkTitle = "";
+      let checkContent = "";
+
+      this.postBtn.addEventListener("click", () => {
+        document.querySelectorAll("input[name='title-type']").forEach((e) => {
+          e.checked ? (checkTitle = e.value) : "";
+        });
+
+        document.querySelectorAll("input[name='content-type']").forEach((e) => {
+          e.checked ? (checkContent = e.value) : "";
+        });
+
+        this.auth = {
+          username: "admin",
+          password: "n4PR 6z3q x4DP b2DS 5QkH zOhU",
+        };
+
+        this.post = {
+          title: checkTitle !== "" ? checkTitle : "ダミータイトル",
+          content: checkContent !== "" ? checkContent : "ダミーコンテンツ",
+          status: "draft",
+        };
+
+        this.options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Basic ${window.btoa(`${this.auth.username}:${this.auth.password}`)}`,
+          },
+          body: JSON.stringify(this.post),
+        };
+
+        if (checkTitle !== "" || checkContent !== "") {
+          this.postBtn.classList.add("is-loading");
+
+          fetch(this.requestUrl, this.options)
+            .then((response) => response.json())
+            .then((data) => {
+              this.postBtn.classList.remove("is-loading");
+              document.querySelector(".js-checkmark").classList.add("is-complete");
+            })
+            .catch((error) => console.error(error));
+        }
+      });
+    }
+  }
+  new Post();
+})();

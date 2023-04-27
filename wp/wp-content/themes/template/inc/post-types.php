@@ -8,6 +8,7 @@ add_action("init", function () {
     "label" => "ニュース",
     "public" => true,
     "has_archive" => true,
+    "show_in_rest" => true,
     "supports" => ['title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions'],
   ]);
 

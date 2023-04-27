@@ -145,8 +145,8 @@
       <section id="index3" class="support js-section" aria-labelledby="heading-id3" data-anime="false">
         <div class="support-img" aria-hidden="true">
           <picture>
-            <source srcset="/assets/images/top/sp/support01.jpg" media="(max-width: 750px)" width="" height="" />
-            <img src="/assets/images/top/support01.jpg" alt="" width="" height="" loading="lazy" decoding="async">
+            <source srcset="/assets/images/top/sp/support01.jpg" media="(max-width: 750px)" width="1130" height="400" />
+            <img src="/assets/images/top/support01.jpg" alt="" width="1130" height="400" loading="lazy" decoding="async">
           </picture>
         </div>
 
@@ -325,6 +325,7 @@
           <p>まずは、お気軽にお問い合わせください。<br aria-hidden="true">お急ぎの方は 00-0000-0000<br class="sp" aria-hidden="true"> までお問い合わせください。</p>
         </div>
       </div>
+
     </main>
 
     <div class="modal-bg js-modal-bg" tabindex="-1"></div>

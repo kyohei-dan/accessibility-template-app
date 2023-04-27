@@ -1,4 +1,7 @@
 <?php
+
+if (!defined("ABSPATH")) die();
+
 // 不要な設定を削除（アクションフックのinitでプラグインとテーマが読み込まれたあとに実行）
 add_action("init", function () {
   remove_action("wp_robots", "wp_robots_max_image_preview_large");
