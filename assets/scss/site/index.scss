@@ -1,6 +1,7 @@
 @use "common";
 @use "parts/header";
 @use "parts/footer";
+@use "parts/loading-mask";
 @use "pages/top";
 @use "pages/archive-news";
 @use "pages/single-news";

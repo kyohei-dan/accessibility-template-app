@@ -10,11 +10,11 @@
   <?php wp_head(); ?>
 </head>
 
-<body class="single-news">
+<body class="single-news" data-barba="wrapper">
   <div class="site-wrapper">
     <?php part("header"); ?>
 
-    <main>
+    <main data-barba="container" data-barba-namespace="single-news">
       <header class="lower-header">
         <div class="inner">
           <h1>お知らせ</h1>
@@ -39,8 +39,8 @@
         <div class="inner">
           <div class="header">
             <h2><?php the_title(); ?></h2>
-            <time itemprop="datePublished" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
-            <p class="label"><?php echo get_the_terms($post->ID, 'news-category')[0]->name; ?></p>
+            <time aria-label="投稿日" itemprop="datePublished" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
+            <p class="label" aria-label="カテゴリ"><?php echo get_the_terms($post->ID, 'news-category')[0]->name; ?></p>
           </div>
           <div class="editor-contents">
             <?php the_content(); ?>
@@ -58,6 +58,7 @@
     </main>
 
     <?php part("footer"); ?>
+    <?php part("loading-mask"); ?>
   </div>
 
   <?php wp_footer(); ?>

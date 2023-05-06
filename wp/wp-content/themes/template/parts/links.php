@@ -1,8 +1,9 @@
     <!--=============== ▼CSS ===============-->
     <link rel="stylesheet" href="/assets/css/styles.css">
 
-    <!--=============== ▼FAVICON NORMAL ===============-->
-    <link rel="icon" href="/assets/favicon.svg">
+    <!--=============== ▼FAVICON ===============-->
+    <link rel="icon" href="/assets/favicon.svg" sizes="any" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/assets//apple-touch-icon.png">
 
     <!--=============== ▼GOOGLE FONTS ===============-->
     <link rel="preconnect" href="https://fonts.googleapis.com">

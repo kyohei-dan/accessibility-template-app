@@ -1,6 +1,12 @@
-window.addEventListener("DOMContentLoaded", () => {
+export const functions = {
+  // ▼コンソール出力用
+  setConsoleText: () => {
+    const text = ["\n %c Developed by Kyohei Dan. -> https://portfolio-app-main.vercel.app/ \n\n", "background: #0000FF; padding:5px 0;color: #ffffff;"];
+    window.console.log.apply(console, text);
+  },
+
   // ▼360px 未満は JS で viewport を固定する
-  (() => {
+  fixedViewport: () => {
     const viewport = document.querySelector('meta[name="viewport"]');
     window.addEventListener("resize", () => {
       const viewportContent = window.outerWidth > 360 ? "width=device-width,initial-scale=1" : "width=360";
@@ -8,10 +14,10 @@ window.addEventListener("DOMContentLoaded", () => {
         viewport.setAttribute("content", viewportContent);
       }
     });
-  })();
+  },
 
   // ▼ビューポートの中心に要素がきたときにclassを追加する処理
-  (() => {
+  observeSection: () => {
     const targetElements = document.querySelectorAll(".js-section");
     if (!targetElements) return;
 
@@ -39,10 +45,10 @@ window.addEventListener("DOMContentLoaded", () => {
     targetElements.forEach((target) => {
       observer.observe(target);
     });
-  })();
+  },
 
   // ▼スクロールアニメーション処理
-  (() => {
+  scrollAnimation: () => {
     const targetElements = document.querySelectorAll("*[data-anime='false']");
     if (!targetElements) return;
 
@@ -57,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const options = {
       root: null,
-      rootMargin: "-30% 0px",
+      rootMargin: "-20% 0px",
       threshold: 0,
     };
 
@@ -65,10 +71,10 @@ window.addEventListener("DOMContentLoaded", () => {
     targetElements.forEach((target) => {
       observer.observe(target);
     });
-  })();
+  },
 
   // ▼headerリンクを押したときのスムーススクロール処理
-  (() => {
+  smoothScroll: () => {
     const anchorLinks = document.querySelectorAll("a[data-link-id]");
     if (!anchorLinks) return;
 
@@ -83,10 +89,40 @@ window.addEventListener("DOMContentLoaded", () => {
         });
       });
     });
-  })();
+  },
+
+  // ▼メガメニューがあるリンクをクリックした際に
+  megaMenu: () => {
+    const navDetail = document.getElementsByClassName("nav-detail")[0];
+    const liElements = document.getElementsByTagName("li");
+    for (let i = 0; i < liElements.length; i++) {
+      liElements[i].addEventListener("mouseover", function () {
+        if (this.classList.contains("nav-detail")) {
+          this.classList.add("new-class");
+        }
+      });
+    }
+
+    const parent = document.querySelectorAll(".js-global-menu-list-item");
+    parent.forEach((e) => {
+      e.addEventListener("mouseover", () => {
+        let section = e.querySelector(".nav-detail");
+        if (section) {
+          section.setAttribute("aria-hidden", false);
+        }
+      });
+
+      e.addEventListener("mouseleave", () => {
+        let section = e.querySelector(".nav-detail");
+        if (section) {
+          section.setAttribute("aria-hidden", true);
+        }
+      });
+    });
+  },
 
   // ▼ドロワーメニューの開閉処理
-  (() => {
+  drawerMenu: () => {
     const drawerBtn = document.querySelector(".js-drawer-btn");
     const drawerAnchorLinks = document.querySelectorAll("[data-link-id]");
     if (!drawerBtn) return;
@@ -120,10 +156,10 @@ window.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".js-focus-trap").addEventListener("focus", () => {
       drawerBtn.focus();
     });
-  })();
+  },
 
   // ▼タブ切り替えの処理
-  (() => {
+  tab: () => {
     const tabs = document.querySelectorAll('[role="tab"]');
     const tabContents = document.querySelectorAll('[role="tabpanel"]');
     if (!tabs) return;
@@ -145,10 +181,10 @@ window.addEventListener("DOMContentLoaded", () => {
         document.querySelector(`#${btnTarget.getAttribute("aria-controls")}`).removeAttribute("hidden");
       });
     });
-  })();
+  },
 
   // ▼ /contact/ JSでのフォームバリデーション処理
-  (() => {
+  formValidation: () => {
     const targetElements = document.querySelectorAll("input,textarea");
     if (!targetElements) return;
 
@@ -180,10 +216,10 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-  })();
+  },
 
   // ▼ /contact/ チェックボックスの状態に合わせてボタンの状態を変更する処理
-  (() => {
+  changeFormAgreeState: () => {
     const checkBox = document.querySelector(".js-checkbox");
     const submitBtn = document.querySelector(".js-submit-button");
     if (!checkBox || !submitBtn) return;
@@ -195,10 +231,10 @@ window.addEventListener("DOMContentLoaded", () => {
         submitBtn.setAttribute("disabled", true);
       }
     });
-  })();
+  },
 
   // ▼モーダル処理
-  (() => {
+  modal: () => {
     class Modal {
       constructor() {
         this.modalBtns = document.querySelectorAll(".js-modal-btn");
@@ -290,10 +326,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     new Modal();
-  })();
+  },
 
-  // アコーディオン機能
-  (() => {
+  // ▼アコーディオン機能
+  accordion: () => {
     const accordions = document.querySelectorAll(".js-accordion");
     if (!accordions) return;
 
@@ -337,5 +373,5 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-  })();
-});
+  },
+};

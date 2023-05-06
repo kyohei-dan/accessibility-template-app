@@ -3,7 +3,9 @@
 
 .chat {
   font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  overflow-x: hidden;
   .site-wrapper {
+    position: relative;
     display: flex;
   }
 
@@ -426,5 +428,48 @@
         }
       }
     }
+  }
+
+  .toast {
+    position: absolute;
+    top: 2.4rem;
+    right: 3rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #fff;
+    padding: 1.6rem 1.2rem 1.6rem 1.4rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #4070f4;
+    overflow: hidden;
+    transform: translateX(calc(100% + 3rem));
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    &.is-complete {
+      transform: translateX(0%);
+    }
+  }
+
+  .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: #4070f4;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 50%;
+  }
+
+  .message {
+    margin: 0 2rem;
+    line-height: 1.6;
+  }
+
+  .text {
+    color: #666;
+    font-size: 1.4rem;
+    font-weight: 400;
   }
 }

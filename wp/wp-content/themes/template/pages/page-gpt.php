@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <?php part("links"); ?>
   <?php part("analytics"); ?>
   <?php wp_head(); ?>
@@ -13,6 +14,7 @@
 
 <body class="chat">
   <div class="site-wrapper">
+
     <!-- <aside>
       <div class="inner">
         <button type="button" class="new-chat-btn">New chat</button>
@@ -62,11 +64,19 @@
         </div>
       </div>
     </main>
+
+    <div class="toast js-toast">
+      <i class="fas fa-solid fa-check check"></i>
+      <div class="message">
+        <span class="text">WordPressへ投稿しました！</span>
+      </div>
+    </div>
+
   </div>
 
   <?php wp_footer(); ?>
-  <script src="/assets/js/libs/marked.min.js" defer></script>
-  <script src="/assets/js/gpt.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/lib/marked.umd.min.js"></script>
+  <script src="/assets/js/gpt-setting.js" defer></script>
 </body>
 
 </html>

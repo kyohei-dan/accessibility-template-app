@@ -57,6 +57,8 @@
       </section>
     </main>
     <?php part("footer"); ?>
+    <?php part("loading-mask"); ?>
+
   </div>
 
   <?php wp_footer(); ?>

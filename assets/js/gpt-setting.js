@@ -202,6 +202,7 @@
 (() => {
   class Post {
     constructor() {
+      this.toast = document.querySelector(".js-toast");
       this.postBtn = document.querySelector(".js-post-button");
       this.chatList = document.querySelector(".js-chat-list");
       this.baseUrl = "/wp-json/wp/v2/";
@@ -209,6 +210,7 @@
       this.requestUrl = `${this.baseUrl}${this.postType}`;
       let checkTitle = "";
       let checkContent = "";
+      let timer1;
 
       this.postBtn.addEventListener("click", () => {
         document.querySelectorAll("input[name='title-type']").forEach((e) => {
@@ -244,9 +246,15 @@
 
           fetch(this.requestUrl, this.options)
             .then((response) => response.json())
-            .then((data) => {
+            .then(() => {
               this.postBtn.classList.remove("is-loading");
               document.querySelector(".js-checkmark").classList.add("is-complete");
+              this.toast.classList.add("is-complete");
+
+              timer1 = setTimeout(() => {
+                document.querySelector(".js-checkmark").classList.remove("is-complete");
+                this.toast.classList.remove("is-complete");
+              }, 3000);
             })
             .catch((error) => console.error(error));
         }

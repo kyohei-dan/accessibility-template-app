@@ -1,0 +1,1 @@
+<div class="loading-mask js-loading-mask"></div>

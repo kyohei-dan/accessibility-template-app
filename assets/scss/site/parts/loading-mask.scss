@@ -1,0 +1,30 @@
+@use "../../base/shortcut-functions" as f;
+@use "../modules" as modules;
+
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  animation: fadein 1s forwards;
+
+  &.is-loading {
+    opacity: 1;
+    visibility: visible;
+    animation: none;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

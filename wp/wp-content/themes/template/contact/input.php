@@ -21,11 +21,11 @@
   <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="contact">
+<body class="contact" data-barba="wrapper">
   <div class="site-wrapper">
     <?php part("header"); ?>
 
-    <main>
+    <main data-barba="container" data-barba-namespace="contact">
       <header class="lower-header">
         <div class="inner">
           <h1 id="formTitle">お問い合わせ</h1>
@@ -203,6 +203,8 @@
     </main>
 
     <?php part("footer"); ?>
+    <?php part("loading-mask"); ?>
+
   </div>
 
   <?php wp_footer(); ?>

@@ -10,11 +10,12 @@
   <?php wp_head(); ?>
 </head>
 
-<body class="archive-news">
+<body class="archive-news" data-barba="wrapper">
   <div class="site-wrapper">
+
     <?php part("header"); ?>
 
-    <main>
+    <main data-barba="container" data-barba-namespace="archive-news">
       <header class="lower-header">
         <div class="inner">
           <h1>お知らせ</h1>
@@ -42,7 +43,7 @@
                 <li>
                   <a href="<?php the_permalink(); ?>">
                     <div class="info">
-                      <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('Y.m.d'); ?></time>
+                      <time aria-label="投稿日" itemprop="datePublished" datetime="<?php the_time('Y-m-d'); ?>T<?php the_time('H:i:sP'); ?>"><?php the_time('Y.m.d'); ?></time>
                       <p><?php echo get_the_terms($post->ID, 'news-category')[0]->name; ?></p>
                     </div>
                     <p class="title"><?php the_title(); ?></p>
@@ -100,6 +101,7 @@
     </main>
 
     <?php part("footer"); ?>
+    <?php part("loading-mask"); ?>
   </div>
 
   <?php wp_footer(); ?>
