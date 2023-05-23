@@ -1,0 +1,102 @@
+@use "../../base/shortcut-functions" as f;
+@use "../modules" as modules;
+
+.c-contact {
+  .inner {
+    padding: 6rem 0 8rem 0;
+    background-color: #fff;
+    @include f.mq(sp) {
+      padding: 6rem 0 10rem 0;
+    }
+  }
+
+  .c-contact-title {
+    position: relative;
+    z-index: 1;
+    display: block;
+    padding: 4rem 0 7.1rem;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+    @include f.mq(sp) {
+      font-size: 3rem;
+    }
+    &::before {
+      content: attr(data-text) "";
+      position: absolute;
+      top: -3rem;
+      left: 50%;
+      z-index: -1;
+      transform: translateX(-50%);
+      width: 56.6rem;
+      height: 14.1rem;
+      color: #f1f1f1;
+      font-size: 12.6rem;
+      font-weight: 400;
+      letter-spacing: -0.05em;
+    }
+  }
+
+  .c-contact-block {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+    @include f.mq(sp) {
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .c-contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 48rem;
+      height: 24rem;
+      border-radius: 0.4rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
+      color: #002864;
+      @include f.mq(sp) {
+        width: 64rem;
+        height: 32rem;
+      }
+
+      .c-contact-link-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        @include f.mq(sp) {
+          font-size: 3rem;
+        }
+      }
+
+      .c-contact-link-more {
+        margin: 3.2rem 0 0 0;
+        font-size: 1.6rem;
+        letter-spacing: 0.1em;
+        @include f.mq(sp) {
+          font-size: 2.2rem;
+        }
+      }
+
+      .c-contact-link-tel {
+        font-size: 2.8rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        @include f.mq(sp) {
+          font-size: 3.6rem;
+        }
+      }
+
+      .c-contact-link-hours {
+        margin: 3.2rem 0 0 0;
+        font-size: 1.6rem;
+        line-height: 1.6;
+        letter-spacing: 0.1em;
+        @include f.mq(sp) {
+          font-size: 2.2rem;
+        }
+      }
+    }
+  }
+}

@@ -14,7 +14,8 @@
     margin: 0 auto;
     padding: 8rem 0 6rem;
     @include f.mq(sp) {
-      padding: 6.4rem 0 4.8rem;
+      padding: 8.8rem 0 4.8rem;
+      max-width: 64rem;
     }
 
     &[data-anime="true"] {
@@ -34,22 +35,50 @@
       transform: scaleX(0);
       transform-origin: left top;
       transition: transform 1s cubic-bezier(1, 0, 0, 1);
+      @include f.mq(sp) {
+      }
     }
   }
 
-  a {
+  .footer-link {
     display: flex;
     justify-content: center;
     width: 100%;
     height: 4.8rem;
     color: #fff;
     font-size: 3.2rem;
+    font-size: 3.2rem;
     @include f.mq(sp) {
       height: 3.2rem;
+      font-size: 4.8rem;
     }
   }
 
-  .tel {
+  .footer-nav {
+    ul {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      margin: 2rem 0 0 0;
+      @include f.mq(sp) {
+        align-items: center;
+        flex-direction: column;
+        gap: 6.4rem;
+        margin: 8rem 0 0 0;
+      }
+      li {
+        a {
+          color: #fff;
+          font-size: 2rem;
+          @include f.mq(sp) {
+            font-size: 2.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-tel {
     display: flex;
     justify-content: center;
     margin: 4rem 0 0 0;
@@ -63,7 +92,7 @@
     }
   }
 
-  .hours {
+  .footer-hours {
     display: flex;
     justify-content: center;
     margin-top: 0.8rem;
@@ -75,7 +104,7 @@
     }
   }
 
-  small {
+  .footer-copy {
     display: flex;
     justify-content: center;
     margin-top: 8rem;

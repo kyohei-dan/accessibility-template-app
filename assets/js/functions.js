@@ -35,7 +35,7 @@ export const functions = {
             currentActiveIndex.classList.remove("is-current-section");
           }
 
-          const newActiveIndex = document.querySelector(`a[data-link-id='${entry.target.id}']`);
+          const newActiveIndex = document.querySelector(`[data-link-id='${entry.target.id}']`);
           newActiveIndex.classList.add("is-current-section");
         }
       });
@@ -75,16 +75,17 @@ export const functions = {
 
   // ▼headerリンクを押したときのスムーススクロール処理
   smoothScroll: () => {
-    const anchorLinks = document.querySelectorAll("a[data-link-id]");
-    if (!anchorLinks) return;
+    const topPage = document.querySelector(".front-page");
+    const drawerAnchorLinks = document.querySelectorAll("a[data-smooth]");
+    if (!topPage) return;
 
-    anchorLinks.forEach((anchorLink) => {
-      anchorLink.addEventListener("click", () => {
-        const targetId = anchorLink.dataset.linkId;
-        const targetElement = document.querySelector(`#${targetId}`);
-        const targetOffsetTop = window.pageYOffset + targetElement.getBoundingClientRect().top;
+    drawerAnchorLinks.forEach((anchorLink) => {
+      anchorLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        const targetOffsetTop = window.pageYOffset + document.querySelector(`#${anchorLink.dataset.linkId}`).getBoundingClientRect().top;
+        const totalScrollAmount = targetOffsetTop - document.querySelector(".site-header").offsetHeight;
         window.scrollTo({
-          top: targetOffsetTop,
+          top: totalScrollAmount,
           behavior: "smooth",
         });
       });
@@ -93,61 +94,106 @@ export const functions = {
 
   // ▼メガメニューがあるリンクをクリックした際に
   megaMenu: () => {
-    const navDetail = document.getElementsByClassName("nav-detail")[0];
-    const liElements = document.getElementsByTagName("li");
-    for (let i = 0; i < liElements.length; i++) {
-      liElements[i].addEventListener("mouseover", function () {
-        if (this.classList.contains("nav-detail")) {
-          this.classList.add("new-class");
-        }
-      });
-    }
-
     const parent = document.querySelectorAll(".js-global-menu-list-item");
-    parent.forEach((e) => {
-      e.addEventListener("mouseover", () => {
-        let section = e.querySelector(".nav-detail");
-        if (section) {
-          section.setAttribute("aria-hidden", false);
-        }
-      });
+    if (!parent) return;
 
-      e.addEventListener("mouseleave", () => {
-        let section = e.querySelector(".nav-detail");
-        if (section) {
+    parent.forEach((e) => {
+      const openBtn = e.querySelector(".js-nav-detail-open-button");
+      const section = e.querySelector(".js-nav-detail");
+      let beforeFocusedElement;
+
+      if (section) {
+        const focusableElements = section.querySelectorAll("a[href], button");
+
+        // メガメニューを押したときの処理
+        e.querySelector(".js-nav-detail-open-button").addEventListener("click", (event) => {
+          if (event.currentTarget.getAttribute("aria-expanded") === "false") {
+            beforeFocusedElement = document.activeElement;
+            openBtn.setAttribute("aria-expanded", true);
+            section.setAttribute("aria-hidden", false);
+          } else {
+            openBtn.setAttribute("aria-expanded", false);
+            section.setAttribute("aria-hidden", true);
+          }
+        });
+
+        // キーボード操作でメガメニューを開いてshift＋tabで戻るときにメガメニューを閉じる処理
+        e.addEventListener("keydown", (event) => {
+          if (event.shiftKey && event.keyCode === 9) {
+            openBtn.setAttribute("aria-expanded", false);
+            section.setAttribute("aria-hidden", true);
+          }
+        });
+
+        // hoverしたときの処理
+        e.addEventListener("mouseover", () => {
+          openBtn.setAttribute("aria-expanded", true);
+          section.setAttribute("aria-hidden", false);
+        });
+
+        // hoverを外したときの処理
+        e.addEventListener("mouseleave", () => {
+          openBtn.setAttribute("aria-expanded", false);
           section.setAttribute("aria-hidden", true);
-        }
-      });
+        });
+
+        // 閉じるボタンを押したときの処理
+        e.querySelector(".js-nav-detail-close-button").addEventListener("click", () => {
+          openBtn.setAttribute("aria-expanded", false);
+          section.setAttribute("aria-hidden", true);
+
+          if (beforeFocusedElement) {
+            beforeFocusedElement.focus();
+            beforeFocusedElement = null;
+          }
+        });
+
+        // メガメニュー内の最初の要素にfocusされshift＋tabが押されたときに最後の要素にfocusを移す処理
+        focusableElements[0].addEventListener("keydown", (event) => {
+          if (event.key === "Tab" && event.shiftKey) {
+            event.preventDefault();
+            focusableElements[focusableElements.length - 1].focus();
+          }
+        });
+
+        // メガメニュー内の最後の要素にfocusされtabが押されたときに最初の要素にfocusを移す処理
+        focusableElements[focusableElements.length - 1].addEventListener("keydown", (event) => {
+          if (event.key === "Tab" && !event.shiftKey) {
+            event.preventDefault();
+            focusableElements[0].focus();
+          }
+        });
+      }
     });
   },
 
   // ▼ドロワーメニューの開閉処理
   drawerMenu: () => {
+    const topPage = document.querySelector(".front-page");
     const drawerBtn = document.querySelector(".js-drawer-btn");
-    const drawerAnchorLinks = document.querySelectorAll("[data-link-id]");
     if (!drawerBtn) return;
 
-    function handledrawerOpen() {
+    const handledrawerOpen = () => {
       if (drawerBtn.getAttribute("aria-expanded") === "false") {
-        document.querySelector("body").setAttribute("data-expanded", "true");
+        document.body.setAttribute("data-expanded", true);
         drawerBtn.setAttribute("aria-expanded", true);
       } else {
-        document.querySelector("body").setAttribute("data-expanded", "false");
+        document.body.setAttribute("data-expanded", false);
         drawerBtn.setAttribute("aria-expanded", false);
       }
-    }
+    };
 
     drawerBtn.addEventListener("click", handledrawerOpen);
 
-    if (window.matchMedia("(max-width: 750px)").matches) {
-      drawerAnchorLinks.forEach((drawerAnchorLink) => {
+    if (window.matchMedia("(max-width: 750px)").matches && topPage) {
+      document.querySelectorAll("a[data-link-id]").forEach((drawerAnchorLink) => {
         drawerAnchorLink.addEventListener("click", handledrawerOpen);
       });
     }
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        document.querySelector("body").setAttribute("data-expanded", "false");
+        document.body.setAttribute("data-expanded", false);
         drawerBtn.setAttribute("aria-expanded", false);
         drawerBtn.focus();
       }

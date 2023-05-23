@@ -3,7 +3,7 @@
 
     <!--=============== ▼FAVICON ===============-->
     <link rel="icon" href="/assets/favicon.svg" sizes="any" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/assets//apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <!--=============== ▼GOOGLE FONTS ===============-->
     <link rel="preconnect" href="https://fonts.googleapis.com">

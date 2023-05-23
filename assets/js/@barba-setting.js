@@ -31,8 +31,8 @@ barba.init({
         mask.classList.remove("is-loading");
       },
       after() {
-        reloadScripts();
         samePageNotReload();
+        reloadScripts();
       },
     },
   ],

@@ -5,7 +5,7 @@
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   background-color: #fff;
 
   .inner {
@@ -15,7 +15,6 @@
     margin-inline: auto;
     padding: 0 6rem;
     max-width: 140rem;
-    height: 9.5rem;
   }
 
   h1 a,
@@ -36,59 +35,111 @@
       display: flex;
       align-items: center;
       gap: 5rem;
+      height: 9.4rem;
 
       > li {
-        &:last-child {
-          a {
-            padding: 1rem 2.4rem;
-            border: 2px solid #ddd;
-            border-radius: 2rem;
-          }
-        }
-
-        &:not(:last-child) > a {
-          @include modules.hover {
-            color: #002864;
-            &::after {
-              width: 100%;
-              @include f.mq(sp) {
-                width: 1rem;
-              }
-            }
-          }
-
-          &.is-current-section {
-            color: #002864;
-            &::after {
-              width: 100%;
-              @include f.mq(sp) {
-                width: 2rem;
-              }
-            }
-          }
-
-          &::after {
-            content: "";
-            position: absolute;
-            bottom: -1rem;
-            left: 50%;
-            z-index: 10;
-            display: block;
-            width: 0;
-            height: 1px;
-            background-color: #002864;
-            transform: translateX(-50%);
-            transition: width 0.2s ease;
-          }
-        }
-
-        > a {
+        // 共通
+        > a,
+        > button {
           position: relative;
-          display: block;
           color: #333;
           font-size: 1.6rem;
           @include f.mq(sp) {
             font-size: 3.2rem;
+          }
+        }
+
+        // お問い合わせボタン以外
+        &:not(:last-child) {
+          height: 100%;
+          > a,
+          > button {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: 2rem;
+              left: 50%;
+              z-index: 10;
+              display: block;
+              width: 0;
+              height: 1px;
+              background-color: #002864;
+              transform: translateX(-50%);
+              transition: width 0.2s ease;
+            }
+
+            &:is(&:hover, &[aria-expanded="true"]) {
+              color: #002864;
+              &::before {
+                transform: translateY(-50%) rotate(-180deg);
+              }
+
+              &::after {
+                width: 100%;
+              }
+            }
+
+            &.is-current-section {
+              color: #002864;
+              &::after {
+                width: 100%;
+              }
+            }
+          }
+
+          > button {
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: -1.6rem;
+              width: 1rem;
+              height: 0.8rem;
+              background-color: #002864;
+              clip-path: polygon(0 0, 100% 0%, 50% 100%);
+              transform: translateY(-50%);
+              transition: transform 0.2s ease;
+            }
+          }
+        }
+
+        // お問い合わせボタン
+        &:last-child {
+          a {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            position: relative;
+            display: block;
+            padding: 1rem 2.4rem;
+            min-width: 15rem;
+            border: 1px solid #ddd;
+            border-radius: 2rem;
+            overflow: hidden;
+
+            @include modules.hover {
+              color: #fff;
+              &::before {
+                transform: translateX(0);
+              }
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #002864;
+              transform: translateX(-100%);
+              transition: transform 0.3s;
+              z-index: -1;
+            }
           }
         }
 
@@ -101,10 +152,14 @@
           background-color: #fff;
           box-shadow: 0px 10px 10px -6px rgba(0, 0, 0, 0.1);
           scrollbar-gutter: stable;
-          visibility: hidden;
           overflow: auto;
+          visibility: hidden;
+          clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+          transition: visibility 0.3s, clip-path 0.3s;
+
           &[aria-hidden="false"] {
             visibility: visible;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           }
 
           .nav-detail-content {
@@ -215,8 +270,8 @@
       height: 12rem;
     }
 
-    h1 img,
-    div img {
+    h1 a,
+    .logo a {
       width: 21.9rem;
       height: 3.1rem;
     }
@@ -231,89 +286,115 @@
       overflow: auto;
       visibility: hidden;
       transition: height 0.4s ease, visibility 0.4s ease;
-    }
+      .global-menu-list {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
 
-    nav ul {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 0;
-    }
+        > li {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
 
-    nav ul li {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
+          &:not(:last-child) + li:not(:last-child) {
+            border-top: 1px solid #e0d9d9;
+          }
 
-    nav > ul > li:not(:last-child) + li:not(:last-child) {
-      border-top: 1px solid #e0d9d9;
-    }
+          &:nth-child(5) {
+            border-bottom: 1px solid #e0d9d9;
+          }
 
-    nav > ul > li:nth-child(5) {
-      border-bottom: 1px solid #e0d9d9;
-    }
+          // 共通
+          > a,
+          > button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+          }
 
-    nav > ul > li:last-child {
-      align-items: center;
-      margin: 6.4rem 0;
-    }
+          // お問い合わせボタン以外
+          &:not(:last-child) {
+            height: auto;
+            > a,
+            > button {
+              height: auto;
+              padding: 4rem 4rem;
+              border-left: 4px solid #002864;
 
-    nav > ul > li > a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+              &::after {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                display: inline-flex;
+                width: 2rem;
+                height: 2rem;
+                border-right: 2px solid #002864;
+                border-bottom: 2px solid #002864;
+                background-color: transparent;
+                transform: rotate(-45deg);
+              }
 
-    nav > ul > li:not(:last-child) > a {
-      padding: 4rem 4rem;
-      border-left: 4px solid #002864;
-    }
+              &:is(&:hover, &[aria-expanded="true"]) {
+                &::after {
+                  width: 2rem;
+                }
+              }
 
-    nav > ul > li:not(:last-child) > a::after {
-      position: relative;
-      bottom: auto;
-      left: auto;
-      display: inline-flex;
-      width: 2rem;
-      height: 2rem;
-      border-right: 2px solid #002864;
-      border-bottom: 2px solid #002864;
-      background-color: transparent;
-      transform: rotate(-45deg);
-    }
+              &.is-current-section {
+                &::after {
+                  width: 2rem;
+                }
+              }
+            }
 
-    nav > ul > li:last-child a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      width: 62rem;
-      height: 10rem;
-      border-radius: 5rem;
-      border: 2px solid #002864;
-      font-size: 3rem;
-    }
+            > button {
+              &::before {
+                display: none;
+              }
+            }
+          }
 
-    nav > ul > li:last-child a::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 1.6rem;
-      z-index: 10;
-      width: 8rem;
-      height: 8rem;
-      background-image: url("/assets/images/common/icon-contact.png");
-      background-repeat: no-repeat;
-      background-size: 3.4rem 2.6rem;
-      background-position: center;
-      border: 2px solid #002864;
-      border-radius: 50%;
-      transform: translateY(-50%);
-    }
+          // お問い合わせボタン
+          &:last-child {
+            align-items: center;
+            margin: 6.4rem 0 0 0;
 
-    nav ul li a.hover::after,
-    nav ul li a.is-current-section::after {
-      width: 1rem;
+            a {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 0;
+              width: 62rem;
+              height: 10rem;
+              border-radius: 5rem;
+              border: 2px solid #002864;
+              font-size: 3rem;
+
+              &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 1.6rem;
+                z-index: 10;
+                width: 8rem;
+                height: 8rem;
+                background-color: transparent;
+                background-image: url("/assets/images/common/icon-contact.png");
+                background-repeat: no-repeat;
+                background-size: 3.4rem 2.6rem;
+                background-position: center;
+                border: 2px solid #002864;
+                border-radius: 50%;
+                transform: translateY(-50%);
+              }
+            }
+          }
+
+          .nav-detail {
+            display: none;
+          }
+        }
+      }
     }
 
     .drawer-btn {

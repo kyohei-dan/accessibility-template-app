@@ -327,6 +327,7 @@
       margin-inline: auto;
       width: min(100%, 100rem);
       @include f.mq(sp) {
+        z-index: 1;
         padding: 0 0 18rem 0;
       }
     }
@@ -494,6 +495,9 @@
       width: 100%;
       height: 56rem;
       background-color: #000b26;
+      @include f.mq(sp) {
+        height: auto;
+      }
 
       img {
         width: 100%;
@@ -658,43 +662,6 @@
             font-size: 2.4rem;
           }
         }
-      }
-    }
-  }
-
-  .contact {
-    content-visibility: auto;
-    contain-intrinsic-size: 30rem;
-
-    .inner {
-      padding: 80px 0 50px;
-      background-color: #f0f0f0;
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      width: 56rem;
-      height: 10rem;
-      background-color: #002864;
-      color: #fff;
-      font-size: 3.2rem;
-      letter-spacing: 0.2em;
-      @include f.mq(sp) {
-        width: 60rem;
-        font-size: 4rem;
-      }
-    }
-
-    p {
-      margin: 2.4rem 0 0 0;
-      font-size: 2rem;
-      text-align: center;
-      @include f.mq(sp) {
-        margin: 3.2rem 0 0 0;
-        font-size: 2.8rem;
       }
     }
   }

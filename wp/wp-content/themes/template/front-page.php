@@ -321,12 +321,7 @@
           </div>
         </section>
 
-        <div class="contact">
-          <div class="inner">
-            <a href="/contact/">CONTACT</a>
-            <p>まずは、お気軽にお問い合わせください。<br aria-hidden="true">お急ぎの方は 00-0000-0000<br class="sp" aria-hidden="true"> までお問い合わせください。</p>
-          </div>
-        </div>
+        <?php part("contactus"); ?>
 
       </main>
 
