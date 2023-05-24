@@ -16,6 +16,9 @@
           <a href="/#index5">よくある質問</a>
         </li>
         <li>
+          <a href="/company/">会社概要</a>
+        </li>
+        <li>
           <a href="/contact/" data-barba-prevent>お問い合わせ</a>
         </li>
       </ul>

@@ -48,6 +48,9 @@
           <a href="/#index5" data-link-id="index5" data-smooth data-barba-prevent>よくある質問</a>
         </li>
         <li class="js-global-menu-list-item">
+          <a href="/company/" data-barba-prevent>会社概要</a>
+        </li>
+        <li class="js-global-menu-list-item">
           <a href="/contact/" data-barba-prevent>お問い合わせ</a>
         </li>
       </ul>

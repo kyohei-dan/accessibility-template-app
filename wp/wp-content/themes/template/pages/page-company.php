@@ -10,15 +10,15 @@
   <?php wp_head(); ?>
 </head>
 
-<body class="archive-news" data-barba="wrapper">
+<body class="company" data-barba="wrapper">
   <div class="site-wrapper">
 
     <?php part("header"); ?>
 
-    <main data-barba="container" data-barba-namespace="archive-news">
+    <main data-barba="container" data-barba-namespace="company">
       <header class="lower-header">
         <div class="inner">
-          <h1>お知らせ</h1>
+          <h1>会社概要</h1>
         </div>
       </header>
 
@@ -28,76 +28,58 @@
             <a href="/" property="item">ホーム</a>
           </li>
           <li property="itemListElement">
-            <span aria-current="page" property="item">お知らせ</span>
+            <span aria-current="page" property="item">会社概要</span>
           </li>
         </ol>
       </nav>
 
-      <section class="posts" aria-label="お知らせ記事">
+      <section class="outline" aria-label="会社概要">
         <div class="inner">
-          <?php $posts = Site\get_news_posts(10); ?>
-          <?php if ($posts) { ?>
-            <ul>
-              <?php foreach ($posts as $post) { ?>
-                <?php setup_postdata($post); ?>
-                <li>
-                  <a href="<?php the_permalink(); ?>">
-                    <div class="info">
-                      <time aria-label="投稿日" itemprop="datePublished" datetime="<?php the_time('Y-m-d'); ?>T<?php the_time('H:i:sP'); ?>"><?php the_time('Y.m.d'); ?></time>
-                      <p><?php echo get_the_terms($post->ID, 'news-category')[0]->name; ?></p>
-                    </div>
-                    <p class="title"><?php the_title(); ?></p>
-                  </a>
-                </li>
-              <?php }; ?>
-              <?php wp_reset_postdata(); ?>
-            </ul>
-          <?php } else { ?>
-            <p class="empty-text">現在、お知らせ記事はありません。</p>
-          <?php }; ?>
+          <dl class="outline-list">
+            <div>
+              <dt>社名</dt>
+              <dd>株式会社サンプル</dd>
+            </div>
+            <div>
+              <dt>所在地</dt>
+              <dd><data value="000-0000">〒000-0000</data><br>大阪府大阪市中央区大阪城1-1</dd>
+            </div>
+            <div>
+              <dt>設立</dt>
+              <dd>2023年1月1日</dd>
+            </div>
+            <div>
+              <dt>電話</dt>
+              <dd>000-0000-0000</dd>
+            </div>
+            <div>
+              <dt>代表取締役</dt>
+              <dd>サンプル</dd>
+            </div>
+            <div>
+              <dt>取引銀行</dt>
+              <dd>サンプル銀行</dd>
+            </div>
+            <div>
+              <dt>資本金</dt>
+              <dd>1000万円</dd>
+            </div>
+            <div>
+              <dt>問い合わせ</dt>
+              <dd>info@sample.com</dd>
+            </div>
+            <div>
+              <dt>事業内容</dt>
+              <dd>
+                サンプル事業
+              </dd>
+            </div>
+          </dl>
+          <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6561.4675086751095!2d135.52228584738896!3d34.686668541698474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e0cd5c283afd%3A0xf01d07d5ca11e41!2z5aSn6Ziq5Z-O!5e0!3m2!1sja!2sjp!4v1684897230872!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
         </div>
       </section>
-
-      <nav class="pagination" aria-label="ページネーション">
-        <div class="inner">
-          <?php $p = Site\get_pagination(10); ?>
-          <?php if ($p['per_page'] !== 1) { ?>
-            <?php if ($p['current_pages'] > 1) { ?>
-              <a class="prev-link" href="<?php echo get_pagenum_link($p['current_pages'] - 1); ?>">前のページ</a>
-            <?php } else { ?>
-              <a class="prev-link empty"></a>
-            <?php } ?>
-            <ul>
-              <?php for ($i = 1; $i <= $p['per_page']; $i++) { ?>
-                <?php if (!($i >= $p['current_pages'] + $p['range'] + 1 || $i <= $p['current_pages'] - $p['range'] - 1)) { ?>
-                  <?php if ($p['current_pages'] === $i) { ?>
-                    <li class="is_current-page">
-                      <a aria-current="page"><span class="visually-hidden">page </span><?php echo $i ?></a>
-                    </li>
-                  <?php } else { ?>
-                    <li>
-                      <a href="<?php echo esc_url(get_pagenum_link($i)); ?>"><span class="visually-hidden">page </span><?php echo $i ?></a>
-                    </li>
-                  <?php } ?>
-                <?php } ?>
-              <?php } ?>
-            </ul>
-            <?php if ($p['current_pages'] < $p['per_page']) { ?>
-              <a class="next-link" href="<?php echo get_pagenum_link($p['current_pages'] + 1); ?>">次のページ</a>
-            <?php } else { ?>
-              <a class="next-link empty"></a>
-            <?php } ?>
-          <?php } else { ?>
-            <a class="prev-link empty"></a>
-            <ul>
-              <li class="is_current-page">
-                <a aria-current="page"><span class="visually-hidden">page </span>1</a>
-              </li>
-            </ul>
-            <a class="next-link empty"></a>
-          <?php } ?>
-        </div>
-      </nav>
     </main>
 
     <?php part("footer"); ?>
