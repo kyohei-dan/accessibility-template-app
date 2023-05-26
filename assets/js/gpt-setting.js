@@ -1,21 +1,11 @@
-// textareaに文字が入力の有無で、送信ボタンの状態を変更する処理
 (() => {
-  const textarea = document.querySelector(".js-chat-input");
-  textarea.addEventListener("input", () => {
-    if (textarea.value.length === 0) {
-      document.querySelector(".js-send-button").setAttribute("disabled", true);
-    } else {
-      document.querySelector(".js-send-button").removeAttribute("disabled");
-    }
-    textarea.style.height = "auto";
-    textarea.style.height = `${textarea.scrollHeight}px`;
-  });
-})();
-
-(() => {
-  const API_KEY = "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";
   const API_URL = "https://api.openai.com/v1/chat/completions";
-
+  const resetButton = document.querySelector(".js-reset-button");
+  const themeButton = document.querySelector(".js-theme-button");
+  const chatInput = document.querySelector(".js-chat-input");
+  const initialInputHeight = chatInput.scrollHeight;
+  let API_KEY = null;
+  let chatLog = JSON.parse(window.localStorage.getItem("chat-log"));
   let messageList = [
     {
       role: "system",
@@ -23,7 +13,18 @@
     },
   ];
 
-  let chatLog = JSON.parse(window.localStorage.getItem("chat-log"));
+  // APIキーを入力させるアラートを表示させる表示
+  const handleAPIKey = () => {
+    const localStorageAPIKey = localStorage.getItem("chatgpt-api-key");
+
+    if (localStorageAPIKey) {
+      API_KEY = localStorageAPIKey;
+    } else {
+      const newAPIKey = prompt("API keyを入力してください");
+      localStorage.setItem("chatgpt-api-key", newAPIKey.trim());
+      API_KEY = newAPIKey.trim();
+    }
+  };
 
   // 改行コードをbrへ変換する関数
   const nl2br = (str = "") => {
@@ -69,8 +70,8 @@
       // 奇数の要素
       if (i % 2 === 1) {
         liElement = createElem("li", ["response-text"]);
-        let p = createElem("p", [], {}, message.content);
-        liElement.appendChild(p);
+        let div = createElem("div", [], {}, message.content);
+        liElement.appendChild(div);
 
         let fieldset = createElem("fieldset");
         liElement.appendChild(fieldset);
@@ -98,21 +99,72 @@
 
         let spanTextContent = createElem("span", ["text"], {}, "コンテンツに選択");
         labelContent.appendChild(spanTextContent);
+
+        let labelCopy = createElem("label");
+        fieldset.appendChild(labelCopy);
+
+        let spanCopyIcon = createElem("span", ["material-symbols-rounded"], {}, "content_copy");
+        labelCopy.appendChild(spanCopyIcon);
       }
 
       document.querySelector(".js-chat-list").appendChild(liElement);
     });
   };
 
-  if (chatLog) {
-    messageList = chatLog.filter((obj) => obj.role !== "system");
-    renderMessages();
-  }
+  // 読み込み時の処理
+  window.addEventListener("DOMContentLoaded", () => {
+    handleAPIKey();
+    const themeColor = localStorage.getItem("themeColor");
+    document.body.classList.toggle("light-mode", themeColor === "light_mode");
+    themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
 
+    if (chatLog) {
+      messageList = chatLog.filter((obj) => obj.role !== "system");
+      renderMessages();
+    }
+  });
+
+  // テキストエリアを入力したときに高さを調整する処理
+  chatInput.addEventListener("input", () => {
+    chatInput.style.height = `${initialInputHeight}px`;
+    chatInput.style.height = `${chatInput.scrollHeight}px`;
+  });
+
+  // リセットボタンを押したときの処理
+  resetButton.addEventListener("click", () => {
+    if (confirm("入力したチャットを削除してもいいですか？")) {
+      localStorage.removeItem("chat-log");
+      location.reload();
+    }
+  });
+
+  // テーマボタンを押したときの処理
+  themeButton.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    localStorage.setItem("themeColor", themeButton.innerText);
+    themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
+  });
+
+  // 親要素を取得
+  const parentElement = document.querySelector(".js-chat-list");
+  parentElement.addEventListener("click", function (event) {
+    const clickedElement = event.target;
+    if (!clickedElement.matches(".material-symbols-rounded p")) return;
+    console.log("click event is fired.");
+    const parent = clickedElement.closest(".response-text");
+    console.log(parent);
+    const reponseTextElement = parent.querySelector(":scope > div p");
+    console.log(reponseTextElement);
+    navigator.clipboard.writeText(reponseTextElement.textContent);
+    clickedElement.textContent = "done";
+    setTimeout(() => (clickedElement.textContent = "content_copy"), 1000);
+  });
+
+  // 送信ボタンを押したときの処理
   document.querySelector(".js-send-button").addEventListener("click", (event) => {
     event.preventDefault();
 
-    const prompt = document.querySelector(".js-chat-input").value;
+    const prompt = chatInput.value;
     setMessage("user", prompt);
     setLocalStorage();
 
@@ -121,8 +173,8 @@
     sendLiElement.textContent = chatLog[messageList.length - 1].content;
 
     document.querySelector(".js-chat-list").appendChild(sendLiElement);
-    document.querySelector(".js-chat-input").value = "";
-    document.querySelector(".js-chat-input").style.height = "auto";
+    chatInput.value = "";
+    chatInput.style.height = `${initialInputHeight}px`;
     document.querySelector(".js-loader").classList.add("is-loading");
 
     fetch(API_URL, {
@@ -151,8 +203,8 @@
         setLocalStorage();
 
         let li = createElem("li", ["response-text"]);
-        let p = createElem("p", [], {}, data.choices[0].message.content);
-        li.appendChild(p);
+        let div = createElem("div", [], {}, data.choices[0].message.content);
+        li.appendChild(div);
 
         let fieldset = createElem("fieldset");
         li.appendChild(fieldset);
@@ -181,21 +233,17 @@
         let spanTextContent = createElem("span", ["text"], {}, "コンテンツに選択");
         labelContent.appendChild(spanTextContent);
 
+        let labelCopy = createElem("label");
+        fieldset.appendChild(labelCopy);
+
+        let spanCopyIcon = createElem("span", ["material-symbols-rounded"], {}, "content_copy");
+        labelCopy.appendChild(spanCopyIcon);
+
         document.querySelector(".js-chat-list").appendChild(li);
       })
       .catch((error) => {
         console.error(error.message);
       });
-  });
-})();
-
-(() => {
-  document.querySelector(".js-reset-button").addEventListener("click", () => {
-    let chatLog = JSON.parse(window.localStorage.getItem("chat-log"));
-    if (chatLog) {
-      localStorage.removeItem("chat-log");
-      location.reload();
-    }
   });
 })();
 
