@@ -3700,4 +3700,106 @@ img {
   font-weight: 400;
 }
 
+.notfound .lower-header {
+  position: relative;
+  padding: 6.4rem 12rem;
+}
+.notfound .lower-header::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 9.6rem;
+  height: 3px;
+  background: linear-gradient(to left, #002864, #005169 25%, #006882 50%, #00a3a3 70%, #dae000 95%, #dae000);
+}
+.notfound .lower-header h1 {
+  color: #002864;
+  font-size: 4.4rem;
+  font-family: "Shippori Mincho B1", serif;
+  line-height: 1.6;
+}
+.notfound .breadcrumb {
+  padding: 2.4rem 0;
+  background-color: #e6f0f5;
+}
+.notfound .breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2rem;
+  margin: 0 auto;
+  max-width: 100rem;
+}
+@media screen and (max-width: 750px) {
+  .notfound .breadcrumb ol {
+    max-width: 65rem;
+  }
+}
+.notfound .breadcrumb ol li {
+  position: relative;
+  color: #828282;
+  font-size: 2rem;
+}
+.notfound .breadcrumb ol li + li {
+  position: relative;
+  padding-left: 2.6rem;
+}
+.notfound .breadcrumb ol li + li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-right: 1.2px solid #002864;
+  border-top: 1.2px solid #002864;
+  transform: translateY(-50%) rotate(45deg);
+}
+.notfound .breadcrumb ol li span {
+  color: #002864;
+}
+.notfound .notfound {
+  margin: 8rem 0 8rem 0;
+}
+.notfound .notfound .inner {
+  margin: 0 auto;
+  padding: 4rem;
+  max-width: 100rem;
+  background-color: #e6f0f5;
+}
+@media screen and (max-width: 750px) {
+  .notfound .notfound .inner {
+    padding: 16rem 4rem;
+    max-width: 64rem;
+  }
+}
+.notfound .notfound h2 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+}
+@media screen and (max-width: 750px) {
+  .notfound .notfound h2 {
+    font-size: 2.8rem;
+  }
+}
+.notfound .notfound .top-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4.8rem auto 0;
+  padding: 2rem 2.4rem;
+  max-width: 24rem;
+  background-color: #002864;
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 0.2em;
+}
+@media screen and (max-width: 750px) {
+  .notfound .notfound .top-btn {
+    max-width: 40rem;
+    font-size: 2.4rem;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map*/
