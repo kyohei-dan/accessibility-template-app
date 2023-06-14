@@ -24,17 +24,6 @@
       </header>
 
       <nav class="breadcrumb" aria-label="パンくずリストのナビゲーション">
-        <ol>
-          <li property="itemListElement">
-            <a href="/" property="item">ホーム</a>
-          </li>
-          <li property="itemListElement">
-            <span aria-current="page" property="item">404: Not Found</span>
-          </li>
-        </ol>
-      </nav>
-
-      <nav class="breadcrumb" aria-label="パンくずリストのナビゲーション">
         <ol itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
           <li property="itemListElement" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
             <a href="/" itemprop="item">
