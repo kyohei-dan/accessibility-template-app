@@ -2216,8 +2216,9 @@ img {
   border-top: 1.2px solid #002864;
   transform: translateY(-50%) rotate(45deg);
 }
-.archive-news .breadcrumb ol li span {
+.archive-news .breadcrumb ol li:last-child {
   color: #002864;
+  pointer-events: none;
 }
 .archive-news .posts {
   margin: 8rem 0 0 0;
@@ -2421,8 +2422,9 @@ img {
   border-top: 1.2px solid #002864;
   transform: translateY(-50%) rotate(45deg);
 }
-.single-news .breadcrumb ol li span {
+.single-news .breadcrumb ol li:last-child {
   color: #002864;
+  pointer-events: none;
 }
 .single-news .post {
   margin: 8rem 0 0 0;
@@ -2583,8 +2585,9 @@ img {
   border-top: 1.2px solid #002864;
   transform: translateY(-50%) rotate(45deg);
 }
-.contact .breadcrumb ol li span {
+.contact .breadcrumb ol li:last-child {
   color: #002864;
+  pointer-events: none;
 }
 .contact .input {
   margin: 8rem 0 0 0;
@@ -3183,8 +3186,9 @@ img {
   border-top: 1.2px solid #002864;
   transform: translateY(-50%) rotate(45deg);
 }
-.company .breadcrumb ol li span {
+.company .breadcrumb ol li:last-child {
   color: #002864;
+  pointer-events: none;
 }
 .company .outline .inner {
   margin: 0 auto;
@@ -3524,6 +3528,7 @@ img {
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 20px 10px;
   justify-content: center;
   background: var(--outgoing-chat-bg);
@@ -3542,17 +3547,23 @@ img {
 }
 .chat main .typing-textarea textarea {
   resize: none;
-  height: 55px;
+  height: 6.565rem;
   width: 100%;
   border: none;
   padding: 15px 45px 15px 20px;
   color: var(--text-color);
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   border-radius: 4px;
   max-height: 250px;
   overflow-y: auto;
   background: var(--incoming-chat-bg);
   outline: 1px solid var(--incoming-chat-border);
+}
+.chat main .typing-textarea textarea::-moz-placeholder {
+  font-size: 2.4rem;
+}
+.chat main .typing-textarea textarea::placeholder {
+  font-size: 2.4rem;
 }
 .chat main .typing-textarea textarea::-moz-placeholder {
   color: var(--placeholder-color);
@@ -3561,8 +3572,8 @@ img {
   color: var(--placeholder-color);
 }
 .chat main .typing-content span {
-  width: 55px;
-  height: 55px;
+  width: 6.565rem;
+  height: 6.565rem;
   display: flex;
   border-radius: 4px;
   font-size: 1.35rem;
@@ -3575,6 +3586,7 @@ img {
   right: 0;
   bottom: 0;
   visibility: hidden;
+  font-size: 3rem;
 }
 .chat main .typing-textarea textarea:valid ~ span {
   visibility: visible;
@@ -3755,8 +3767,9 @@ img {
   border-top: 1.2px solid #002864;
   transform: translateY(-50%) rotate(45deg);
 }
-.notfound .breadcrumb ol li span {
+.notfound .breadcrumb ol li:last-child {
   color: #002864;
+  pointer-events: none;
 }
 .notfound .notfound {
   margin: 8rem 0 8rem 0;

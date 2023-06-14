@@ -46,6 +46,7 @@
         + li {
           position: relative;
           padding-left: 2.6rem;
+
           &::before {
             content: "";
             position: absolute;
@@ -59,8 +60,9 @@
           }
         }
 
-        span {
+        &:last-child {
           color: #002864;
+          pointer-events: none;
         }
       }
     }

@@ -22,15 +22,24 @@
       </header>
 
       <nav class="breadcrumb" aria-label="パンくずリストのナビゲーション">
-        <ol>
-          <li property="itemListElement">
-            <a href="/" property="item">ホーム</a>
+        <ol itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
+          <li property="itemListElement" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+            <a href="/" itemprop="item">
+              <span itemprop="name">ホーム</span>
+            </a>
+            <meta itemprop="position" content="1" />
           </li>
-          <li property="itemListElement">
-            <a href="/news/" property="item">お知らせ</a>
+          <li property="itemListElement" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+            <a href="/news/" itemprop="item">
+              <span itemprop="name">お知らせ</span>
+            </a>
+            <meta itemprop="position" content="2" />
           </li>
-          <li property="itemListElement">
-            <span aria-current="page" property="item"><?php the_title(); ?></span>
+          <li property="itemListElement" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+            <a href="<?php the_permalink(); ?>" aria-current="page" itemprop="item" tabindex="-1">
+              <span itemprop="name"><?php the_title(); ?></span>
+            </a>
+            <meta itemprop="position" content="3" />
           </li>
         </ol>
       </nav>

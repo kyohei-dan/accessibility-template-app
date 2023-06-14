@@ -34,6 +34,23 @@
         </ol>
       </nav>
 
+      <nav class="breadcrumb" aria-label="パンくずリストのナビゲーション">
+        <ol itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList">
+          <li property="itemListElement" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+            <a href="/" itemprop="item">
+              <span itemprop="name">ホーム</span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </li>
+          <li property="itemListElement" itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
+            <a href="#" aria-current="page" itemprop="item" tabindex="-1">
+              <span itemprop="name">404: Not Found</span>
+            </a>
+            <meta itemprop="position" content="2" />
+          </li>
+        </ol>
+      </nav>
+
       <section class="notfound">
         <div class="inner">
           <h2>お探しのページは見つかりませんでした。</h2>

@@ -60,8 +60,9 @@
           }
         }
 
-        span {
+        &:last-child {
           color: #002864;
+          pointer-events: none;
         }
       }
     }

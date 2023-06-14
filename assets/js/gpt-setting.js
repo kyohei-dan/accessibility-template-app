@@ -150,11 +150,8 @@
   parentElement.addEventListener("click", function (event) {
     const clickedElement = event.target;
     if (!clickedElement.matches(".material-symbols-rounded p")) return;
-    console.log("click event is fired.");
     const parent = clickedElement.closest(".response-text");
-    console.log(parent);
     const reponseTextElement = parent.querySelector(":scope > div p");
-    console.log(reponseTextElement);
     navigator.clipboard.writeText(reponseTextElement.textContent);
     clickedElement.textContent = "done";
     setTimeout(() => (clickedElement.textContent = "content_copy"), 1000);
