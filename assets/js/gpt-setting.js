@@ -91,7 +91,7 @@
         let labelContent = createElem("label");
         fieldset.appendChild(labelContent);
 
-        let inputContent = createElem("input", [], { type: "radio", name: "content-type", value: message.content });
+        let inputContent = createElem("input", [], { type: "checkbox", name: "content-type[]", value: message.content });
         labelContent.appendChild(inputContent);
 
         let spanIconContent = createElem("span", ["icon"]);
@@ -221,7 +221,7 @@
         let labelContent = createElem("label");
         fieldset.appendChild(labelContent);
 
-        let inputContent = createElem("input", [], { type: "radio", name: "content-type", value: data.choices[0].message.content });
+        let inputContent = createElem("input", [], { type: "checkbox", name: "content-type[]", value: data.choices[0].message.content });
         labelContent.appendChild(inputContent);
 
         let spanIconContent = createElem("span", ["icon"]);
@@ -262,13 +262,13 @@
           e.checked ? (checkTitle = e.value) : "";
         });
 
-        document.querySelectorAll("input[name='content-type']").forEach((e) => {
-          e.checked ? (checkContent = e.value) : "";
+        document.querySelectorAll("input[name='content-type[]']").forEach((e) => {
+          e.checked ? (checkContent += e.value) : "";
         });
 
         this.auth = {
-          username: "admin",
-          password: "n4PR 6z3q x4DP b2DS 5QkH zOhU",
+          username: "admin-gpt",
+          password: "neMb ohmW dDLx 19bm FXqv Ot2S",
         };
 
         this.post = {
