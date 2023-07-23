@@ -1,0 +1,606 @@
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 1400px) and (min-width: 751px) {
+  html {
+    font-size: 0.7142857142857143vw;
+  }
+}
+
+@media (max-width: 750px) {
+  html {
+    font-size: 1.333vw;
+  }
+}
+
+/* ▼デフォルトのcssをリセット */
+#wpcontent:has(.sgs-chat) {
+  padding-left: 0px;
+}
+
+.wrap:has(.sgs-chat) {
+  margin: 0;
+}
+
+/* ▼プラグインのcss */
+
+.sgs-chat {
+  --text-color: #ffffff;
+  --icon-color: #acacbe;
+  --icon-hover-bg: #5b5e71;
+  --placeholder-color: #cccccc;
+  --outgoing-chat-bg: #343541;
+  --incoming-chat-bg: #444654;
+  --outgoing-chat-border: #343541;
+  --incoming-chat-border: #444654;
+  background-color: var(--outgoing-chat-bg);
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+}
+
+.sgs-chat.light-mode {
+  --text-color: #343541;
+  --icon-color: #a9a9bc;
+  --icon-hover-bg: #f1f1f3;
+  --placeholder-color: #9f9f9f;
+  --outgoing-chat-bg: #ffffff;
+  --incoming-chat-bg: #f7f7f8;
+  --outgoing-chat-border: #ffffff;
+  --incoming-chat-border: #d9d9e3;
+}
+
+.sgs-chat .site-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100vh;
+}
+
+.sgs-chat header .inner {
+  padding: 0 4rem;
+}
+
+.sgs-chat header h1 {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 2rem 0 0 0;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.sgs-chat header h1 svg {
+  width: 6rem;
+  height: auto;
+}
+
+.sgs-chat header h1 svg path {
+  fill: var(--text-color);
+}
+
+.sgs-chat header .select-container {
+  margin: 4rem 0 0 0;
+}
+
+.sgs-chat header .select-container label {
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+
+.sgs-chat header .select-container select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 100%;
+  height: 4rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #495057;
+  vertical-align: middle;
+  background: #fff no-repeat right 12px center/8px 10px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23b9b4c3' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e");
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.sgs-chat header .select-container select:focus {
+  border-color: rgba(#3e82ff, 0.3);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(#3e82ff, 0.2);
+}
+
+.sgs-chat header .select-container select:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+.sgs-chat header .select-container select[multiple] {
+  height: auto;
+  background-image: none;
+  padding-right: 15px;
+}
+
+.sgs-chat main .sgs-chat-contents {
+  position: relative;
+  padding-bottom: 8rem;
+}
+
+.sgs-chat main .sgs-chat-contents .gpt-model {
+  margin: 2.4rem 0 0 0;
+  padding: 2rem 0;
+  background-color: var(--incoming-chat-bg);
+  color: var(--text-color);
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.sgs-chat main .sgs-chat-contents .caution {
+  display: grid;
+  place-items: center;
+  height: 48rem;
+  color: var(--text-color);
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.sgs-chat main .sgs-chat-contents ul .request-text {
+  padding: 2.4rem 28rem;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  background-color: var(--outgoing-chat-bg);
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text {
+  padding: 2.4rem 28rem;
+  color: var(--text-color);
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  background-color: var(--incoming-chat-bg);
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text p {
+  font-size: 1.6rem;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text > div {
+  position: relative;
+  padding: 0 0 0 4.8rem;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3rem;
+  height: 3rem;
+  background-image: url("../images/chatgpt_logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text > div p:nth-of-type(1) {
+  margin: 0 0 3rem 0;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text > div ul,
+.sgs-chat main .sgs-chat-contents ul .response-text > div ol {
+  padding: 0 0 0 4rem;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text > div ul li,
+.sgs-chat main .sgs-chat-contents ul .response-text > div ol li {
+  list-style: auto;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+  margin: 2.4rem 0 0 5rem;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label:nth-child(3) span p {
+  font-size: 2.4rem;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label input:focus ~ .text::after {
+  transform: scale3d(1, 1, 1);
+  transform-origin: left;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label input:checked + .icon::before {
+  border-color: var(--text-color);
+  opacity: 0;
+  transform: rotate(45deg) scale3d(2, 2, 1);
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label input:checked + .icon::after {
+  border-bottom: 2px solid var(--text-color);
+  border-left: 2px solid var(--text-color);
+  opacity: 1;
+  transform: rotate(-45deg);
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label input:checked ~ .text {
+  color: var(--text-color);
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label .icon {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (max-width: 750px) {
+  .sgs-chat main .sgs-chat-contents ul fieldset label .icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label .icon::before,
+.sgs-chat main .sgs-chat-contents ul fieldset label .icon::after {
+  content: "";
+  position: absolute;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label .icon::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label .icon::after {
+  top: 0.5rem;
+  left: 0.3rem;
+  width: 1.2rem;
+  height: 0.4rem;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  opacity: 0;
+  transform: rotate(-225deg);
+  transition: opacity 0.5s, transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@media screen and (max-width: 750px) {
+  .sgs-chat main .sgs-chat-contents ul fieldset label .icon::after {
+    top: 0.7rem;
+    width: 2rem;
+    height: 1.2rem;
+  }
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label .text {
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.05em;
+  margin: 0 0 0 1rem;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label .text::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--text-color);
+  transform: scale3d(0, 1, 1);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+
+.sgs-chat main .sgs-chat-contents ul fieldset label .text p {
+  margin: 0;
+}
+
+.sgs-chat main .sgs-chat-contents .loader {
+  display: none;
+  position: relative;
+  margin: 2.4rem auto 0 auto;
+  width: 4.8rem;
+  height: 4.8rem;
+}
+
+.sgs-chat main .sgs-chat-contents .loader.is-loading {
+  display: block;
+}
+
+.sgs-chat main .sgs-chat-contents .loader div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.sgs-chat main .sgs-chat-contents .loader div.one {
+  border-top: 1px solid #8fb259;
+  animation: rotate-left 1s linear infinite;
+}
+
+.sgs-chat main .sgs-chat-contents .loader div.two {
+  border-right: 1px solid #cccc52;
+  animation: rotate-right 1s linear infinite;
+}
+
+.sgs-chat main .sgs-chat-contents .loader div.three {
+  border-bottom: 1px solid #ffd933;
+  animation: rotate-right 1s linear infinite;
+}
+
+.sgs-chat main .sgs-chat-contents .loader div.four {
+  border-left: 1px solid #ff7f00;
+  animation: rotate-right 1s linear infinite;
+}
+
+@keyframes rotate-left {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rotate-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.sgs-chat .typing-container {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  padding: 2rem 24rem;
+  background: var(--outgoing-chat-bg);
+  border-top: 1px solid var(--incoming-chat-border);
+}
+
+.sgs-chat .typing-container .typing-content {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.sgs-chat .typing-container .typing-textarea {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.sgs-chat .typing-textarea textarea {
+  resize: none;
+  height: 6.565rem;
+  width: 100%;
+  border: none;
+  padding: 1.8rem 4.8rem 1.5rem 2rem;
+  color: var(--text-color);
+  font-size: 2rem;
+  border-radius: 4px;
+  max-height: 250px;
+  overflow-y: auto;
+  background: var(--incoming-chat-bg);
+  outline: 1px solid var(--incoming-chat-border);
+}
+
+.sgs-chat .typing-textarea textarea::-moz-placeholder {
+  font-size: 2rem;
+}
+
+.sgs-chat .typing-textarea textarea::placeholder {
+  font-size: 2rem;
+}
+
+.sgs-chat .typing-textarea textarea::-moz-placeholder {
+  color: var(--placeholder-color);
+}
+
+.sgs-chat .typing-textarea textarea::placeholder {
+  color: var(--placeholder-color);
+}
+
+.sgs-chat .typing-content span {
+  width: 6.565rem;
+  height: 6.565rem;
+  display: flex;
+  border-radius: 4px;
+  font-size: 1.35rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+  cursor: pointer;
+}
+
+.sgs-chat .typing-content .tooltip {
+  position: relative;
+  display: flex;
+}
+
+.sgs-chat .typing-content [role="tooltip"] {
+  position: absolute;
+  left: 50%;
+  padding: 2px 8px;
+  background: var(--incoming-chat-bg);
+  border-radius: 8px;
+  bottom: calc(100% + 8px);
+  color: var(--icon-color);
+  white-space: nowrap;
+  visibility: hidden;
+  transform: translateX(-50%);
+}
+
+.sgs-chat .typing-content .typing-textarea [role="tooltip"] {
+  transform: translateX(-112%);
+}
+
+.sgs-chat .typing-textarea span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.sgs-chat .typing-textarea span:hover {
+  background: var(--icon-hover-bg);
+}
+
+.sgs-chat .typing-textarea textarea:valid ~ .send-tooltip span {
+  visibility: visible;
+}
+
+.sgs-chat .typing-controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.sgs-chat .typing-controls span {
+  font-size: 3rem;
+  background: var(--incoming-chat-bg);
+  outline: 1px solid var(--incoming-chat-border);
+}
+
+.sgs-chat .typing-controls span:hover {
+  background: var(--icon-hover-bg);
+}
+
+.sgs-chat .post {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin: 4rem 0 0 0;
+}
+
+.sgs-chat .post .post-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 24rem;
+  height: 6rem;
+  border-radius: 1rem;
+  background-color: var(--incoming-chat-bg);
+  color: var(--text-color);
+  font-size: 1.6rem;
+}
+
+.sgs-chat .post .post-button[disabled]:hover {
+  cursor: not-allowed;
+}
+
+.sgs-chat .post .post-button.is-loading::after {
+  content: "";
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  border-top-color: #343542;
+  animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.sgs-chat .post .checkmark {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 0px #343542;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+}
+
+.sgs-chat .post .checkmark.is-complete {
+  display: block;
+}
+
+.sgs-chat .post .checkmark .checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #343542;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.sgs-chat .post .checkmark .checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  transform-origin: 50% 50%;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #343542;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}

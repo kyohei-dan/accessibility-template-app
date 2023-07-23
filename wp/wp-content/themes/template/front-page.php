@@ -11,6 +11,13 @@
 </head>
 
 <body class="front-page" data-barba="wrapper">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <symbol aria-hidden="true" viewBox="0 0 50.827 11.375" id="arrow">
+      <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
+      <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+    </symbol>
+  </svg>
+
   <div class="site-wrapper">
     <?php part("header"); ?>
 
@@ -136,9 +143,8 @@
             </div>
             <a href="/news/" class="more-btn" aria-label="お知らせ一覧ページを見る">
               MORE
-              <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
-                <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
-                <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+              <svg viewBox="0 0 50.827 11.375">
+                <use xlink:href="#arrow" />
               </svg>
             </a>
           </div>
@@ -161,9 +167,8 @@
                 <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
                 <a href="" aria-label="詳しく見る">
                   MORE
-                  <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
-                    <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
-                    <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+                  <svg viewBox="0 0 50.827 11.375">
+                    <use xlink:href="#arrow" />
                   </svg>
                 </a>
               </li>
@@ -172,9 +177,8 @@
                 <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
                 <a href="" aria-label="詳しく見る">
                   MORE
-                  <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
-                    <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
-                    <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+                  <svg viewBox="0 0 50.827 11.375">
+                    <use xlink:href="#arrow" />
                   </svg>
                 </a>
               </li>
@@ -183,9 +187,8 @@
                 <p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
                 <a href="" aria-label="詳しく見る">
                   MORE
-                  <svg aria-hidden="true" viewBox="0 0 50.827 11.375">
-                    <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
-                    <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />
+                  <svg viewBox="0 0 50.827 11.375">
+                    <use xlink:href="#arrow" />
                   </svg>
                 </a>
               </li>
