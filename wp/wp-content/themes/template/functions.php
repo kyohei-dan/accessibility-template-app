@@ -69,15 +69,22 @@ namespace {
 };
 
 namespace Site {
-  function get_pagination($post_num = "", $range = 1)
+  function get_pagination($post_type = "", $post_num = 10, $range = 1)
   {
+    $query_args = [
+      "post_type" => $post_type,
+      "posts_per_page" => $post_num,
+      "post_status" => "publish",
+      "paged" => get_query_var('paged') ? absint(get_query_var('paged')) : 1,
+    ];
+    $custom_query = new \WP_Query($query_args);
+
     // 全ページ数
-    global $wp_query;
-    $max_pages = $wp_query->max_num_pages;
+    $max_pages = $custom_query->max_num_pages;
     (!$max_pages) ? $max_pages = 1 : $max_pages;
 
     // $post_numに値があれば、$per_pageに値を格納する
-    if (!empty($post_num)) $per_page = ceil($wp_query->found_posts / $post_num);
+    $per_page = ceil($custom_query->found_posts / $post_num);
 
     // 現在のページ
     global $paged;

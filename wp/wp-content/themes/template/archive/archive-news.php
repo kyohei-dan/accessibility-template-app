@@ -66,7 +66,7 @@
 
       <nav class="pagination" aria-label="ページネーション">
         <div class="inner">
-          <?php $p = Site\get_pagination(10); ?>
+          <?php $p = Site\get_pagination("news", 10); ?>
           <?php if ($p['per_page'] !== 1) { ?>
             <?php if ($p['current_pages'] > 1) { ?>
               <a class="prev-link" href="<?php echo get_pagenum_link($p['current_pages'] - 1); ?>">前のページ</a>
