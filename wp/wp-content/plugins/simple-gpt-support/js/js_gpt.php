@@ -21,7 +21,7 @@ add_action(
       let chatLog = JSON.parse(window.localStorage.getItem("chat-log"));
       let messageList = [{
         role: "system",
-        content: "<?php echo get_prompt(); ?>",
+        content: `返答する文章には必ずh1やh2やh3の見出しタグやpタグやulタグなど文章の意味にあったhtmlのタグを使用して返答してください。また、<?php echo get_prompt(); ?>`,
       }, ];
 
       // 改行コードをbrへ変換する関数
@@ -41,7 +41,7 @@ add_action(
           elem.setAttribute(key, attributes[key]);
         });
 
-        elem.innerHTML = marked.parse(nl2br(textContent));
+        elem.innerHTML = textContent;
         return elem;
       };
 
@@ -212,7 +212,7 @@ add_action(
               Authorization: `Bearer ${API_KEY}`,
             },
             body: JSON.stringify({
-              model: "gpt-3.5-turbo",
+              model: "gpt-3.5-turbo-16k-0613",
               messages: messageList,
               temperature: 0.9,
               top_p: 1,

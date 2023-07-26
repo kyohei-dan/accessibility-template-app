@@ -157,15 +157,11 @@ html {
 }
 
 .sgs-chat main .sgs-chat-contents ul .response-text {
-  padding: 2.4rem 28rem;
+  padding: 2.4rem 20rem;
   color: var(--text-color);
   line-height: 1.7;
   letter-spacing: 0.1em;
   background-color: var(--incoming-chat-bg);
-}
-
-.sgs-chat main .sgs-chat-contents ul .response-text p {
-  font-size: 1.6rem;
 }
 
 .sgs-chat main .sgs-chat-contents ul .response-text > div {
@@ -186,18 +182,77 @@ html {
   background-size: contain;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text > div p:nth-of-type(1) {
-  margin: 0 0 3rem 0;
+.sgs-chat main .sgs-chat-contents ul .response-text h1 {
+  margin: 0 0 2.4rem 0;
+  padding: 0;
+  color: #fff;
+  font-size: 3.2rem;
+  font-weight: 700;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text > div ul,
-.sgs-chat main .sgs-chat-contents ul .response-text > div ol {
+.sgs-chat main .sgs-chat-contents ul .response-text h2 {
+  margin: 3.2rem 0 2rem 0;
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text h3 {
+  margin: 3.2rem 0 2rem 0;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text p {
+  margin: 2rem 0;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text ul,
+.sgs-chat main .sgs-chat-contents ul .response-text ol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  margin: 2rem 0;
   padding: 0 0 0 4rem;
+  font-size: 1.6rem;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text > div ul li,
-.sgs-chat main .sgs-chat-contents ul .response-text > div ol li {
+.sgs-chat main .sgs-chat-contents ul .response-text ul li,
+.sgs-chat main .sgs-chat-contents ul .response-text ol li {
+  margin: 0;
+  line-height: 1.7;
   list-style: auto;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text ul li {
+  list-style: disc;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text ol li {
+  list-style: decimal;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text pre {
+  position: relative;
+  margin: 4rem 0;
+  padding: 1rem;
+  background-color: #000;
+}
+
+.sgs-chat main .sgs-chat-contents ul .response-text pre::before {
+  content: "Code";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 6.4rem;
+  height: 3.2rem;
+  background: var(--outgoing-chat-bg);
+  translate: 0 -100%;
 }
 
 .sgs-chat main .sgs-chat-contents ul fieldset {
