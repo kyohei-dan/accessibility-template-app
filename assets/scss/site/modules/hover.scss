@@ -3,7 +3,7 @@
     @content;
   }
   @media (hover: hover) and (pointer: fine) {
-    &:hover {
+    &:where(:any-link, :enabled, summary):hover {
       @content;
     }
   }

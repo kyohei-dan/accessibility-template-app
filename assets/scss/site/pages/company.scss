@@ -61,8 +61,15 @@
         }
 
         &:last-child {
-          color: #002864;
-          pointer-events: none;
+          a {
+            color: #002864;
+          }
+        }
+
+        a {
+          @include modules.hover {
+            opacity: 0.8;
+          }
         }
       }
     }

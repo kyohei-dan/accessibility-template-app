@@ -11,7 +11,7 @@
 </head>
 
 <body class="front-page" data-barba="wrapper">
-  <svg xmlns="http://www.w3.org/2000/svg">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol aria-hidden="true" viewBox="0 0 50.827 11.375" id="arrow">
       <line x2="50" transform="translate(0 5.328)" fill="none" stroke="#fff" stroke-width="1" />
       <path d="M0,6.987,5.295,0l5.283,6.987" transform="translate(49.999) rotate(90)" fill="none" stroke="#fff" stroke-width="1" />

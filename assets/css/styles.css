@@ -1,7 +1,6 @@
 /*!*************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[3]!../assets/scss/styles.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************/
-@charset "UTF-8";
 /*! destyle.css v3.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */
 /* Reset box-model and set borders */
 /* ============================================ */
@@ -722,8 +721,11 @@ img {
   opacity: 0.8;
 }
 @media (hover: hover) and (pointer: fine) {
-  .site-header h1 a:hover,
-  .site-header .logo a:hover {
+  .site-header h1 a:where(:-moz-any-link, :enabled, summary):hover, .site-header .logo a:where(:-moz-any-link, :enabled, summary):hover {
+    opacity: 0.8;
+  }
+  .site-header h1 a:where(:any-link, :enabled, summary):hover,
+  .site-header .logo a:where(:any-link, :enabled, summary):hover {
     opacity: 0.8;
   }
 }
@@ -832,10 +834,16 @@ img {
   transform: translateX(0);
 }
 @media (hover: hover) and (pointer: fine) {
-  .site-header nav .global-menu-list > li:last-child a:hover {
+  .site-header nav .global-menu-list > li:last-child a:where(:-moz-any-link, :enabled, summary):hover {
     color: #fff;
   }
-  .site-header nav .global-menu-list > li:last-child a:hover::before {
+  .site-header nav .global-menu-list > li:last-child a:where(:any-link, :enabled, summary):hover {
+    color: #fff;
+  }
+  .site-header nav .global-menu-list > li:last-child a:where(:-moz-any-link, :enabled, summary):hover::before {
+    transform: translateX(0);
+  }
+  .site-header nav .global-menu-list > li:last-child a:where(:any-link, :enabled, summary):hover::before {
     transform: translateX(0);
   }
 }
@@ -3186,9 +3194,19 @@ img {
   border-top: 1.2px solid #002864;
   transform: translateY(-50%) rotate(45deg);
 }
-.company .breadcrumb ol li:last-child {
+.company .breadcrumb ol li:last-child a {
   color: #002864;
-  pointer-events: none;
+}
+.company .breadcrumb ol li a:focus {
+  opacity: 0.8;
+}
+@media (hover: hover) and (pointer: fine) {
+  .company .breadcrumb ol li a:where(:-moz-any-link, :enabled, summary):hover {
+    opacity: 0.8;
+  }
+  .company .breadcrumb ol li a:where(:any-link, :enabled, summary):hover {
+    opacity: 0.8;
+  }
 }
 .company .outline .inner {
   margin: 0 auto;
@@ -3229,487 +3247,6 @@ img {
   width: 100%;
   height: 40rem;
   filter: grayscale(100%);
-}
-
-.chat {
-  --text-color: #ffffff;
-  --icon-color: #acacbe;
-  --icon-hover-bg: #5b5e71;
-  --placeholder-color: #cccccc;
-  --outgoing-chat-bg: #343541;
-  --incoming-chat-bg: #444654;
-  --outgoing-chat-border: #343541;
-  --incoming-chat-border: #444654;
-  background-color: var(--outgoing-chat-bg);
-  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
-  overflow-x: hidden;
-}
-.chat.light-mode {
-  --text-color: #343541;
-  --icon-color: #a9a9bc;
-  --icon-hover-bg: #f1f1f3;
-  --placeholder-color: #9f9f9f;
-  --outgoing-chat-bg: #ffffff;
-  --incoming-chat-bg: #f7f7f8;
-  --outgoing-chat-border: #ffffff;
-  --incoming-chat-border: #d9d9e3;
-}
-.chat .site-wrapper {
-  position: relative;
-  display: flex;
-}
-.chat :where(.chat-contents, textarea)::-webkit-scrollbar {
-  width: 6px;
-}
-.chat :where(.chat-contents, textarea)::-webkit-scrollbar-track {
-  background: #444654;
-  border-radius: 25px;
-}
-.chat :where(.chat-contents, textarea)::-webkit-scrollbar-thumb {
-  background: #acacbe;
-  border-radius: 25px;
-}
-.chat aside {
-  width: 32rem;
-  background-color: #202123;
-}
-.chat aside .inner {
-  padding: 1rem;
-}
-.chat aside .new-chat-btn {
-  position: relative;
-  padding: 2rem 1rem 2rem 4rem;
-  width: 100%;
-  border-radius: 1rem;
-  border: 0.6px solid #fff;
-  color: #fff;
-  font-size: 1.4rem;
-}
-.chat aside .new-chat-btn::before, .chat aside .new-chat-btn::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 1.6rem;
-  width: 1.4rem;
-  height: 2px;
-  background-color: #fff;
-  transform: translateY(-50%);
-}
-.chat aside .new-chat-btn::before {
-  transform: translateY(-50%) rotate(90deg);
-}
-.chat aside ul {
-  margin: 2.4rem 0 0 0;
-}
-.chat aside ul li a {
-  display: flex;
-  padding: 2rem 1rem 2rem 4rem;
-  border-radius: 1rem;
-  color: #fff;
-  font-size: 1.4rem;
-}
-.chat aside ul li a:hover {
-  background-color: #444754;
-}
-.chat aside ul li + li {
-  margin: 2rem 0 0 0;
-}
-.chat main {
-  width: 100%;
-}
-.chat main .inner {
-  position: relative;
-}
-.chat main .chat-contents {
-  position: relative;
-  padding-bottom: 32rem;
-  max-height: 100vh;
-  overflow-y: auto;
-}
-.chat main .chat-contents ul .request-text {
-  padding: 2.4rem 8rem;
-  color: var(--text-color);
-  font-size: 1.8rem;
-  line-height: 1.7;
-  letter-spacing: 0.1em;
-  background-color: var(--outgoing-chat-bg);
-}
-.chat main .chat-contents ul .response-text {
-  padding: 2.4rem 8rem;
-  color: var(--text-color);
-  font-size: 1.8rem;
-  line-height: 1.7;
-  letter-spacing: 0.1em;
-  background-color: var(--incoming-chat-bg);
-}
-.chat main .chat-contents ul .response-text > div {
-  position: relative;
-  padding: 0 0 0 4.8rem;
-}
-.chat main .chat-contents ul .response-text > div::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3rem;
-  height: 3rem;
-  background-image: url("/assets/images/chat/chatgpt_logo.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-.chat main .chat-contents ul .response-text > div p:nth-of-type(1) {
-  margin: 0 0 3rem 0;
-}
-.chat main .chat-contents ul .response-text > div ul,
-.chat main .chat-contents ul .response-text > div ol {
-  padding: 0 0 0 4rem;
-}
-.chat main .chat-contents ul .response-text > div ul li,
-.chat main .chat-contents ul .response-text > div ol li {
-  list-style: auto;
-}
-.chat main .chat-contents ul fieldset {
-  display: flex;
-  align-items: center;
-  gap: 3.2rem;
-  margin: 2.4rem 0 0 5rem;
-}
-.chat main .chat-contents ul fieldset label {
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-}
-.chat main .chat-contents ul fieldset label input {
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  outline: none;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-.chat main .chat-contents ul fieldset label input:focus ~ .text::after {
-  transform: scale3d(1, 1, 1);
-  transform-origin: left;
-}
-.chat main .chat-contents ul fieldset label input:checked + .icon::before {
-  border-color: var(--text-color);
-  opacity: 0;
-  transform: rotate(45deg) scale3d(2, 2, 1);
-}
-.chat main .chat-contents ul fieldset label input:checked + .icon::after {
-  border-bottom: 2px solid var(--text-color);
-  border-left: 2px solid var(--text-color);
-  opacity: 1;
-  transform: rotate(-45deg);
-}
-.chat main .chat-contents ul fieldset label input:checked ~ .text {
-  color: var(--text-color);
-}
-.chat main .chat-contents ul fieldset label .icon {
-  position: relative;
-  display: inline-block;
-  width: 2.4rem;
-  height: 2.4rem;
-}
-@media screen and (max-width: 750px) {
-  .chat main .chat-contents ul fieldset label .icon {
-    width: 3rem;
-    height: 3rem;
-  }
-}
-.chat main .chat-contents ul fieldset label .icon::before, .chat main .chat-contents ul fieldset label .icon::after {
-  content: "";
-  position: absolute;
-}
-.chat main .chat-contents ul fieldset label .icon::before {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 1.5px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-.chat main .chat-contents ul fieldset label .icon::after {
-  top: 0.5rem;
-  left: 0.3rem;
-  width: 1.6rem;
-  height: 0.8rem;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
-  opacity: 0;
-  transform: rotate(-225deg);
-  transition: opacity 0.5s, transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-@media screen and (max-width: 750px) {
-  .chat main .chat-contents ul fieldset label .icon::after {
-    top: 0.7rem;
-    width: 2rem;
-    height: 1.2rem;
-  }
-}
-.chat main .chat-contents ul fieldset label .text {
-  position: relative;
-  display: inline-block;
-  letter-spacing: 0.05em;
-  margin: 0 0 0 1rem;
-}
-.chat main .chat-contents ul fieldset label .text::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  display: inline-block;
-  width: 100%;
-  height: 1px;
-  background-color: var(--text-color);
-  transform: scale3d(0, 1, 1);
-  transform-origin: right;
-  transition: transform 0.3s;
-}
-.chat main .chat-contents .loader {
-  display: none;
-  position: relative;
-  margin: 2.4rem auto 0 auto;
-  width: 4.8rem;
-  height: 4.8rem;
-}
-.chat main .chat-contents .loader.is-loading {
-  display: block;
-}
-.chat main .chat-contents .loader div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  opacity: 0.8;
-}
-.chat main .chat-contents .loader div.one {
-  border-top: 1px solid #8fb259;
-  animation: rotate-left 1s linear infinite;
-}
-.chat main .chat-contents .loader div.two {
-  border-right: 1px solid #cccc52;
-  animation: rotate-right 1s linear infinite;
-}
-.chat main .chat-contents .loader div.three {
-  border-bottom: 1px solid #ffd933;
-  animation: rotate-right 1s linear infinite;
-}
-.chat main .chat-contents .loader div.four {
-  border-left: 1px solid #ff7f00;
-  animation: rotate-right 1s linear infinite;
-}
-@keyframes rotate-left {
-  0% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-@keyframes rotate-right {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.chat main .typing-container {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 10px;
-  justify-content: center;
-  background: var(--outgoing-chat-bg);
-  border-top: 1px solid var(--incoming-chat-border);
-}
-.chat main .typing-container .typing-content {
-  display: flex;
-  max-width: 950px;
-  width: 100%;
-  align-items: flex-end;
-}
-.chat main .typing-container .typing-textarea {
-  width: 100%;
-  display: flex;
-  position: relative;
-}
-.chat main .typing-textarea textarea {
-  resize: none;
-  height: 6.565rem;
-  width: 100%;
-  border: none;
-  padding: 15px 45px 15px 20px;
-  color: var(--text-color);
-  font-size: 2.4rem;
-  border-radius: 4px;
-  max-height: 250px;
-  overflow-y: auto;
-  background: var(--incoming-chat-bg);
-  outline: 1px solid var(--incoming-chat-border);
-}
-.chat main .typing-textarea textarea::-moz-placeholder {
-  font-size: 2.4rem;
-}
-.chat main .typing-textarea textarea::placeholder {
-  font-size: 2.4rem;
-}
-.chat main .typing-textarea textarea::-moz-placeholder {
-  color: var(--placeholder-color);
-}
-.chat main .typing-textarea textarea::placeholder {
-  color: var(--placeholder-color);
-}
-.chat main .typing-content span {
-  width: 6.565rem;
-  height: 6.565rem;
-  display: flex;
-  border-radius: 4px;
-  font-size: 1.35rem;
-  align-items: center;
-  justify-content: center;
-  color: var(--icon-color);
-}
-.chat main .typing-textarea span {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  visibility: hidden;
-  font-size: 3rem;
-}
-.chat main .typing-textarea textarea:valid ~ span {
-  visibility: visible;
-}
-.chat main .typing-controls {
-  display: flex;
-}
-.chat main .typing-controls span {
-  margin-left: 7px;
-  font-size: 3rem;
-  background: var(--incoming-chat-bg);
-  outline: 1px solid var(--incoming-chat-border);
-}
-.chat main .typing-controls span:hover {
-  background: var(--icon-hover-bg);
-}
-.chat main .post {
-  display: flex;
-  justify-content: center;
-  gap: 4rem;
-  margin: 4rem 0 0 0;
-}
-.chat main .post .post-button {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  width: 24rem;
-  height: 6rem;
-  border-radius: 1rem;
-  background-color: var(--incoming-chat-bg);
-  color: var(--text-color);
-  font-size: 1.6rem;
-}
-.chat main .post .post-button.is-loading::after {
-  content: "";
-  display: inline-block;
-  width: 3rem;
-  height: 3rem;
-  border: 3px solid #ccc;
-  border-radius: 50%;
-  border-top-color: #343542;
-  animation: loader 1.2s linear infinite;
-}
-@keyframes loader {
-  0% {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(1turn);
-  }
-}
-.chat main .post .checkmark {
-  display: none;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  box-shadow: inset 0px 0px 0px #343542;
-  stroke-width: 2;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-  animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-}
-.chat main .post .checkmark.is-complete {
-  display: block;
-}
-.chat main .post .checkmark .checkmark-circle {
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: #343542;
-  fill: none;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-.chat main .post .checkmark .checkmark-check {
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  transform-origin: 50% 50%;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-}
-@keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 30px #343542;
-  }
-}
-@keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes scale {
-  0%, 100% {
-    transform: none;
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-}
-.chat .toast {
-  position: absolute;
-  top: 2.4rem;
-  right: 3rem;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  border-radius: 1rem;
-  background-color: var(--outgoing-chat-bg);
-  padding: 1.6rem 1.2rem 1.6rem 1.4rem;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  border-left: 6px solid #4070f4;
-  overflow: hidden;
-  transform: translateX(calc(100% + 3rem));
-  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
-}
-.chat .toast.is-complete {
-  transform: translateX(0%);
-}
-.chat .text {
-  color: var(--text-color);
-  font-size: 1.4rem;
-  font-weight: 400;
 }
 
 .notfound .lower-header {
