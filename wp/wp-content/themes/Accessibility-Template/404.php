@@ -11,12 +11,12 @@
   <?php wp_head(); ?>
 </head>
 
-<body class="notfound" data-barba="wrapper">
+<body class="notfound">
   <div class="site-wrapper">
 
     <?php part("header"); ?>
 
-    <main data-barba="container" data-barba-namespace="notfound">
+    <main>
       <header class="lower-header">
         <div class="inner">
           <h1>ページが見つかりません</h1>
@@ -48,6 +48,7 @@
       </section>
     </main>
 
+    <?php part("page-top-button"); ?>
     <?php part("footer"); ?>
     <?php part("loading-mask"); ?>
   </div>

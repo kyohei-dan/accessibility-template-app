@@ -10,12 +10,12 @@
   <?php wp_head(); ?>
 </head>
 
-<body class="company" data-barba="wrapper">
+<body class="company">
   <div class="site-wrapper">
 
     <?php part("header"); ?>
 
-    <main data-barba="container" data-barba-namespace="company">
+    <main>
       <header class="lower-header">
         <div class="inner">
           <h1>会社概要</h1>
@@ -115,6 +115,7 @@
       </section>
     </main>
 
+    <?php part("page-top-button"); ?>
     <?php part("footer"); ?>
     <?php part("loading-mask"); ?>
   </div>

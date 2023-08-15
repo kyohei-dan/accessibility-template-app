@@ -187,6 +187,7 @@
       color: #002864;
       font-size: 6rem;
       text-align: center;
+      text-transform: uppercase;
       @include f.mq(sp) {
         margin: 2.4rem 0 0 0;
       }
@@ -349,6 +350,7 @@
       margin: 2rem 0 0 0;
       color: #002864;
       font-size: 6rem;
+      text-transform: uppercase;
       @include f.mq(sp) {
         display: flex;
         justify-content: center;
@@ -483,6 +485,7 @@
       color: #fff;
       font-size: 6rem;
       text-align: left;
+      text-transform: uppercase;
       @include f.mq(sp) {
         display: flex;
         justify-content: center;
@@ -594,6 +597,7 @@
       margin: 2rem 0 0 0;
       color: #002864;
       font-size: 6rem;
+      text-transform: uppercase;
       @include f.mq(sp) {
         display: flex;
         justify-content: center;

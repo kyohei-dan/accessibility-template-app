@@ -2,7 +2,7 @@
   <div class="inner">
     <h2 class="c-contact-title" data-text="Contact">お気軽にご相談ください</h2>
     <div class="c-contact-block">
-      <a href="/contact/" class="c-contact-link" data-barba-prevent>
+      <a href="/contact/" class="c-contact-link">
         <p class="c-contact-link-title">お問い合わせフォーム</p>
         <p class="c-contact-link-more">詳しく見る</p>
       </a>

@@ -1,8 +1,7 @@
-import { functions } from "./functions.js";
-import { splide } from "./splide-setting.js";
+const reloadScripts = async () => {
+  const { functions } = await import("./functions.js");
+  const { splide } = await import("./splide-setting.js");
 
-// script.jsファイルの関数を実行する処理
-const reloadScripts = () => {
   functions.setConsoleText();
   functions.fixedViewport();
   functions.observeSection();
@@ -15,6 +14,7 @@ const reloadScripts = () => {
   functions.changeFormAgreeState();
   functions.modal();
   functions.accordion();
+  functions.pageTopButton();
   splide.slider();
 };
 

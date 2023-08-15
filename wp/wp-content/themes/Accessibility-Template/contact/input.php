@@ -21,11 +21,11 @@
   <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="contact" data-barba="wrapper">
+<body class="contact">
   <div class="site-wrapper">
     <?php part("header"); ?>
 
-    <main data-barba="container" data-barba-namespace="contact">
+    <main>
       <header class="lower-header">
         <div class="inner">
           <h1 id="formTitle">お問い合わせ</h1>
@@ -194,20 +194,21 @@
 
             <div class="agreement">
               <label>
-                <input class="js-checkbox" type="checkbox" autocomplete="off">
+                <input class="js-checkbox" type="checkbox" autocomplete="off" required aria-required="true">
                 <span class="icon"></span>
                 <span class="text">上記個人情報の取り扱いについて同意する</span>
               </label>
             </div>
 
             <div class="submit-button">
-              <button class="js-submit-button" type="submit" name="action" value="confirm" disabled="true">確認画面へ進む</button>
+              <button class="js-submit-button" type="submit" name="action" value="confirm" aria-disabled="true">確認画面へ進む</button>
             </div>
           </form>
         </div>
       </section>
     </main>
 
+    <?php part("page-top-button"); ?>
     <?php part("footer"); ?>
     <?php part("loading-mask"); ?>
 

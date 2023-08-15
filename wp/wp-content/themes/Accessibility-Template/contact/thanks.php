@@ -62,6 +62,8 @@
         </div>
       </section>
     </main>
+
+    <?php part("page-top-button"); ?>
     <?php part("footer"); ?>
     <?php part("loading-mask"); ?>
 

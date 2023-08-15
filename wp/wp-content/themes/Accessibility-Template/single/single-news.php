@@ -10,11 +10,11 @@
   <?php wp_head(); ?>
 </head>
 
-<body class="single-news" data-barba="wrapper">
+<body class="single-news">
   <div class="site-wrapper">
     <?php part("header"); ?>
 
-    <main data-barba="container" data-barba-namespace="single-news">
+    <main>
       <header class="lower-header">
         <div class="inner">
           <h1>お知らせ</h1>
@@ -66,6 +66,7 @@
       </nav>
     </main>
 
+    <?php part("page-top-button"); ?>
     <?php part("footer"); ?>
     <?php part("loading-mask"); ?>
   </div>

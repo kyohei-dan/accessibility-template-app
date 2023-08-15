@@ -3,7 +3,7 @@
     <?php $url = $_SERVER["REQUEST_URI"]; ?>
     <?php echo $url === "/" ? '<h1>' : '<div class="logo">'; ?>
     <a href="/">
-      template
+      Accessibility Template
     </a>
     <?php echo $url === "/" ? '</h1>' : '</div>'; ?>
 
@@ -18,7 +18,7 @@
     <nav id="global-nav" aria-label="メインのナビゲーション">
       <ul class="global-menu-list js-global-menu-list">
         <li class="js-global-menu-list-item">
-          <a href="/#index1" data-link-id="index1" data-smooth data-barba-prevent>ホーム</a>
+          <a href="/#index1" data-link-id="index1" data-smooth>ホーム</a>
         </li>
         <li class="js-global-menu-list-item">
           <a href="/news/" data-link-id="index2">お知らせ</a>
@@ -30,7 +30,7 @@
               <div class="nav-detail-content-header">
                 <h2 id="nav-heading">サポート</h2>
                 <p>主なサポート内容を紹介します。</p>
-                <a href="/#index3" data-barba-prevent>サポート一覧</a>
+                <a href="/#index3">サポート一覧</a>
               </div>
               <ul>
                 <li><a href="">顧問契約サポート</a></li>
@@ -42,16 +42,16 @@
           </section>
         </li>
         <li class="js-global-menu-list-item">
-          <a href="/#index4" data-link-id="index4" data-smooth data-barba-prevent>取扱業務</a>
+          <a href="/#index4" data-link-id="index4" data-smooth>取扱業務</a>
         </li>
         <li class="js-global-menu-list-item">
-          <a href="/#index5" data-link-id="index5" data-smooth data-barba-prevent>よくある質問</a>
+          <a href="/#index5" data-link-id="index5" data-smooth>よくある質問</a>
         </li>
         <li class="js-global-menu-list-item">
-          <a href="/company/" data-barba-prevent>会社概要</a>
+          <a href="/company/">会社概要</a>
         </li>
         <li class="js-global-menu-list-item">
-          <a href="/contact/" data-barba-prevent>お問い合わせ</a>
+          <a href="/contact/">お問い合わせ</a>
         </li>
       </ul>
       <div class="js-focus-trap" tabindex="0"></div>

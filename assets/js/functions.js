@@ -1,7 +1,7 @@
 export const functions = {
   // ▼コンソール出力用
   setConsoleText: () => {
-    const text = ["\n %c Developed by Kyohei Dan. -> https://portfolio-app-main.vercel.app/ \n\n", "background: #0000FF; padding:5px 0;color: #ffffff;"];
+    const text = ["\n %c Developed by Kyohei Dan. -> https://next-notion-blog-kyohei-dan.vercel.app \n\n", "background: #0000FF; padding:5px 0; color: #ffffff;"];
     window.console.log.apply(console, text);
   },
 
@@ -267,14 +267,14 @@ export const functions = {
   // ▼ /contact/ チェックボックスの状態に合わせてボタンの状態を変更する処理
   changeFormAgreeState: () => {
     const checkBox = document.querySelector(".js-checkbox");
-    const submitBtn = document.querySelector(".js-submit-button");
-    if (!checkBox || !submitBtn) return;
+    const submitButton = document.querySelector(".js-submit-button");
+    if (!checkBox || !submitButton) return;
 
-    checkBox.addEventListener("click", (e) => {
-      if (e.currentTarget.checked) {
-        submitBtn.removeAttribute("disabled");
+    checkBox.addEventListener("click", (event) => {
+      if (event.target.checked) {
+        submitButton.setAttribute("aria-disabled", false);
       } else {
-        submitBtn.setAttribute("disabled", true);
+        submitButton.setAttribute("aria-disabled", true);
       }
     });
   },
@@ -417,6 +417,24 @@ export const functions = {
             animation = null;
           };
         }
+      });
+    });
+  },
+
+  // ▼現在のトップへ戻る機能
+  pageTopButton: () => {
+    const anchor = document.querySelector(".js-page-top-button");
+    if (!anchor) return;
+
+    document.addEventListener("scroll", () => {
+      anchor.setAttribute("data-scroll", window.scrollY > 400);
+    });
+
+    anchor.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.body.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     });
   },

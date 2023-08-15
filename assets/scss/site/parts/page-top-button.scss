@@ -1,0 +1,44 @@
+@use "../../base/shortcut-functions" as f;
+@use "../modules" as modules;
+
+.c-page-top-button {
+  position: fixed;
+  right: 1.6rem;
+  bottom: 1.6rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: #434a56;
+  border-radius: 50%;
+  box-shadow: 0 12px 10px -6px rgba(0, 0, 0, 0.3);
+  color: #f7f8f8;
+  transition: opacity 0.5s, visibility 0.5s, background-color 0.3s;
+  @include f.mq(sp) {
+    width: 8.8rem;
+    height: 8.8rem;
+  }
+
+  &[data-scroll="false"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &[data-scroll="true"] {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @include modules.hover {
+    background-color: #676f79;
+  }
+
+  svg {
+    display: inline-block;
+    width: 50%;
+    height: auto;
+    pointer-events: none;
+  }
+}

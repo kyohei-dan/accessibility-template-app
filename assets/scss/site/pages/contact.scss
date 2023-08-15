@@ -420,19 +420,18 @@
             font-size: 2.8rem;
           }
 
-          &[disabled="true"] {
+          &[aria-disabled="true"] {
             opacity: 0.5;
             cursor: not-allowed;
           }
 
-          &[disabled="false"] {
+          &[aria-disabled="false"] {
             opacity: 1;
             cursor: pointer;
-          }
-
-          &:hover {
-            color: #fff;
-            background-color: #000;
+            &:hover {
+              color: #fff;
+              background-color: #000;
+            }
           }
         }
       }
@@ -549,19 +548,18 @@
           font-size: 2.8rem;
         }
 
-        &[disabled="true"] {
+        &[aria-disabled="true"] {
           opacity: 0.5;
           cursor: not-allowed;
         }
 
-        &[disabled="false"] {
+        &[aria-disabled="false"] {
           opacity: 1;
           cursor: pointer;
-        }
-
-        &:hover {
-          color: #fff;
-          background-color: #000;
+          &:hover {
+            color: #fff;
+            background-color: #000;
+          }
         }
       }
     }
