@@ -2923,6 +2923,7 @@ img {
   padding: 3rem;
   margin: 5rem auto;
   overflow-y: scroll;
+  overscroll-behavior: contain;
   border: 1px solid #ccc;
 }
 @media screen and (max-width: 750px) {

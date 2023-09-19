@@ -340,6 +340,7 @@
         padding: 3rem;
         margin: 5rem auto;
         overflow-y: scroll;
+        overscroll-behavior: contain;
         border: 1px solid #ccc;
         @include f.mq(sp) {
           width: 100%;
