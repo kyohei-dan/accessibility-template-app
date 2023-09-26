@@ -1,4 +1,5 @@
 <?php
+if (!defined("ABSPATH")) die();
 
 add_filter('wp_mail_from_name', function ($email_from) {
   $setting = get_setting("system-mail");

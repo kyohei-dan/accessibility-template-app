@@ -26,6 +26,7 @@ function process()
 
         case "send":
           send($data);
+          $_SESSION['form_submitted'] = true;
           view("contact/thanks");
           break;
 
@@ -98,4 +99,26 @@ function send($data)
     include __DIR__ . "/../mail-body/contact-user.php";
   });
   wp_mail($data["email1"], $setting["title"], $message, $headers);
+
+  // お問い合わせ内容をDBへ保存する処理
+  global $wpdb;
+  $table_name = $wpdb->prefix . 'contact_form_data';
+  $result = $wpdb->insert(
+    $table_name,
+    [
+      'type' => $data["type"],
+      'corp' => $data["corp"],
+      'name' => $data["name"],
+      'furigana' => $data["furigana"],
+      'tel' => $data["tel"],
+      'email1' => $data["email1"],
+      'message' => $data["message"],
+      'time' => current_time('mysql'),
+    ]
+  );
+
+  if ($result === false) {
+    wp_die();
+    return;
+  }
 }
