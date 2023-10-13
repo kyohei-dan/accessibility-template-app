@@ -52,6 +52,10 @@
       height: 3.2rem;
       font-size: 4.8rem;
     }
+
+    &:focus-visible {
+      outline: 2px solid #fff;
+    }
   }
 
   .footer-nav {
@@ -72,6 +76,10 @@
           font-size: 2rem;
           @include f.mq(sp) {
             font-size: 2.8rem;
+          }
+
+          &:focus-visible {
+            outline: 2px solid #fff;
           }
         }
       }

@@ -21,6 +21,10 @@
     height: 8.8rem;
   }
 
+  &:focus-visible {
+    outline: 2px solid #fff;
+  }
+
   &[data-scroll="false"] {
     opacity: 0;
     visibility: hidden;

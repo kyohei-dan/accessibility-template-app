@@ -84,6 +84,9 @@
         text-indent: 1000%;
         white-space: nowrap;
         overflow: hidden;
+        &:focus-visible {
+          outline: 2px solid #fff;
+        }
       }
 
       .splide__arrow--prev::before,
@@ -535,6 +538,10 @@
             height: 10rem;
             margin: 0 auto;
             font-size: 3.2rem;
+          }
+
+          &:focus-visible {
+            outline: 2px solid #fff;
           }
 
           span {

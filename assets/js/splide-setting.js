@@ -11,6 +11,7 @@ export const splide = {
         autoplay: true,
         pauseOnHover: false,
         pauseOnFocus: false,
+        pagination: false,
         rewind: true,
         speed: 4000,
         interval: 4500,
