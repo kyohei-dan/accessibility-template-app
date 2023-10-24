@@ -3,6 +3,7 @@ if (!defined("ABSPATH")) die();
 
 require_once __DIR__ . '/controllers/contact.php';
 require_once __DIR__ . '/models/contact.php';
+require_once __DIR__ . '/actions/contact.php';
 
 // お問い合わせ内容を保存するためのテーブルをDBへ生成する処理
 add_action('init', function () {
@@ -51,6 +52,16 @@ add_action("admin_menu", function () {
     'contact-settings',
     'display_settings_contact_page'
   );
+
+  // CSV出力メニュー
+  add_submenu_page(
+    'contact',
+    'CSV出力',
+    'CSV出力',
+    'manage_options',
+    'contact-csv-export',
+    'display_csv_export_page'
+  );
 }, 10);
 
 // CSSとJSファイルの読み込み
@@ -71,3 +82,6 @@ add_action('admin_enqueue_scripts', function () {
 // お問い合わせ一覧の対応済みステータスの状態が変更されたときのフック
 add_action('wp_ajax_update_mail_status', 'update_mail_status');
 add_action('wp_ajax_nopriv_update_mail_status', 'update_mail_status');
+
+// HTTPヘッダを用意する必要があるため、初期読み込みでexport_csv関数をセットする
+add_action('init', 'export_csv');

@@ -94,3 +94,9 @@ function display_settings_contact_page()
   $display_chart = get_option('display_chart', false);
   include __DIR__ . '/../views/contact/sub-menu/index.php';
 }
+
+// CSV出力ページの表示
+function display_csv_export_page()
+{
+  include __DIR__ . '/../views/contact/sub-menu/csv.php';
+}
