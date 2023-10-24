@@ -1464,12 +1464,6 @@ img {
 .front-page .splide .splide-slider .splide__slide[class] {
   width: 100%;
 }
-.front-page .splide .splide-slider .splide__slide[class*=-active] img {
-  animation: 4.5s img-scale ease-in;
-}
-.front-page .splide .splide-slider .splide__slide[class*=is-prev] img {
-  animation: 1s img-scale-prev ease-out;
-}
 .front-page .splide .splide-slider .splide__slide img,
 .front-page .splide .splide-slider .splide__slide video {
   width: 100%;

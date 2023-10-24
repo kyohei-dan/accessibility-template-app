@@ -23,14 +23,6 @@
           width: 100%;
         }
 
-        &[class*="-active"] img {
-          animation: 4.5s img-scale ease-in;
-        }
-
-        &[class*="is-prev"] img {
-          animation: 1s img-scale-prev ease-out;
-        }
-
         img,
         video {
           width: 100%;

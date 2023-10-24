@@ -27,8 +27,9 @@
           <ul class="splide__list">
             <li class="splide__slide">
               <picture>
-                <source srcset="/assets/images/top/business01.jpg" media="(max-width: 750px)" width="" height="">
-                <img src="/assets/images/top/business01.jpg" alt="" width="" height="" decoding="async" fetchpriority="high">
+                <source srcset="/assets/images/top/business01.jpg.avif" type="image/avif" />
+                <source srcset="/assets/images/top/business01.jpg.webp" type="image/webp" />
+                <img src="/assets/images/top/business01.jpg" alt="" width="1920" height="1005" decoding="async" fetchpriority="high">
               </picture>
               <div class="splide-text-area">
                 <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
@@ -36,8 +37,9 @@
             </li>
             <li class="splide__slide">
               <picture>
-                <source srcset="/assets/images/top/support01.jpg" media="(max-width: 750px)" width="" height="">
-                <img src="/assets/images/top/support01.jpg" alt="" width="" height="" decoding="async" fetchpriority="high">
+                <source srcset="/assets/images/top/support01.jpg.avif" type="image/avif" />
+                <source srcset="/assets/images/top/support01.jpg.webp" type="image/webp" />
+                <img src="/assets/images/top/support01.jpg" alt="" width="1920" height="1135" decoding="async" fetchpriority="high">
               </picture>
               <div class="splide-text-area">
                 <p>この文章はダミー<br>です。文字の大きさ、量、字間、行間等を<br>確認するために入れています。</p>
@@ -153,8 +155,9 @@
       <section id="index3" class="support js-section" aria-labelledby="heading-id3" data-anime="false">
         <div class="support-img" aria-hidden="true" data-anime="false">
           <picture>
-            <source srcset="/assets/images/top/sp/support01.jpg" media="(max-width: 750px)" width="1130" height="400" />
-            <img src="/assets/images/top/support01.jpg" alt="" width="1130" height="400" loading="lazy" decoding="async">
+            <source srcset="/assets/images/top/support01.jpg.avif" type="image/avif" />
+            <source srcset="/assets/images/top/support01.jpg.webp" type="image/webp" />
+            <img src="/assets/images/top/support01.jpg" alt="" width="1920" height="1135" decoding="async" loading="lazy">
           </picture>
         </div>
 
@@ -202,8 +205,9 @@
       <section id="index4" class="business js-section" aria-labelledby="heading-id4" data-anime="false">
         <div class="business-img" aria-hidden="true">
           <picture>
-            <source srcset="/assets/images/top/business01.jpg" media="(max-width: 750px)" width="" height="" />
-            <img src="/assets/images/top/business01.jpg" alt="" width="" height="" loading="lazy" decoding="async">
+            <source srcset="/assets/images/top/business01.jpg.avif" type="image/avif" />
+            <source srcset="/assets/images/top/business01.jpg.webp" type="image/webp" />
+            <img src="/assets/images/top/business01.jpg" alt="" width="1920" height="1005" decoding="async" loading="lazy">
           </picture>
         </div>
 
