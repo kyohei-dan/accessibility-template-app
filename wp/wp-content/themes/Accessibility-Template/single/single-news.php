@@ -14,7 +14,7 @@
   <div class="site-wrapper">
     <?php part("header"); ?>
 
-    <main>
+    <main id="contents">
       <header class="lower-header">
         <div class="inner">
           <h1>お知らせ</h1>

@@ -1,5 +1,7 @@
 <header class="site-header">
   <div class="inner">
+    <a class="skip-link" href="#contents">メインコンテンツにスキップ</a>
+
     <?php $url = $_SERVER["REQUEST_URI"]; ?>
     <?php echo $url === "/" ? '<h1>' : '<div class="logo">'; ?>
     <a href="/">

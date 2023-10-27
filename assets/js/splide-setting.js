@@ -10,7 +10,7 @@
       rewind: true,
       pauseOnHover: false,
       pauseOnFocus: false,
-      pagination: true,
+      pagination: false,
       speed: 2000,
       interval: 5000,
       breakpoints: {

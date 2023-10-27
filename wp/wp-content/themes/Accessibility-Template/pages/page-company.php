@@ -15,7 +15,7 @@
 
     <?php part("header"); ?>
 
-    <main>
+    <main id="contents">
       <header class="lower-header">
         <div class="inner">
           <h1>会社概要</h1>

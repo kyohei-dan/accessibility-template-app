@@ -21,7 +21,7 @@
   <div class="site-wrapper">
     <?php part("header"); ?>
 
-    <main>
+    <main id="contents">
       <div id="index1" class="splide js-section js-top-splide">
         <div class="splide-slider splide__track">
           <ul class="splide__list">
