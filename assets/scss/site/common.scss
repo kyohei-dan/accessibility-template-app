@@ -24,7 +24,6 @@ body {
     @include f.mq(sp) {
       .site-header {
         nav {
-          height: calc(100vh - 12rem);
           visibility: visible;
         }
       }

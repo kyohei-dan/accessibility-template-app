@@ -57,6 +57,9 @@
         </li>
       </ul>
       <div class="js-focus-trap" tabindex="0"></div>
+      <button type="button" class="drag-handle">
+        <span></span>
+      </button>
     </nav>
   </div>
 </header>

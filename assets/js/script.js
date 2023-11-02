@@ -196,11 +196,27 @@
 (() => {
   const topPage = document.querySelector(".front-page");
   const drawerButton = document.querySelector(".js-drawer-button");
+  const menuSheet = document.getElementById("global-nav");
+  const dragHandle = document.querySelector(".drag-handle");
+  let startY, startTime;
+
   if (!drawerButton) return;
 
   const handleDrawerClick = () => {
-    document.body.setAttribute("data-expanded", drawerButton.matches("[aria-expanded=false]") ? true : false);
-    drawerButton.setAttribute("aria-expanded", drawerButton.matches("[aria-expanded=false]") ? true : false);
+    const isExpanded = drawerButton.getAttribute("aria-expanded") === "true";
+
+    document.body.setAttribute("data-expanded", !isExpanded);
+    drawerButton.setAttribute("aria-expanded", !isExpanded);
+
+    if (isExpanded) {
+      menuSheet.style.transform = "translateY(-100%)";
+      setTimeout(() => {
+        menuSheet.style.transform = "";
+      }, 300);
+      menuSheet.classList.remove("dragging-up");
+    } else {
+      menuSheet.style.transform = "translateY(0)";
+    }
   };
 
   drawerButton.addEventListener("click", handleDrawerClick);
@@ -221,6 +237,44 @@
 
   document.querySelector(".js-focus-trap").addEventListener("focus", () => {
     drawerButton.focus();
+  });
+
+  // ドラッグ開始
+  dragHandle.addEventListener("touchstart", function (e) {
+    startY = e.touches[0].clientY;
+    startTime = Date.now();
+    console.log("ドラッグ開始");
+  });
+
+  // ドラッグ中
+  dragHandle.addEventListener("touchmove", function (e) {
+    const touchY = e.touches[0].clientY;
+    const distance = touchY - startY;
+
+    if (distance < 0) {
+      menuSheet.classList.add("dragging-up");
+      menuSheet.style.transform = `translateY(${distance}px)`;
+    } else {
+      menuSheet.classList.remove("dragging-up");
+      menuSheet.style.transform = "translateY(0)";
+    }
+  });
+
+  // ドラッグ終了
+  dragHandle.addEventListener("touchend", function (e) {
+    const endY = e.changedTouches[0].clientY;
+    const endTime = Date.now();
+
+    const distance = endY - startY; // ドラッグした距離
+    const time = endTime - startTime; // ドラッグにかかった時間
+    const speed = Math.abs(distance / time); // ドラッグの速度
+
+    menuSheet.classList.remove("dragging-up");
+    if (distance > 400 || speed > 0.5) {
+      handleDrawerClick();
+    } else {
+      menuSheet.style.transform = "translateY(0)";
+    }
   });
 })();
 
