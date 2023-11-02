@@ -195,37 +195,32 @@
 // ▼ドロワーメニューの開閉処理
 (() => {
   const topPage = document.querySelector(".front-page");
-  const drawerBtn = document.querySelector(".js-drawer-btn");
-  if (!drawerBtn) return;
+  const drawerButton = document.querySelector(".js-drawer-button");
+  if (!drawerButton) return;
 
-  const handledrawerOpen = () => {
-    if (drawerBtn.getAttribute("aria-expanded") === "false") {
-      document.body.setAttribute("data-expanded", true);
-      drawerBtn.setAttribute("aria-expanded", true);
-    } else {
-      document.body.setAttribute("data-expanded", false);
-      drawerBtn.setAttribute("aria-expanded", false);
-    }
+  const handleDrawerClick = () => {
+    document.body.setAttribute("data-expanded", drawerButton.matches("[aria-expanded=false]") ? true : false);
+    drawerButton.setAttribute("aria-expanded", drawerButton.matches("[aria-expanded=false]") ? true : false);
   };
 
-  drawerBtn.addEventListener("click", handledrawerOpen);
+  drawerButton.addEventListener("click", handleDrawerClick);
 
   if (window.matchMedia("(max-width: 750px)").matches && topPage) {
     document.querySelectorAll("a[data-link-id]").forEach((drawerAnchorLink) => {
-      drawerAnchorLink.addEventListener("click", handledrawerOpen);
+      drawerAnchorLink.addEventListener("click", handleDrawerClick);
     });
   }
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       document.body.setAttribute("data-expanded", false);
-      drawerBtn.setAttribute("aria-expanded", false);
-      drawerBtn.focus();
+      drawerButton.setAttribute("aria-expanded", false);
+      drawerButton.focus();
     }
   });
 
   document.querySelector(".js-focus-trap").addEventListener("focus", () => {
-    drawerBtn.focus();
+    drawerButton.focus();
   });
 })();
 

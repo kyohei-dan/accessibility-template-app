@@ -9,12 +9,12 @@
     </a>
     <?php echo $url === "/" ? '</h1>' : '</div>'; ?>
 
-    <button class="sp drawer-btn js-drawer-btn" type="button" aria-label="ナビゲーションメニュー" aria-controls="global-nav" aria-expanded="false">
-      <span class="drawer-line">
-        <span class="visually-hidden">
-          メニューを開閉する
-        </span>
-      </span>
+    <button class="sp drawer-button js-drawer-button" type="button" aria-label="ナビゲーションメニュー" aria-controls="global-nav" aria-expanded="false">
+      <svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <rect width="18" height="1.5" fill="currentColor" ry="0.75" x="3" y="6.25" />
+        <rect width="18" height="1.5" fill="currentColor" ry="0.75" x="3" y="11.25" />
+        <rect width="18" height="1.5" fill="currentColor" ry="0.75" x="3" y="16.25" />
+      </svg>
     </button>
 
     <nav id="global-nav" aria-label="メインのナビゲーション">

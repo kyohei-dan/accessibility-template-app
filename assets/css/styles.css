@@ -1114,51 +1114,34 @@ img {
   .site-header nav .js-focus-trap {
     display: block;
   }
-  .site-header .drawer-btn {
-    position: relative;
-    display: block;
-    width: 2.4rem;
-    height: 100%;
-    background-color: transparent;
-    border: none;
+  .site-header .drawer-button {
+    width: 4.8rem;
+    border-radius: 50%;
+    color: #002864;
+    cursor: pointer;
   }
-  .site-header .drawer-btn .drawer-line {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    display: block;
-    width: 4rem;
-    height: 2px;
-    background-color: #002864;
-    transform: translateY(-50%);
-    transition: background-color 0.2s ease;
+  .site-header .drawer-button[aria-expanded=true] svg {
+    rotate: 90deg;
+    transition: rotate 0.4s 0.4s;
   }
-  .site-header .drawer-btn[aria-expanded=true] .drawer-line {
-    background-color: transparent;
+  .site-header .drawer-button[aria-expanded=true] rect {
+    transition: translate 0.2s, rotate 0.2s 0.3s;
   }
-  .site-header .drawer-btn .drawer-line::before,
-  .site-header .drawer-btn .drawer-line::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: #002864;
-    transition: transform 0.4s ease;
+  .site-header .drawer-button[aria-expanded=true] rect:nth-of-type(1) {
+    translate: 0 333%;
+    rotate: -45deg;
   }
-  .site-header .drawer-btn[aria-expanded=false] .drawer-line::before {
-    top: -6px;
+  .site-header .drawer-button[aria-expanded=true] rect:nth-of-type(2) {
+    rotate: 45deg;
   }
-  .site-header .drawer-btn[aria-expanded=false] .drawer-line::after {
-    top: 6px;
+  .site-header .drawer-button[aria-expanded=true] rect:nth-of-type(3) {
+    translate: 0 -333%;
+    rotate: 45deg;
   }
-  .site-header .drawer-btn[aria-expanded=true] .drawer-line::before {
-    top: 0;
-    transform: rotate(45deg);
-  }
-  .site-header .drawer-btn[aria-expanded=true] .drawer-line::after {
-    top: 0;
-    transform: rotate(-45deg);
+  .site-header .drawer-button rect {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    transition: rotate 0.2s 0s, translate 0.2s 0.2s;
   }
 }
 
