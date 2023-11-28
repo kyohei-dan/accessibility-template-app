@@ -1,5 +1,5 @@
-const targets = document.querySelectorAll(".sgs-chat .tooltip-icon");
-const tooltips = document.querySelectorAll(".sgs-chat [role='tooltip']");
+const targets = document.querySelectorAll(".sas-chat .tooltip-icon");
+const tooltips = document.querySelectorAll(".sas-chat [role='tooltip']");
 let isShow = Array(targets.length).fill(false);
 
 function showTooltip(index) {

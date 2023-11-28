@@ -35,7 +35,7 @@ function masked_api_key()
 /**
  * 設定を保存する関数
  */
-function sgs_settings_update()
+function sas_settings_update()
 {
   // 権限（ユーザーのロールが管理者ではない場合処理を行わない）
   if (!current_user_can('manage_options')) return;
@@ -43,7 +43,7 @@ function sgs_settings_update()
   if (!isset($_POST['settings_save'])) return;
 
   // CSRF対策
-  if (!check_admin_referer('sgs_setting_save_action', 'sgs_setting_save_action_token')) return;
+  if (!check_admin_referer('sas_setting_save_action', 'sas_setting_save_action_token')) return;
 
   $api_key = sanitize_text_field($_POST['api_key']);
   $prompt = sanitize_text_field($_POST['prompt']);
@@ -83,7 +83,7 @@ add_action(
       }
     }
 
-    wp_redirect(admin_url('admin.php?page=sgs_create'));
+    wp_redirect(admin_url('admin.php?page=sas_create'));
     exit;
   }
 );

@@ -5,12 +5,12 @@ if (!defined('ABSPATH')) exit;
 /**
  * 一般設定ページ
  */
-function page_sgs_create()
+function page_sas_create()
 {
 ?>
   <div class="wrap">
     <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-      <div class="sgs-chat">
+      <div class="sas-chat">
         <div class="site-wrapper">
           <header>
             <div class="inner">
@@ -24,7 +24,7 @@ function page_sgs_create()
                     <path id="Path_22351-4" data-name="Path 22351" d="M119.42,262.55l.11,8.68a.45.45,0,0,0,.22.39l53.21,30.54a.45.45,0,0,1,.05.74l-49.79,38.89a.45.45,0,0,1-.52.03L1.77,263.48a.45.45,0,0,1-.14-.62l34.71-53.73a.45.45,0,0,1,.62-.14l82.26,53.19a.45.45,0,0,1,.2.37Z" fill="#fff" />
                   </g>
                 </svg>
-                <span>SIMPLE GPT SUPPORT 記事作成</span>
+                <span>SIMPLE AI SUPPORT 記事作成</span>
               </h1>
               <div class="select-container">
                 <label for="post-type">投稿する記事タイプを選択:</label>
@@ -47,8 +47,8 @@ function page_sgs_create()
             <div class="inner">
               <!-- inputのvalueにアクションフックのadmin_post_send_new_postを指定することで実行 -->
               <input type="hidden" name="action" value="send_new_post">
-              <div class="sgs-chat-contents">
-                <p class="gpt-model">Model: GPT-3.5</p>
+              <div class="sas-chat-contents">
+                <p class="ai-model">Model: GPT-3.5</p>
                 <?php $api = get_api_key(); ?>
                 <?php if (!empty($api)) { ?>
                   <ul class="js-chat-list"></ul>
@@ -85,7 +85,7 @@ function page_sgs_create()
               </div>
             </div>
             <div class="post">
-              <button type="submit" name="sgs_post_send" class="post-button js-post-button" disabled>
+              <button type="submit" name="sas_post_send" class="post-button js-post-button" disabled>
                 記事を投稿する
                 <svg class="checkmark js-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                   <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"></circle>

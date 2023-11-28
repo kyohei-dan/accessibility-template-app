@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) exit;
  * JS: gptへの通信処理
  */
 add_action(
-  'admin_footer-gpt-support_page_sgs_create',
+  'admin_footer-ai-support_page_sas_create',
   function () {
 ?>
   <script>
@@ -123,8 +123,8 @@ add_action(
       // 読み込み時の処理
       window.addEventListener("DOMContentLoaded", () => {
         const themeColor = localStorage.getItem("themeColor");
-        document.querySelector(".sgs-chat").classList.toggle("light-mode", themeColor === "light_mode");
-        themeButton.innerText = document.querySelector(".sgs-chat").classList.contains("light-mode") ? "dark_mode" : "light_mode";
+        document.querySelector(".sas-chat").classList.toggle("light-mode", themeColor === "light_mode");
+        themeButton.innerText = document.querySelector(".sas-chat").classList.contains("light-mode") ? "dark_mode" : "light_mode";
 
         if (chatLog) {
           messageList = chatLog.filter((obj) => obj.role !== "system");
@@ -139,9 +139,9 @@ add_action(
 
         // テーマボタンを押したときの処理
         themeButton.addEventListener("click", () => {
-          document.querySelector(".sgs-chat").classList.toggle("light-mode");
+          document.querySelector(".sas-chat").classList.toggle("light-mode");
           localStorage.setItem("themeColor", themeButton.innerText);
-          themeButton.innerText = document.querySelector(".sgs-chat").classList.contains("light-mode") ? "dark_mode" : "light_mode";
+          themeButton.innerText = document.querySelector(".sas-chat").classList.contains("light-mode") ? "dark_mode" : "light_mode";
         });
 
         // リセットボタンを押したときの処理

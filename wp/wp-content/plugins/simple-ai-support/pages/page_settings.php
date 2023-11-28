@@ -5,10 +5,10 @@ if (!defined('ABSPATH')) exit;
 /**
  * 一般設定ページ
  */
-function page_sgs_settings()
+function page_sas_settings()
 {
   // 設定を保存する関数
-  sgs_settings_update();
+  sas_settings_update();
 
   if (isset($_POST['settings_save'])) {
     $api_key = sanitize_text_field($_POST['api_key']);
@@ -20,7 +20,7 @@ function page_sgs_settings()
 ?>
   <div class="wrap">
     <form method="post">
-      <div class="sgs-settings">
+      <div class="sas-settings">
         <div class="site-wrapper">
           <header>
             <div class="inner">
@@ -34,23 +34,23 @@ function page_sgs_settings()
                     <path id="Path_22351-4" data-name="Path 22351" d="M119.42,262.55l.11,8.68a.45.45,0,0,0,.22.39l53.21,30.54a.45.45,0,0,1,.05.74l-49.79,38.89a.45.45,0,0,1-.52.03L1.77,263.48a.45.45,0,0,1-.14-.62l34.71-53.73a.45.45,0,0,1,.62-.14l82.26,53.19a.45.45,0,0,1,.2.37Z" fill="#fff" />
                   </g>
                 </svg>
-                <span>SIMPLE GPT SUPPORT 一般設定</span>
+                <span>SIMPLE AI SUPPORT 一般設定</span>
               </h1>
             </div>
           </header>
           <main>
             <div class="inner">
               <!-- WordPressが発行するセキュリティトークン -->
-              <?php wp_nonce_field('sgs_setting_save_action', 'sgs_setting_save_action_token'); ?>
+              <?php wp_nonce_field('sas_setting_save_action', 'sas_setting_save_action_token'); ?>
               <div class="form-table">
                 <div class="input-container">
-                  <input class="js-sgs-input" type="text" id="api_key" name="api_key" value="<?php echo esc_attr($api_key); ?>" autocomplete="off" aria-labelledby="placeholder-api-key">
+                  <input class="js-sas-input" type="text" id="api_key" name="api_key" value="<?php echo esc_attr($api_key); ?>" autocomplete="off" aria-labelledby="placeholder-api-key">
                   <label class="placeholder-text" for="api_key" id="placeholder-api-key">
                     <div class="text">ChatGPT API Key</div>
                   </label>
                 </div>
                 <div class="input-container">
-                  <input class="js-sgs-input" type="text" id="prompt" name="prompt" value="<?php echo $prompt; ?>" aria-labelledby="placeholder-prompt">
+                  <input class="js-sas-input" type="text" id="prompt" name="prompt" value="<?php echo $prompt; ?>" aria-labelledby="placeholder-prompt">
                   <label class="placeholder-text" for="prompt" id="placeholder-prompt">
                     <div class="text">ChatGPT プロンプト</div>
                   </label>

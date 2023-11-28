@@ -16,17 +16,17 @@ html {
 }
 
 /* ▼デフォルトのcssをリセット */
-#wpcontent:has(.sgs-chat) {
+#wpcontent:has(.sas-chat) {
   padding-left: 0px;
 }
 
-.wrap:has(.sgs-chat) {
+.wrap:has(.sas-chat) {
   margin: 0;
 }
 
 /* ▼プラグインのcss */
 
-.sgs-chat {
+.sas-chat {
   --text-color: #ffffff;
   --icon-color: #acacbe;
   --icon-hover-bg: #5b5e71;
@@ -39,7 +39,7 @@ html {
   font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
 }
 
-.sgs-chat.light-mode {
+.sas-chat.light-mode {
   --text-color: #343541;
   --icon-color: #a9a9bc;
   --icon-hover-bg: #f1f1f3;
@@ -50,7 +50,7 @@ html {
   --incoming-chat-border: #d9d9e3;
 }
 
-.sgs-chat .site-wrapper {
+.sas-chat .site-wrapper {
   position: relative;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -58,11 +58,11 @@ html {
   min-height: 100vh;
 }
 
-.sgs-chat header .inner {
+.sas-chat header .inner {
   padding: 0 4rem;
 }
 
-.sgs-chat header h1 {
+.sas-chat header h1 {
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -71,25 +71,25 @@ html {
   color: var(--text-color);
 }
 
-.sgs-chat header h1 svg {
+.sas-chat header h1 svg {
   width: 6rem;
   height: auto;
 }
 
-.sgs-chat header h1 svg path {
+.sas-chat header h1 svg path {
   fill: var(--text-color);
 }
 
-.sgs-chat header .select-container {
+.sas-chat header .select-container {
   margin: 4rem 0 0 0;
 }
 
-.sgs-chat header .select-container label {
+.sas-chat header .select-container label {
   color: var(--text-color);
   font-size: 1.6rem;
 }
 
-.sgs-chat header .select-container select {
+.sas-chat header .select-container select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -107,29 +107,29 @@ html {
   transition: box-shadow 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.sgs-chat header .select-container select:focus {
+.sas-chat header .select-container select:focus {
   border-color: rgba(#3e82ff, 0.3);
   outline: none;
   box-shadow: 0 0 0 3px rgba(#3e82ff, 0.2);
 }
 
-.sgs-chat header .select-container select:disabled {
+.sas-chat header .select-container select:disabled {
   background-color: #eee;
   cursor: not-allowed;
 }
 
-.sgs-chat header .select-container select[multiple] {
+.sas-chat header .select-container select[multiple] {
   height: auto;
   background-image: none;
   padding-right: 15px;
 }
 
-.sgs-chat main .sgs-chat-contents {
+.sas-chat main .sas-chat-contents {
   position: relative;
   padding-bottom: 8rem;
 }
 
-.sgs-chat main .sgs-chat-contents .gpt-model {
+.sas-chat main .sas-chat-contents .ai-model {
   margin: 2.4rem 0 0 0;
   padding: 2rem 0;
   background-color: var(--incoming-chat-bg);
@@ -138,7 +138,7 @@ html {
   text-align: center;
 }
 
-.sgs-chat main .sgs-chat-contents .caution {
+.sas-chat main .sas-chat-contents .caution {
   display: grid;
   place-items: center;
   height: 48rem;
@@ -147,7 +147,7 @@ html {
   font-weight: 700;
 }
 
-.sgs-chat main .sgs-chat-contents ul .request-text {
+.sas-chat main .sas-chat-contents ul .request-text {
   padding: 2.4rem 28rem;
   color: var(--text-color);
   font-size: 1.8rem;
@@ -156,7 +156,7 @@ html {
   background-color: var(--outgoing-chat-bg);
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text {
+.sas-chat main .sas-chat-contents ul .response-text {
   padding: 2.4rem 20rem;
   color: var(--text-color);
   line-height: 1.7;
@@ -164,12 +164,12 @@ html {
   background-color: var(--incoming-chat-bg);
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text > div {
+.sas-chat main .sas-chat-contents ul .response-text > div {
   position: relative;
   padding: 0 0 0 4.8rem;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text > div::before {
+.sas-chat main .sas-chat-contents ul .response-text > div::before {
   content: "";
   position: absolute;
   top: 0;
@@ -182,7 +182,7 @@ html {
   background-size: contain;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text h1 {
+.sas-chat main .sas-chat-contents ul .response-text h1 {
   margin: 0 0 2.4rem 0;
   padding: 0;
   color: #fff;
@@ -190,28 +190,28 @@ html {
   font-weight: 700;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text h2 {
+.sas-chat main .sas-chat-contents ul .response-text h2 {
   margin: 3.2rem 0 2rem 0;
   color: #fff;
   font-size: 2.8rem;
   font-weight: 700;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text h3 {
+.sas-chat main .sas-chat-contents ul .response-text h3 {
   margin: 3.2rem 0 2rem 0;
   color: #fff;
   font-size: 2.4rem;
   font-weight: 700;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text p {
+.sas-chat main .sas-chat-contents ul .response-text p {
   margin: 2rem 0;
   font-size: 1.6rem;
   line-height: 1.7;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text ul,
-.sgs-chat main .sgs-chat-contents ul .response-text ol {
+.sas-chat main .sas-chat-contents ul .response-text ul,
+.sas-chat main .sas-chat-contents ul .response-text ol {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
@@ -220,29 +220,29 @@ html {
   font-size: 1.6rem;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text ul li,
-.sgs-chat main .sgs-chat-contents ul .response-text ol li {
+.sas-chat main .sas-chat-contents ul .response-text ul li,
+.sas-chat main .sas-chat-contents ul .response-text ol li {
   margin: 0;
   line-height: 1.7;
   list-style: auto;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text ul li {
+.sas-chat main .sas-chat-contents ul .response-text ul li {
   list-style: disc;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text ol li {
+.sas-chat main .sas-chat-contents ul .response-text ol li {
   list-style: decimal;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text pre {
+.sas-chat main .sas-chat-contents ul .response-text pre {
   position: relative;
   margin: 4rem 0;
   padding: 1rem;
   background-color: #000;
 }
 
-.sgs-chat main .sgs-chat-contents ul .response-text pre::before {
+.sas-chat main .sas-chat-contents ul .response-text pre::before {
   content: "Code";
   position: absolute;
   top: 0;
@@ -255,24 +255,24 @@ html {
   translate: 0 -100%;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset {
+.sas-chat main .sas-chat-contents ul fieldset {
   display: flex;
   align-items: center;
   gap: 3.2rem;
   margin: 2.4rem 0 0 5rem;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label {
+.sas-chat main .sas-chat-contents ul fieldset label {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label:nth-child(3) span p {
+.sas-chat main .sas-chat-contents ul fieldset label:nth-child(3) span p {
   font-size: 2.4rem;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label input {
+.sas-chat main .sas-chat-contents ul fieldset label input {
   border: 0;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -285,29 +285,29 @@ html {
   width: 1px;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label input:focus ~ .text::after {
+.sas-chat main .sas-chat-contents ul fieldset label input:focus ~ .text::after {
   transform: scale3d(1, 1, 1);
   transform-origin: left;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label input:checked + .icon::before {
+.sas-chat main .sas-chat-contents ul fieldset label input:checked + .icon::before {
   border-color: var(--text-color);
   opacity: 0;
   transform: rotate(45deg) scale3d(2, 2, 1);
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label input:checked + .icon::after {
+.sas-chat main .sas-chat-contents ul fieldset label input:checked + .icon::after {
   border-bottom: 2px solid var(--text-color);
   border-left: 2px solid var(--text-color);
   opacity: 1;
   transform: rotate(-45deg);
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label input:checked ~ .text {
+.sas-chat main .sas-chat-contents ul fieldset label input:checked ~ .text {
   color: var(--text-color);
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label .icon {
+.sas-chat main .sas-chat-contents ul fieldset label .icon {
   position: relative;
   display: inline-block;
   width: 2rem;
@@ -315,19 +315,19 @@ html {
 }
 
 @media screen and (max-width: 750px) {
-  .sgs-chat main .sgs-chat-contents ul fieldset label .icon {
+  .sas-chat main .sas-chat-contents ul fieldset label .icon {
     width: 3rem;
     height: 3rem;
   }
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label .icon::before,
-.sgs-chat main .sgs-chat-contents ul fieldset label .icon::after {
+.sas-chat main .sas-chat-contents ul fieldset label .icon::before,
+.sas-chat main .sas-chat-contents ul fieldset label .icon::after {
   content: "";
   position: absolute;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label .icon::before {
+.sas-chat main .sas-chat-contents ul fieldset label .icon::before {
   top: 0;
   left: 0;
   width: 100%;
@@ -337,7 +337,7 @@ html {
   transition: border-color 0.5s, opacity 0.5s, transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label .icon::after {
+.sas-chat main .sas-chat-contents ul fieldset label .icon::after {
   top: 0.5rem;
   left: 0.3rem;
   width: 1.2rem;
@@ -350,21 +350,21 @@ html {
 }
 
 @media screen and (max-width: 750px) {
-  .sgs-chat main .sgs-chat-contents ul fieldset label .icon::after {
+  .sas-chat main .sas-chat-contents ul fieldset label .icon::after {
     top: 0.7rem;
     width: 2rem;
     height: 1.2rem;
   }
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label .text {
+.sas-chat main .sas-chat-contents ul fieldset label .text {
   position: relative;
   display: inline-block;
   letter-spacing: 0.05em;
   margin: 0 0 0 1rem;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label .text::after {
+.sas-chat main .sas-chat-contents ul fieldset label .text::after {
   content: "";
   position: absolute;
   left: 0;
@@ -378,11 +378,11 @@ html {
   transition: transform 0.3s;
 }
 
-.sgs-chat main .sgs-chat-contents ul fieldset label .text p {
+.sas-chat main .sas-chat-contents ul fieldset label .text p {
   margin: 0;
 }
 
-.sgs-chat main .sgs-chat-contents .loader {
+.sas-chat main .sas-chat-contents .loader {
   display: none;
   position: relative;
   margin: 2.4rem auto 0 auto;
@@ -390,11 +390,11 @@ html {
   height: 4.8rem;
 }
 
-.sgs-chat main .sgs-chat-contents .loader.is-loading {
+.sas-chat main .sas-chat-contents .loader.is-loading {
   display: block;
 }
 
-.sgs-chat main .sgs-chat-contents .loader div {
+.sas-chat main .sas-chat-contents .loader div {
   position: absolute;
   top: 0;
   left: 0;
@@ -404,22 +404,22 @@ html {
   opacity: 0.8;
 }
 
-.sgs-chat main .sgs-chat-contents .loader div.one {
+.sas-chat main .sas-chat-contents .loader div.one {
   border-top: 1px solid #8fb259;
   animation: rotate-left 1s linear infinite;
 }
 
-.sgs-chat main .sgs-chat-contents .loader div.two {
+.sas-chat main .sas-chat-contents .loader div.two {
   border-right: 1px solid #cccc52;
   animation: rotate-right 1s linear infinite;
 }
 
-.sgs-chat main .sgs-chat-contents .loader div.three {
+.sas-chat main .sas-chat-contents .loader div.three {
   border-bottom: 1px solid #ffd933;
   animation: rotate-right 1s linear infinite;
 }
 
-.sgs-chat main .sgs-chat-contents .loader div.four {
+.sas-chat main .sas-chat-contents .loader div.four {
   border-left: 1px solid #ff7f00;
   animation: rotate-right 1s linear infinite;
 }
@@ -442,7 +442,7 @@ html {
   }
 }
 
-.sgs-chat .typing-container {
+.sas-chat .typing-container {
   position: sticky;
   left: 0;
   bottom: 0;
@@ -451,19 +451,19 @@ html {
   border-top: 1px solid var(--incoming-chat-border);
 }
 
-.sgs-chat .typing-container .typing-content {
+.sas-chat .typing-container .typing-content {
   display: flex;
   gap: 1rem;
   width: 100%;
 }
 
-.sgs-chat .typing-container .typing-textarea {
+.sas-chat .typing-container .typing-textarea {
   width: 100%;
   display: flex;
   position: relative;
 }
 
-.sgs-chat .typing-textarea textarea {
+.sas-chat .typing-textarea textarea {
   resize: none;
   height: 6.565rem;
   width: 100%;
@@ -478,23 +478,23 @@ html {
   outline: 1px solid var(--incoming-chat-border);
 }
 
-.sgs-chat .typing-textarea textarea::-moz-placeholder {
+.sas-chat .typing-textarea textarea::-moz-placeholder {
   font-size: 2rem;
 }
 
-.sgs-chat .typing-textarea textarea::placeholder {
+.sas-chat .typing-textarea textarea::placeholder {
   font-size: 2rem;
 }
 
-.sgs-chat .typing-textarea textarea::-moz-placeholder {
+.sas-chat .typing-textarea textarea::-moz-placeholder {
   color: var(--placeholder-color);
 }
 
-.sgs-chat .typing-textarea textarea::placeholder {
+.sas-chat .typing-textarea textarea::placeholder {
   color: var(--placeholder-color);
 }
 
-.sgs-chat .typing-content span {
+.sas-chat .typing-content span {
   width: 6.565rem;
   height: 6.565rem;
   display: flex;
@@ -506,12 +506,12 @@ html {
   cursor: pointer;
 }
 
-.sgs-chat .typing-content .tooltip {
+.sas-chat .typing-content .tooltip {
   position: relative;
   display: flex;
 }
 
-.sgs-chat .typing-content [role="tooltip"] {
+.sas-chat .typing-content [role="tooltip"] {
   position: absolute;
   left: 50%;
   padding: 2px 8px;
@@ -524,11 +524,11 @@ html {
   transform: translateX(-50%);
 }
 
-.sgs-chat .typing-content .typing-textarea [role="tooltip"] {
+.sas-chat .typing-content .typing-textarea [role="tooltip"] {
   transform: translateX(-112%);
 }
 
-.sgs-chat .typing-textarea span {
+.sas-chat .typing-textarea span {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -537,37 +537,37 @@ html {
   cursor: pointer;
 }
 
-.sgs-chat .typing-textarea span:hover {
+.sas-chat .typing-textarea span:hover {
   background: var(--icon-hover-bg);
 }
 
-.sgs-chat .typing-textarea textarea:valid ~ .send-tooltip span {
+.sas-chat .typing-textarea textarea:valid ~ .send-tooltip span {
   visibility: visible;
 }
 
-.sgs-chat .typing-controls {
+.sas-chat .typing-controls {
   display: flex;
   gap: 1rem;
 }
 
-.sgs-chat .typing-controls span {
+.sas-chat .typing-controls span {
   font-size: 3rem;
   background: var(--incoming-chat-bg);
   outline: 1px solid var(--incoming-chat-border);
 }
 
-.sgs-chat .typing-controls span:hover {
+.sas-chat .typing-controls span:hover {
   background: var(--icon-hover-bg);
 }
 
-.sgs-chat .post {
+.sas-chat .post {
   display: flex;
   justify-content: center;
   gap: 4rem;
   margin: 4rem 0 0 0;
 }
 
-.sgs-chat .post .post-button {
+.sas-chat .post .post-button {
   position: relative;
   display: flex;
   align-items: center;
@@ -581,11 +581,11 @@ html {
   font-size: 1.6rem;
 }
 
-.sgs-chat .post .post-button[disabled]:hover {
+.sas-chat .post .post-button[disabled]:hover {
   cursor: not-allowed;
 }
 
-.sgs-chat .post .post-button.is-loading::after {
+.sas-chat .post .post-button.is-loading::after {
   content: "";
   display: inline-block;
   width: 3rem;
@@ -605,7 +605,7 @@ html {
   }
 }
 
-.sgs-chat .post .checkmark {
+.sas-chat .post .checkmark {
   display: none;
   width: 3rem;
   height: 3rem;
@@ -617,11 +617,11 @@ html {
   animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
 }
 
-.sgs-chat .post .checkmark.is-complete {
+.sas-chat .post .checkmark.is-complete {
   display: block;
 }
 
-.sgs-chat .post .checkmark .checkmark-circle {
+.sas-chat .post .checkmark .checkmark-circle {
   stroke-dasharray: 166;
   stroke-dashoffset: 166;
   stroke-width: 2;
@@ -631,7 +631,7 @@ html {
   animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
-.sgs-chat .post .checkmark .checkmark-check {
+.sas-chat .post .checkmark .checkmark-check {
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
   transform-origin: 50% 50%;

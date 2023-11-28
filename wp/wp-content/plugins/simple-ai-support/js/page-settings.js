@@ -1,4 +1,4 @@
-let inputElements = document.querySelectorAll(".js-sgs-input");
+let inputElements = document.querySelectorAll(".js-sas-input");
 
 inputElements.forEach((input) => {
   input.addEventListener("keyup", () => {
