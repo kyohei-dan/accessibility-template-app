@@ -25,6 +25,6 @@
     </nav>
     <p class="footer-tel">00-0000-0000</p>
     <p class="footer-hours">営業時間AM 0:00〜PM0:00 土日祝日を除く</p>
-    <small class="footer-copy" lang="en" translate="no">Copyright©︎TEMPLATE All Rights Reserved.</small>
+    <p class="footer-copy" lang="en" translate="no">Copyright©︎ <span itemprop="copyrightYear">2023</span> <span itemprop="copyrightHolder">TEMPLATE</span> All Rights Reserved.</p>
   </div>
 </footer>
